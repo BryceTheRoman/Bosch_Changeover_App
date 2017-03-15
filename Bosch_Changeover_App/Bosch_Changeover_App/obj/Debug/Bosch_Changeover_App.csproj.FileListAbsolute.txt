@@ -1,0 +1,27 @@
+c:\users\eric\documents\visual studio 2015\Projects\Bosch_Changeover_App\Bosch_Changeover_App\bin\Debug\Bosch_Changeover_App.exe.config
+c:\users\eric\documents\visual studio 2015\Projects\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Bosch_Changeover_App.csprojResolveAssemblyReference.cache
+c:\users\eric\documents\visual studio 2015\Projects\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Bosch_Changeover_App.CreateAlarmPopup.resources
+c:\users\eric\documents\visual studio 2015\Projects\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Bosch_Changeover_App.LineUserControl.resources
+c:\users\eric\documents\visual studio 2015\Projects\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Bosch_Changeover_App.PartAlarm.resources
+c:\users\eric\documents\visual studio 2015\Projects\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Bosch_Changeover_App.Properties.Resources.resources
+c:\users\eric\documents\visual studio 2015\Projects\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Bosch_Changeover_App.SettingsUserControl.resources
+c:\users\eric\documents\visual studio 2015\Projects\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Bosch_Changeover_App.csproj.GenerateResource.Cache
+c:\users\eric\documents\visual studio 2015\Projects\Bosch_Changeover_App\Bosch_Changeover_App\bin\Debug\Bosch_Changeover_App.exe
+c:\users\eric\documents\visual studio 2015\Projects\Bosch_Changeover_App\Bosch_Changeover_App\bin\Debug\Bosch_Changeover_App.pdb
+c:\users\eric\documents\visual studio 2015\Projects\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Bosch_Changeover_App.PartsUserControl.resources
+c:\users\eric\documents\visual studio 2015\Projects\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Bosch_Changeover_App.exe
+c:\users\eric\documents\visual studio 2015\Projects\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Bosch_Changeover_App.pdb
+D:\Visual Studio\projects\Bosch_Changeover_App\Bosch_Changeover_App\bin\Debug\Bosch_Changeover_App.exe.config
+D:\Visual Studio\projects\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Bosch_Changeover_App.exe
+D:\Visual Studio\projects\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Bosch_Changeover_App.pdb
+D:\Visual Studio\projects\Bosch_Changeover_App\Bosch_Changeover_App\bin\Debug\Bosch_Changeover_App.exe
+D:\Visual Studio\projects\Bosch_Changeover_App\Bosch_Changeover_App\bin\Debug\Bosch_Changeover_App.pdb
+D:\Visual Studio\projects\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Bosch_Changeover_App.csprojResolveAssemblyReference.cache
+D:\Visual Studio\projects\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Bosch_Changeover_App.CreateAlarmPopup.resources
+D:\Visual Studio\projects\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Bosch_Changeover_App.Form1.resources
+D:\Visual Studio\projects\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Bosch_Changeover_App.LineUserControl.resources
+D:\Visual Studio\projects\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Bosch_Changeover_App.PartAlarm.resources
+D:\Visual Studio\projects\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Bosch_Changeover_App.PartsUserControl.resources
+D:\Visual Studio\projects\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Bosch_Changeover_App.Properties.Resources.resources
+D:\Visual Studio\projects\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Bosch_Changeover_App.SettingsUserControl.resources
+D:\Visual Studio\projects\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Bosch_Changeover_App.csproj.GenerateResource.Cache
