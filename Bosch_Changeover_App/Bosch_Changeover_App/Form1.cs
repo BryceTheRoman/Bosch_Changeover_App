@@ -19,7 +19,7 @@ namespace Bosch_Changeover_App
 
             selectedButton = linesButton;
             InitializeComponent();
-            linesButton.BackColor = Color.FromArgb(0, 59, 106);
+            linesButton.BackColor = Color.FromArgb(33, 95, 139);
 
             mainPanel.Controls.Add(LineUserControl.Instance);
             LineUserControl.Instance.Dock = DockStyle.Fill;
@@ -35,9 +35,9 @@ namespace Bosch_Changeover_App
         private void linesButton_Click(object sender, EventArgs e)
         {
             selectedButton = linesButton;
-            linesButton.BackColor = Color.FromArgb(0, 59, 106);
-            partsButton.BackColor = Color.FromArgb(33, 95, 139);
-            settingsButton.BackColor = Color.FromArgb(33, 95, 139);
+            linesButton.BackColor = Color.FromArgb(33, 95, 139);//0, 59, 106
+            partsButton.BackColor = Color.FromArgb(0, 59, 106);//33, 95, 139
+            settingsButton.BackColor = Color.FromArgb(0, 59, 106);
             selectionLabel.Text = "Line Overview";
 
             if (!mainPanel.Controls.Contains(LineUserControl.Instance))
@@ -58,9 +58,9 @@ namespace Bosch_Changeover_App
         {
 
             selectedButton = partsButton;
-            partsButton.BackColor = Color.FromArgb(0, 59, 106);
-            linesButton.BackColor = Color.FromArgb(33, 95, 139);
-            settingsButton.BackColor = Color.FromArgb(33, 95, 139);
+            partsButton.BackColor = Color.FromArgb(33, 95, 139);//0, 59, 106
+            linesButton.BackColor = Color.FromArgb(0, 59, 106);
+            settingsButton.BackColor = Color.FromArgb(0, 59, 106);
             selectionLabel.Text = "Part Alarms";
 
 
@@ -84,9 +84,9 @@ namespace Bosch_Changeover_App
         private void settingsButton_Click(object sender, EventArgs e)
         {
             selectedButton = settingsButton;
-            settingsButton.BackColor = Color.FromArgb(0, 59, 106);
-            partsButton.BackColor = Color.FromArgb(33, 95, 139);
-            linesButton.BackColor = Color.FromArgb(33, 95, 139);
+            settingsButton.BackColor = Color.FromArgb(33, 95, 139);
+            partsButton.BackColor = Color.FromArgb(0, 59, 106);//33, 95, 139
+            linesButton.BackColor = Color.FromArgb(0, 59, 106);//33, 95, 139
             selectionLabel.Text = "Settings";
 
 
