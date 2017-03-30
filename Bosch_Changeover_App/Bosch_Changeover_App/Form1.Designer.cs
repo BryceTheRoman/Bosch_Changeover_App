@@ -68,7 +68,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(95)))), ((int)(((byte)(139)))));
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(59)))), ((int)(((byte)(106)))));
             this.panel2.Controls.Add(this.settingsButton);
             this.panel2.Controls.Add(this.partsButton);
             this.panel2.Controls.Add(this.linesButton);
@@ -76,12 +76,12 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(194, 638);
+            this.panel2.Size = new System.Drawing.Size(194, 726);
             this.panel2.TabIndex = 4;
             // 
             // settingsButton
             // 
-            this.settingsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(95)))), ((int)(((byte)(139)))));
+            this.settingsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(59)))), ((int)(((byte)(106)))));
             this.settingsButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.settingsButton.Dock = System.Windows.Forms.DockStyle.Top;
             this.settingsButton.FlatAppearance.BorderSize = 0;
@@ -98,7 +98,7 @@
             // 
             // partsButton
             // 
-            this.partsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(95)))), ((int)(((byte)(139)))));
+            this.partsButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(59)))), ((int)(((byte)(106)))));
             this.partsButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.partsButton.Dock = System.Windows.Forms.DockStyle.Top;
             this.partsButton.FlatAppearance.BorderSize = 0;
@@ -115,7 +115,7 @@
             // 
             // linesButton
             // 
-            this.linesButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(95)))), ((int)(((byte)(139)))));
+            this.linesButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(59)))), ((int)(((byte)(106)))));
             this.linesButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.linesButton.Dock = System.Windows.Forms.DockStyle.Top;
             this.linesButton.FlatAppearance.BorderSize = 0;
@@ -137,7 +137,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(194, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(825, 72);
+            this.panel3.Size = new System.Drawing.Size(1596, 72);
             this.panel3.TabIndex = 5;
             // 
             // selectionLabel
@@ -158,7 +158,7 @@
             this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainPanel.Location = new System.Drawing.Point(194, 72);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(825, 566);
+            this.mainPanel.Size = new System.Drawing.Size(1596, 654);
             this.mainPanel.TabIndex = 6;
             // 
             // Form1
@@ -166,7 +166,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.ClientSize = new System.Drawing.Size(1019, 638);
+            this.ClientSize = new System.Drawing.Size(1790, 726);
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
