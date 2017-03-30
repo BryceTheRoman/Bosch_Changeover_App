@@ -1,0 +1,90 @@
+using System;
+
+public class Card
+{
+    int timeToFinish;
+    int timeRemaining;
+    string stations;
+    int partType;
+    Boolean isOnline;
+
+	public Card(int timeToFinish, int timeRemaining, string stations, int partType, Boolean isOnline)
+	{
+        this.timeToFinish = timeToFinish;
+        this.timeRemaining = timeRemaining;
+        this.stations = stations;
+        this.partType = partType;
+        this.isOnline = isOnline;
+	}
+
+    private void getTimeToFinish()
+    {
+        return this.timeToFinish;
+    }
+    public void setTimeToFinish(int setter)
+    {
+        this.timeToFinish = setter;
+    }
+    private void getTimeRemaining()
+    {
+        return this.timeRemaining;
+    }
+    private void setTimeRemaining(int setter)
+    {
+        this.timeRemaining = setter;
+    }
+    private void getStations()
+    {
+        return this.stations;
+    }
+    private void setStations(String setter)
+    {
+        this.stations = setter;
+    }
+    private void getPartType()
+    {
+        return this.partType;
+    }
+    private void setPartType(int setter)
+    {
+        this.partType = setter;
+    }
+    private void isOnlineSwitch()
+    {
+        if (this.isOnline == true)
+        {
+            this.isOnline = false;
+        }
+        else
+        {
+            this.isOnline = true;
+        }
+    }
+}
+
+using System;
+
+public class Information
+{
+    /*
+	Queue<Cards> queue = new Queue<Cards>();
+    String directoryLocation = "";
+
+
+    private void fillCards()
+    {
+
+        Cards newCard = new Cards();
+        
+
+    }
+    */
+    public static void main(String args[]){
+        var lines = File.ReadAllLines("MCD_94.dat");
+        foreach(var line in lines)
+        {
+            Console.Write(line);
+        }
+    }
+
+}
