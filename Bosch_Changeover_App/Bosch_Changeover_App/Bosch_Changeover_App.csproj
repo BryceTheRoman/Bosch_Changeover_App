@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Bosch_Changeover_App</RootNamespace>
-    <AssemblyName>Bosch_Changeover_App</AssemblyName>
+    <AssemblyName>Chanveover App</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -31,6 +31,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>shadow.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -70,12 +73,6 @@
     <Compile Include="PartAlarm.Designer.cs">
       <DependentUpon>PartAlarm.cs</DependentUpon>
     </Compile>
-    <Compile Include="PartsUserControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="PartsUserControl.Designer.cs">
-      <DependentUpon>PartsUserControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SettingsUserControl.cs">
@@ -96,9 +93,6 @@
     <EmbeddedResource Include="PartAlarm.resx">
       <DependentUpon>PartAlarm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PartsUserControl.resx">
-      <DependentUpon>PartsUserControl.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -107,6 +101,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="SettingsUserControl.resx">
       <DependentUpon>SettingsUserControl.cs</DependentUpon>
@@ -123,6 +118,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icon1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="shadow.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
