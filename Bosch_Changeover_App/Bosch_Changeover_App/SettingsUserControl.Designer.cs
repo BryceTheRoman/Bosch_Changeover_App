@@ -106,7 +106,7 @@
             this.Controls.Add(this.emailAddressTextBox);
             this.Controls.Add(this.checkBox1);
             this.Name = "SettingsUserControl";
-            this.Size = new System.Drawing.Size(714, 458);
+            this.Size = new System.Drawing.Size(494, 458);
             this.ResumeLayout(false);
             this.PerformLayout();
 

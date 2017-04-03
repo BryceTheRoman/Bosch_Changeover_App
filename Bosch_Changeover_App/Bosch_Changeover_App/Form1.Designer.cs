@@ -78,7 +78,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(261, 758);
+            this.panel2.Size = new System.Drawing.Size(261, 812);
             this.panel2.TabIndex = 4;
             // 
             // plusButton
@@ -99,7 +99,7 @@
             this.partAlarmsPanel.AutoScroll = true;
             this.partAlarmsPanel.Location = new System.Drawing.Point(0, 260);
             this.partAlarmsPanel.Name = "partAlarmsPanel";
-            this.partAlarmsPanel.Size = new System.Drawing.Size(261, 498);
+            this.partAlarmsPanel.Size = new System.Drawing.Size(261, 702);
             this.partAlarmsPanel.TabIndex = 0;
             // 
             // partAlarmsLabel
@@ -121,15 +121,16 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(261, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1443, 72);
+            this.panel3.Size = new System.Drawing.Size(1471, 72);
             this.panel3.TabIndex = 5;
             // 
             // pictureBoxSettings
             // 
+            this.pictureBoxSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBoxSettings.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxSettings.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxSettings.Image")));
-            this.pictureBoxSettings.Location = new System.Drawing.Point(1389, 22);
+            this.pictureBoxSettings.Location = new System.Drawing.Point(1417, 22);
             this.pictureBoxSettings.Name = "pictureBoxSettings";
             this.pictureBoxSettings.Size = new System.Drawing.Size(27, 27);
             this.pictureBoxSettings.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -152,9 +153,11 @@
             // mainPanel
             // 
             this.mainPanel.AutoSize = true;
+            this.mainPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainPanel.Location = new System.Drawing.Point(261, 72);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(1443, 686);
+            this.mainPanel.Size = new System.Drawing.Size(1471, 740);
             this.mainPanel.TabIndex = 6;
             // 
             // Form1
@@ -162,13 +165,15 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.ClientSize = new System.Drawing.Size(1704, 758);
+            this.ClientSize = new System.Drawing.Size(1732, 812);
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(780, 700);
             this.Name = "Form1";
             this.Text = "Changeover Application  v0.1";
+            this.Resize += new System.EventHandler(this.Form1_Resize);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBosch)).EndInit();
             this.panel2.ResumeLayout(false);
@@ -189,9 +194,9 @@
         private System.Windows.Forms.Label selectionLabel;
         private System.Windows.Forms.Panel mainPanel;
         private System.Windows.Forms.PictureBox pictureBoxSettings;
-        private System.Windows.Forms.Panel partAlarmsPanel;
         private System.Windows.Forms.Label partAlarmsLabel;
         private System.Windows.Forms.Button plusButton;
+        private System.Windows.Forms.Panel partAlarmsPanel;
     }
 }
 
