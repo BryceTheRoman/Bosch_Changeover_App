@@ -13,11 +13,10 @@ namespace Bosch_Changeover_App
 {
     public partial class LineUserControl : UserControl
     {
-        private static LineUserControl _instance;
+    //    private static LineUserControl _instance;
         private Form1 parentForm;
 
-
-        public static LineUserControl Instance
+   /*     public static LineUserControl Instance
         {
             get
             {
@@ -25,10 +24,11 @@ namespace Bosch_Changeover_App
                     _instance = new LineUserControl();
                 return _instance;
             }
-        }
-        public LineUserControl()
+        }*/
+        public LineUserControl(int line)
         {
             InitializeComponent();
+            lineLabel.Text = "Line " + line.ToString() ;
             addButton("6511588611          32                32-End        00:01:42", panelOnLine1);
             addButton("6511588611          32                32-End        00:01:42", panelOnLine1);
             addButton("6511588611          32                32-End        00:01:42", panelOnLine1);
@@ -37,7 +37,10 @@ namespace Bosch_Changeover_App
             addButton("6511588611          32              00:01:42        00:02:42", panelOffLine1);
             addButton("6511588611          32              00:01:42        00:02:42", panelOffLine1);
             addButton("6511588611          32              00:01:42        00:02:42", panelOffLine1);
-
+            addButton("6511588611          32              00:01:42        00:02:42", panelOffLine1);
+            addButton("6511588611          32              00:01:42        00:02:42", panelOffLine1);
+            addButton("6511588611          32              00:01:42        00:02:42", panelOffLine1);
+            /*
             addButton("6511588611          32                32-End        00:01:42", panelOnLine2);
             addButton("6511588611          32              00:01:42        00:02:42", panelOffLine2);
             addButton("6511588611          32              00:01:42        00:02:42", panelOffLine2);
@@ -56,6 +59,7 @@ namespace Bosch_Changeover_App
             addButton("6511588611          32              00:01:42        00:02:42", panelOffLine3);
             addButton("6511588611          32              00:01:42        00:02:42", panelOffLine3);
             addButton("6511588611          32              00:01:42        00:02:42", panelOffLine3);
+        */
         }
 
         public void addButton(String name, Panel p)
@@ -66,7 +70,7 @@ namespace Bosch_Changeover_App
             b.Text = name;
             b.Width = p.Width- 25;
             b.Height = panelOnLine1.Height / 4 + 5;
-            if (p == panelOnLine1 || p == panelOnLine2 || p == panelOnLine3)
+            if (p == panelOnLine1)// || p == panelOnLine2 || p == panelOnLine3)
             {
                 b.BackColor = Color.FromArgb(33, 95, 139);// 0, 59, 106);
                 b.ForeColor = Color.White;
@@ -74,13 +78,14 @@ namespace Bosch_Changeover_App
             else
             {
                 b.BackColor = Color.FromArgb(198, 205, 209);
+                b.Cursor = Cursors.Hand;
+                b.Click += btn_Click;
             }
 
             b.FlatStyle = FlatStyle.Flat;
             b.FlatAppearance.BorderSize = 0;
             b.Font = new Font(b.Font.FontFamily, 11);
-            b.Cursor = Cursors.Hand;
-            b.Click += btn_Click;
+
 
             if (numButtons != 0)
             {

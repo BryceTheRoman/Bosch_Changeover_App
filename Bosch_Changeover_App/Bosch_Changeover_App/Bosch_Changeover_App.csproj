@@ -61,6 +61,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="LinesLayoutUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LinesLayoutUserControl.Designer.cs">
+      <DependentUpon>LinesLayoutUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="LineUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -86,6 +92,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LinesLayoutUserControl.resx">
+      <DependentUpon>LinesLayoutUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LineUserControl.resx">
       <DependentUpon>LineUserControl.cs</DependentUpon>
