@@ -99,7 +99,7 @@
             this.partAlarmsPanel.AutoScroll = true;
             this.partAlarmsPanel.Location = new System.Drawing.Point(0, 260);
             this.partAlarmsPanel.Name = "partAlarmsPanel";
-            this.partAlarmsPanel.Size = new System.Drawing.Size(261, 702);
+            this.partAlarmsPanel.Size = new System.Drawing.Size(261, 552);
             this.partAlarmsPanel.TabIndex = 0;
             // 
             // partAlarmsLabel

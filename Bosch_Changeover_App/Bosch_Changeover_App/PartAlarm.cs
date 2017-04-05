@@ -25,6 +25,11 @@ namespace Bosch_Changeover_App
         {
             ((Panel)this.Parent).Controls.Remove(this);
         }
+
+        private void PartAlarm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
