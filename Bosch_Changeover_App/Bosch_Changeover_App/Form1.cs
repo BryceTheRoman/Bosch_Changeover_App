@@ -12,19 +12,29 @@ namespace Bosch_Changeover_App
 {
     public partial class Form1 : Form
     {
-        Button selectedButton = new Button();
+
+        LinesLayoutUserControl lluc;
 
         public Form1()
         {
 
-            selectedButton = linesButton;
             InitializeComponent();
-            linesButton.BackColor = Color.FromArgb(0, 59, 106);
 
-            mainPanel.Controls.Add(LineUserControl.Instance);
-            LineUserControl.Instance.Dock = DockStyle.Fill;
-            LineUserControl.Instance.BringToFront();
+            lluc = new LinesLayoutUserControl(mainPanel);
+            mainPanel.Controls.Add(SettingsUserControl.Instance);
+            SettingsUserControl.Instance.Dock = DockStyle.Fill;
 
+
+            /*
+
+            mainPanel.Controls.Add(LinesLayoutUserControl.Instance);
+            LinesLayoutUserControl.Instance.Dock = DockStyle.Fill;
+            LinesLayoutUserControl.Instance.BringToFront();
+            */
+
+            mainPanel.Controls.Add(lluc);
+            lluc.Dock = DockStyle.Fill;
+            lluc.BringToFront();
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -32,82 +42,63 @@ namespace Bosch_Changeover_App
 
         }
 
-        private void linesButton_Click(object sender, EventArgs e)
+
+        public void goToLines()
         {
-            selectedButton = linesButton;
-            linesButton.BackColor = Color.FromArgb(0, 59, 106);
-            partsButton.BackColor = Color.FromArgb(33, 95, 139);
-            settingsButton.BackColor = Color.FromArgb(33, 95, 139);
             selectionLabel.Text = "Line Overview";
-
-            if (!mainPanel.Controls.Contains(LineUserControl.Instance))
-            {
-                mainPanel.Controls.Add(LineUserControl.Instance);
-                LineUserControl.Instance.Dock = DockStyle.Fill;
-                LineUserControl.Instance.BringToFront();
-
-            }
-            else
-            {
-                LineUserControl.Instance.BringToFront();
-            }
-
+            //LinesLayoutUserControl.Instance.BringToFront();
+            lluc.BringToFront();
         }
 
-        private void partsButton_Click(object sender, EventArgs e)
-        {
-
-            selectedButton = partsButton;
-            partsButton.BackColor = Color.FromArgb(0, 59, 106);
-            linesButton.BackColor = Color.FromArgb(33, 95, 139);
-            settingsButton.BackColor = Color.FromArgb(33, 95, 139);
-            selectionLabel.Text = "Part Alarms";
-
-
-            if (!mainPanel.Controls.Contains(PartsUserControl.Instance))
-            {
-                mainPanel.Controls.Add(PartsUserControl.Instance);
-                PartsUserControl.Instance.Dock = DockStyle.Fill;
-                PartsUserControl.Instance.BringToFront();
-
-            }
-            else
-            {
-                PartsUserControl.Instance.BringToFront();
-            }
-
-
-
-
-        }
-
-        private void settingsButton_Click(object sender, EventArgs e)
-        {
-            selectedButton = settingsButton;
-            settingsButton.BackColor = Color.FromArgb(0, 59, 106);
-            partsButton.BackColor = Color.FromArgb(33, 95, 139);
-            linesButton.BackColor = Color.FromArgb(33, 95, 139);
-            selectionLabel.Text = "Settings";
-
-
-
-            if (!mainPanel.Controls.Contains(SettingsUserControl.Instance))
-            {
-                mainPanel.Controls.Add(SettingsUserControl.Instance);
-                SettingsUserControl.Instance.Dock = DockStyle.Fill;
-                SettingsUserControl.Instance.BringToFront();
-
-            }
-            else
-            {
-                SettingsUserControl.Instance.BringToFront();
-            }
-
-        }
+ 
 
         private void selectionLabel_Click(object sender, EventArgs e)
         {
 
         }
+
+        private void pictureBoxSettings_Click(object sender, EventArgs e)
+        {
+            selectionLabel.Text = "Settings";
+            SettingsUserControl.Instance.BringToFront();
+        }
+
+
+
+        public void linebtn_Click()
+        {
+            CreateAlarmPopup popup = new CreateAlarmPopup();
+            popup.ShowDialog();
+
+            PartAlarm pa1 = new PartAlarm();
+            int numAlarms = partAlarmsPanel.Controls.Count;
+            int locY = numAlarms * pa1.Height + 10 * numAlarms;
+            pa1.Location = new Point(partAlarmsPanel.Location.X + partAlarmsPanel.Width / 2 - pa1.Width / 2, locY);
+            partAlarmsPanel.Controls.Add(pa1);
+
+
+        }
+
+        private void plusButton_Click(object sender, EventArgs e)
+        {
+            CreateAlarmPopup popup = new CreateAlarmPopup();
+            popup.ShowDialog();
+
+            PartAlarm pa1 = new PartAlarm();
+            int numAlarms = partAlarmsPanel.Controls.Count;
+            int locY = numAlarms * pa1.Height + 10 * numAlarms;
+            pa1.Location = new Point(partAlarmsPanel.Location.X + partAlarmsPanel.Width / 2 - pa1.Width / 2, locY);
+            partAlarmsPanel.Controls.Add(pa1);
+        }
+
+
+
+        private void Form1_Resize(object sender, EventArgs e)
+        {
+            lluc.formResized();
+            partAlarmsPanel.Height = mainPanel.Height - 190;
+        }
+
+
     }
 }

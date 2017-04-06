@@ -39,5 +39,17 @@ namespace Bosch_Changeover_App
         {
 
         }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            Form1 parent = (Form1)this.FindForm();
+            parent.goToLines();
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            Form1 parent = (Form1)this.FindForm();
+            parent.goToLines();
+        }
     }
 }
