@@ -48,7 +48,7 @@
             this.lineLabel.AutoSize = true;
             this.lineLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lineLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lineLabel.Location = new System.Drawing.Point(161, 29);
+            this.lineLabel.Location = new System.Drawing.Point(180, 27);
             this.lineLabel.Name = "lineLabel";
             this.lineLabel.Size = new System.Drawing.Size(93, 31);
             this.lineLabel.TabIndex = 1;
