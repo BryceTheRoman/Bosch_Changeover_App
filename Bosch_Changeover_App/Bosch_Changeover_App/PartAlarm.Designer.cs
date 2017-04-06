@@ -38,6 +38,8 @@
             this.emailNotification = new System.Windows.Forms.CheckBox();
             this.partsText = new System.Windows.Forms.Label();
             this.numberOfParts = new System.Windows.Forms.Label();
+            this.lineLabel = new System.Windows.Forms.Label();
+            this.lineNum = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // partTypeLabel
@@ -117,7 +119,7 @@
             this.partsText.AutoSize = true;
             this.partsText.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.partsText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(130)))), ((int)(((byte)(133)))));
-            this.partsText.Location = new System.Drawing.Point(95, 150);
+            this.partsText.Location = new System.Drawing.Point(51, 150);
             this.partsText.Name = "partsText";
             this.partsText.Size = new System.Drawing.Size(31, 13);
             this.partsText.TabIndex = 7;
@@ -128,11 +130,33 @@
             this.numberOfParts.AutoSize = true;
             this.numberOfParts.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numberOfParts.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(130)))), ((int)(((byte)(133)))));
-            this.numberOfParts.Location = new System.Drawing.Point(74, 150);
+            this.numberOfParts.Location = new System.Drawing.Point(30, 150);
             this.numberOfParts.Name = "numberOfParts";
             this.numberOfParts.Size = new System.Drawing.Size(25, 13);
             this.numberOfParts.TabIndex = 8;
             this.numberOfParts.Text = "125";
+            // 
+            // lineLabel
+            // 
+            this.lineLabel.AutoSize = true;
+            this.lineLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lineLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(130)))), ((int)(((byte)(133)))));
+            this.lineLabel.Location = new System.Drawing.Point(122, 150);
+            this.lineLabel.Name = "lineLabel";
+            this.lineLabel.Size = new System.Drawing.Size(30, 13);
+            this.lineLabel.TabIndex = 10;
+            this.lineLabel.Text = "Line:";
+            // 
+            // lineNum
+            // 
+            this.lineNum.AutoSize = true;
+            this.lineNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lineNum.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(130)))), ((int)(((byte)(133)))));
+            this.lineNum.Location = new System.Drawing.Point(152, 150);
+            this.lineNum.Name = "lineNum";
+            this.lineNum.Size = new System.Drawing.Size(13, 13);
+            this.lineNum.TabIndex = 9;
+            this.lineNum.Text = "2";
             // 
             // PartAlarm
             // 
@@ -140,6 +164,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.lineLabel);
+            this.Controls.Add(this.lineNum);
             this.Controls.Add(this.numberOfParts);
             this.Controls.Add(this.partsText);
             this.Controls.Add(this.emailNotification);
@@ -166,6 +192,8 @@
         private System.Windows.Forms.CheckBox emailNotification;
         private System.Windows.Forms.Label partsText;
         private System.Windows.Forms.Label numberOfParts;
+        private System.Windows.Forms.Label lineLabel;
+        private System.Windows.Forms.Label lineNum;
     }
 }
 
