@@ -39,6 +39,7 @@
             this.pictureBoxSettings = new System.Windows.Forms.PictureBox();
             this.selectionLabel = new System.Windows.Forms.Label();
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.currentTimeLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBosch)).BeginInit();
             this.panel2.SuspendLayout();
@@ -116,6 +117,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(186)))), ((int)(((byte)(210)))));
+            this.panel3.Controls.Add(this.currentTimeLabel);
             this.panel3.Controls.Add(this.pictureBoxSettings);
             this.panel3.Controls.Add(this.selectionLabel);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
@@ -160,6 +162,18 @@
             this.mainPanel.Size = new System.Drawing.Size(1471, 740);
             this.mainPanel.TabIndex = 6;
             // 
+            // currentTimeLabel
+            // 
+            this.currentTimeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.currentTimeLabel.AutoSize = true;
+            this.currentTimeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.currentTimeLabel.ForeColor = System.Drawing.Color.White;
+            this.currentTimeLabel.Location = new System.Drawing.Point(1207, 13);
+            this.currentTimeLabel.Name = "currentTimeLabel";
+            this.currentTimeLabel.Size = new System.Drawing.Size(178, 42);
+            this.currentTimeLabel.TabIndex = 2;
+            this.currentTimeLabel.Text = "00:00 PM";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -197,6 +211,7 @@
         private System.Windows.Forms.Label partAlarmsLabel;
         private System.Windows.Forms.Button plusButton;
         private System.Windows.Forms.Panel partAlarmsPanel;
+        private System.Windows.Forms.Label currentTimeLabel;
     }
 }
 

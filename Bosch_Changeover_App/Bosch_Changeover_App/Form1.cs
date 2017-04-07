@@ -35,6 +35,7 @@ namespace Bosch_Changeover_App
             mainPanel.Controls.Add(lluc);
             lluc.Dock = DockStyle.Fill;
             lluc.BringToFront();
+            update_currentTime();
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -42,6 +43,11 @@ namespace Bosch_Changeover_App
 
         }
 
+        private void update_currentTime()
+        {
+
+            currentTimeLabel.Text = DateTime.Now.ToString("hh:mm tt");
+        }
 
         public void goToLines()
         {
