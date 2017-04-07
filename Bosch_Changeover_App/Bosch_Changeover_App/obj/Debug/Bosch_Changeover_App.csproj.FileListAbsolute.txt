@@ -53,3 +53,4 @@ C:\Users\THABEAST\Documents\cofc 2017\CSCI 462\CSCI462_CO\Bosch_Changeover_App\B
 C:\Users\THABEAST\Documents\cofc 2017\CSCI 462\CSCI462_CO\Bosch_Changeover_App\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Bosch_Changeover_App.Properties.Resources.resources
 C:\Users\THABEAST\Documents\cofc 2017\CSCI 462\CSCI462_CO\Bosch_Changeover_App\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Bosch_Changeover_App.SettingsUserControl.resources
 C:\Users\THABEAST\Documents\cofc 2017\CSCI 462\CSCI462_CO\Bosch_Changeover_App\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Bosch_Changeover_App.csproj.GenerateResource.Cache
+D:\git\Bosch_Changeover_App\Bosch_Changeover_App\Bosch_Changeover_App\bin\Debug\Changeover App.exe.config
