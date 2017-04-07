@@ -9,7 +9,7 @@ public class Station
     int cycleTime;
     int currentPart;
 
-    public Station(int stationNumber, int lineNumber, int totalCreated, int cycleTime, int currentPart,)
+    public Station(int stationNumber, int lineNumber, int totalCreated, int cycleTime, int currentPart)
     {
         this.stationNumber = stationNumber;
         this.lineNumber = lineNumber;
@@ -21,7 +21,7 @@ public class Station
 
     public int getStationNumber()
     {
-
+        return this.stationNumber;
     }
     public void setStationNumber(int setter)
     {
@@ -29,7 +29,7 @@ public class Station
     }
     public int getLineNumber()
     {
-
+        return this.lineNumber;
     }
     public void setLineNumber(int setter)
     {
@@ -37,15 +37,16 @@ public class Station
     }
     public int getTotalCreated()
     {
-
+        return this.totalCreated;
     }
-    public int setTotalCreated(int setter)
+    public void setTotalCreated(int setter)
     {
         this.totalCreated = setter;
+       
     }
     public int getCycleTime()
     {
-
+        return this.cycleTime;
     }
     public void setCycleTime(int setter)
     {
@@ -53,9 +54,9 @@ public class Station
     }
     public int getCurrentPart()
     {
-
+        return this.currentPart;
     }
-    public void setCurrentPart()
+    public void setCurrentPart(int setter)
     {
         this.currentPart = setter;
     }

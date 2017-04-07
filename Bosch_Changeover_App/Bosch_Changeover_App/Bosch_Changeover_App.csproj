@@ -88,6 +88,7 @@
     <Compile Include="SettingsUserControl.Designer.cs">
       <DependentUpon>SettingsUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Stations.cs" />
     <EmbeddedResource Include="CreateAlarmPopup.resx">
       <DependentUpon>CreateAlarmPopup.cs</DependentUpon>
     </EmbeddedResource>
