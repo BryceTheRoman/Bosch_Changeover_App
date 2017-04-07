@@ -21,7 +21,7 @@ public class Station
 
     public int getStationNumber()
     {
-        return 0;
+        return this.stationNumber;
     }
     public void setStationNumber(int setter)
     {
@@ -29,7 +29,7 @@ public class Station
     }
     public int getLineNumber()
     {
-        return 0;
+        return this.lineNumber;
     }
     public void setLineNumber(int setter)
     {
@@ -37,24 +37,24 @@ public class Station
     }
     public int getTotalCreated()
     {
-        return 0;
+        return this.totalCreated;
     }
-    public int setTotalCreated(int setter)
+    public void setTotalCreated(int setter)
     {
         this.totalCreated = setter;
-        return 0;
     }
     public int getCycleTime()
     {
-        return 0;
+        return this.cycleTime;
     }
+
     public void setCycleTime(int setter)
     {
         this.cycleTime = setter;
     }
     public int getCurrentPart()
     {
-        return 0;
+        return this.currentPart;
     }
     public void setCurrentPart(int setter)
     {
