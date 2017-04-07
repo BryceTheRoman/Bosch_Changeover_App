@@ -42,12 +42,12 @@ public class Station
     public void setTotalCreated(int setter)
     {
         this.totalCreated = setter;
-       
     }
     public int getCycleTime()
     {
         return this.cycleTime;
     }
+
     public void setCycleTime(int setter)
     {
         this.cycleTime = setter;
