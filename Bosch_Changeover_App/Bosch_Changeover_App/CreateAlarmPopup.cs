@@ -23,5 +23,17 @@ namespace Bosch_Changeover_App
 
         }
 
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+
+
     }
 }

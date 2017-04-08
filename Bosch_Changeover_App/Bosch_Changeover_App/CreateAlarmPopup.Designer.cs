@@ -152,6 +152,7 @@
             this.cancelButton.TabIndex = 19;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = false;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // saveButton
             // 
@@ -167,6 +168,7 @@
             this.saveButton.TabIndex = 18;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = false;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // stationComboBox
             // 
