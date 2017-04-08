@@ -12,6 +12,10 @@ namespace Bosch_Changeover_App
         List<Card> line2List;
         List<Card> line3List;
         public static readonly int TIMER_INTERVAL = 1000;
+
+
+
+
         public Information(Form1 form)
         {
             this.form = form;
@@ -25,6 +29,9 @@ namespace Bosch_Changeover_App
             this.line3List = new List<Card>();
         }
 
+
+
+        //timer that controls all updates for the program!
         void timerEvent(Object sender, EventArgs e)
         {
             form.update_currentTime();
