@@ -26,12 +26,6 @@ namespace Bosch_Changeover_App
             SettingsUserControl.Instance.Dock = DockStyle.Fill;
             information= new Information(this);
 
-            /*
-
-            mainPanel.Controls.Add(LinesLayoutUserControl.Instance);
-            LinesLayoutUserControl.Instance.Dock = DockStyle.Fill;
-            LinesLayoutUserControl.Instance.BringToFront();
-            */
 
             mainPanel.Controls.Add(lluc);
             lluc.Dock = DockStyle.Fill;
@@ -44,7 +38,7 @@ namespace Bosch_Changeover_App
 
         }
 
-        private void update_currentTime()
+        public void update_currentTime()
         {
 
             currentTimeLabel.Text = DateTime.Now.ToString("hh:mm tt");
@@ -53,7 +47,6 @@ namespace Bosch_Changeover_App
         public void goToLines()
         {
             selectionLabel.Text = "Line Overview";
-            //LinesLayoutUserControl.Instance.BringToFront();
             lluc.BringToFront();
         }
 
@@ -77,13 +70,13 @@ namespace Bosch_Changeover_App
             popup.ShowDialog();
         }
 
-        public void linebtn_Click(object sender, EventArgs e)
+        public void linebtn_Click(object sender, EventArgs e, int line)
         {
             Button Lbtn = sender as Button;
             String partNum = Lbtn.Text.Substring(0, 10);
             popup = new CreateAlarmPopup(this);
             popup.ShowDialog();
-            popup.createAlarmFromLineButton(information.getCard(partNum));
+            popup.createAlarmFromLineButton(information.getCard(partNum, line));
 
 /*            PartAlarm pa1 = new PartAlarm();
             int numAlarms = partAlarmsPanel.Controls.Count;
