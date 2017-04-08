@@ -49,7 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CardClass.cs" />
+    <Compile Include="Card.cs" />
     <Compile Include="CreateAlarmPopup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,7 +89,7 @@
     <Compile Include="SettingsUserControl.Designer.cs">
       <DependentUpon>SettingsUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Stations.cs" />
+    <Compile Include="Station.cs" />
     <EmbeddedResource Include="CreateAlarmPopup.resx">
       <DependentUpon>CreateAlarmPopup.cs</DependentUpon>
     </EmbeddedResource>
