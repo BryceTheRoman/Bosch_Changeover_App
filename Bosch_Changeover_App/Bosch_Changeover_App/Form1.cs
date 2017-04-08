@@ -44,6 +44,13 @@ namespace Bosch_Changeover_App
             currentTimeLabel.Text = DateTime.Now.ToString("hh:mm tt");
         }
 
+        public void update_partAlarms()
+        {
+            foreach (PartAlarm pa in partAlarmsPanel.Controls){
+                pa.update_alarm();
+            }
+        }
+
         public void goToLines()
         {
             selectionLabel.Text = "Line Overview";
@@ -112,6 +119,7 @@ namespace Bosch_Changeover_App
 
         public void addAlarmtoPanel(String partType, String lineNum, String station, String alarmTime, Boolean desktopNotification, Boolean emailNotification)
         {
+
             PartAlarm pa1 = new PartAlarm(partType, lineNum, station, alarmTime, desktopNotification, emailNotification);
             int numAlarms = partAlarmsPanel.Controls.Count;
             int locY = numAlarms * pa1.Height + 10 * numAlarms;
