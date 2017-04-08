@@ -63,6 +63,7 @@
             this.editButton.Size = new System.Drawing.Size(26, 30);
             this.editButton.TabIndex = 1;
             this.editButton.UseVisualStyleBackColor = true;
+            this.editButton.Click += new System.EventHandler(this.editButton_Click);
             // 
             // deleteButton
             // 
