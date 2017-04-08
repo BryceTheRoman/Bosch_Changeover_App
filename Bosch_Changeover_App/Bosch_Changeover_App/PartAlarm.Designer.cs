@@ -76,7 +76,7 @@
             this.deleteButton.Size = new System.Drawing.Size(27, 35);
             this.deleteButton.TabIndex = 2;
             this.deleteButton.UseVisualStyleBackColor = false;
-            this.deleteButton.Click += new System.EventHandler(this.button2_Click);
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // timeRemainingText
             // 
@@ -156,7 +156,7 @@
             this.lineNum.Name = "lineNum";
             this.lineNum.Size = new System.Drawing.Size(13, 13);
             this.lineNum.TabIndex = 9;
-            this.lineNum.Text = "2";
+            this.lineNum.Text = "1";
             // 
             // PartAlarm
             // 

@@ -43,7 +43,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.selectionLabel = new System.Windows.Forms.Label();
             this.lineComboBox = new System.Windows.Forms.ComboBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.desktopCheckBox = new System.Windows.Forms.CheckBox();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -256,19 +256,19 @@
             this.lineComboBox.TabIndex = 22;
             this.lineComboBox.Text = "2";
             // 
-            // checkBox1
+            // desktopCheckBox
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(95)))), ((int)(((byte)(139)))));
-            this.checkBox1.Location = new System.Drawing.Point(174, 321);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(232, 24);
-            this.checkBox1.TabIndex = 23;
-            this.checkBox1.Text = "Recieve Desktop Notification";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.desktopCheckBox.AutoSize = true;
+            this.desktopCheckBox.Checked = true;
+            this.desktopCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.desktopCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.desktopCheckBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(95)))), ((int)(((byte)(139)))));
+            this.desktopCheckBox.Location = new System.Drawing.Point(174, 321);
+            this.desktopCheckBox.Name = "desktopCheckBox";
+            this.desktopCheckBox.Size = new System.Drawing.Size(232, 24);
+            this.desktopCheckBox.TabIndex = 23;
+            this.desktopCheckBox.Text = "Recieve Desktop Notification";
+            this.desktopCheckBox.UseVisualStyleBackColor = true;
             // 
             // CreateAlarmPopup
             // 
@@ -276,7 +276,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(684, 511);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.desktopCheckBox);
             this.Controls.Add(this.lineComboBox);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.stationComboBox);
@@ -318,6 +318,6 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label selectionLabel;
         private System.Windows.Forms.ComboBox lineComboBox;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox desktopCheckBox;
     }
 }

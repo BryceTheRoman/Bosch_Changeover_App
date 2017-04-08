@@ -13,15 +13,16 @@ namespace Bosch_Changeover_App
 {
     public partial class PartAlarm : UserControl
     {
-        private int partType;
-        private int lineNumber;
-        private DateTime timeToLine;
-        public PartAlarm()
+
+        public PartAlarm(String partType, String lineNumber, String station, String alarmTime, Boolean desktopNotificationInput, Boolean emailNotificationInput)
         {
             InitializeComponent();
+            partTypeLabel.Text = partType;
+            lineNum.Text = lineNumber;
+            emailNotification.Checked = emailNotificationInput;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void deleteButton_Click(object sender, EventArgs e)
         {
             ((Panel)this.Parent).Controls.Remove(this);
         }
