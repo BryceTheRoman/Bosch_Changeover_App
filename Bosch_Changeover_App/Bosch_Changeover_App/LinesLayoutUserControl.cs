@@ -30,7 +30,6 @@ namespace Bosch_Changeover_App
 
         LineUserControl line1;
         LineUserControl line2;
-        LineUserControl line2b;
         LineUserControl line3;
         int totalSize = 2;
 

@@ -76,11 +76,11 @@ namespace Bosch_Changeover_App
             CreateAlarmPopup popup = new CreateAlarmPopup();
             popup.ShowDialog();
 
-            PartAlarm pa1 = new PartAlarm();
+/*            PartAlarm pa1 = new PartAlarm();
             int numAlarms = partAlarmsPanel.Controls.Count;
             int locY = numAlarms * pa1.Height + 10 * numAlarms;
             pa1.Location = new Point(partAlarmsPanel.Location.X + partAlarmsPanel.Width / 2 - pa1.Width / 2, locY);
-            partAlarmsPanel.Controls.Add(pa1);
+            partAlarmsPanel.Controls.Add(pa1);*/
 
 
         }
@@ -90,6 +90,15 @@ namespace Bosch_Changeover_App
             CreateAlarmPopup popup = new CreateAlarmPopup();
             popup.ShowDialog();
 
+          /*  PartAlarm pa1 = new PartAlarm();
+            int numAlarms = partAlarmsPanel.Controls.Count;
+            int locY = numAlarms * pa1.Height + 10 * numAlarms;
+            pa1.Location = new Point(partAlarmsPanel.Location.X + partAlarmsPanel.Width / 2 - pa1.Width / 2, locY);
+            partAlarmsPanel.Controls.Add(pa1);*/
+        }
+
+        private void addAlarm()
+        {
             PartAlarm pa1 = new PartAlarm();
             int numAlarms = partAlarmsPanel.Controls.Count;
             int locY = numAlarms * pa1.Height + 10 * numAlarms;

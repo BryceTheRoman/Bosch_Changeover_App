@@ -29,10 +29,10 @@ namespace Bosch_Changeover_App
         {
             InitializeComponent();
             lineLabel.Text = "Line " + line.ToString() ;
+           /* addButton("6511588611          32                32-End        00:01:42", panelOnLine1);
             addButton("6511588611          32                32-End        00:01:42", panelOnLine1);
             addButton("6511588611          32                32-End        00:01:42", panelOnLine1);
             addButton("6511588611          32                32-End        00:01:42", panelOnLine1);
-            addButton("6511588611          32                32-End        00:01:42", panelOnLine1);
             addButton("6511588611          32              00:01:42        00:02:42", panelOffLine1);
             addButton("6511588611          32              00:01:42        00:02:42", panelOffLine1);
             addButton("6511588611          32              00:01:42        00:02:42", panelOffLine1);
@@ -40,34 +40,28 @@ namespace Bosch_Changeover_App
             addButton("6511588611          32              00:01:42        00:02:42", panelOffLine1);
             addButton("6511588611          32              00:01:42        00:02:42", panelOffLine1);
             addButton("6511588611          32              00:01:42        00:02:42", panelOffLine1);
-            /*
-            addButton("6511588611          32                32-End        00:01:42", panelOnLine2);
-            addButton("6511588611          32              00:01:42        00:02:42", panelOffLine2);
-            addButton("6511588611          32              00:01:42        00:02:42", panelOffLine2);
-            addButton("6511588611          32              00:01:42        00:02:42", panelOffLine2);
-            addButton("6511588611          32              00:01:42        00:02:42", panelOffLine2);
-            addButton("6511588611          32              00:01:42        00:02:42", panelOffLine2);
-            addButton("6511588611          32              00:01:42        00:02:42", panelOffLine2);
-            addButton("6511588611          32              00:01:42        00:02:42", panelOffLine2);
-            addButton("6511588611          32              00:01:42        00:02:42", panelOffLine2);
-
-            addButton("6511588611          32                32-End        00:01:42", panelOnLine3);
-            addButton("6511588611          32                32-End        00:01:42", panelOnLine3);
-            addButton("6511588611          32              00:01:42        00:02:42", panelOffLine3);
-            addButton("6511588611          32              00:01:42        00:02:42", panelOffLine3);
-            addButton("6511588611          32              00:01:42        00:02:42", panelOffLine3);
-            addButton("6511588611          32              00:01:42        00:02:42", panelOffLine3);
-            addButton("6511588611          32              00:01:42        00:02:42", panelOffLine3);
-            addButton("6511588611          32              00:01:42        00:02:42", panelOffLine3);
         */
         }
 
-        public void addButton(String name, Panel p)
+        public void addButtonToPanel(Card card, int panelNum, bool OnTrueOffFalse)
         {
+            if (OnTrueOffFalse)
+            {
+                addButton(card.getPartType().ToString() + "          " + card.getPartsRemaining().ToString() + "                "+"32-82"+ "        " +card.getTimeToFinish().ToString(), panelOnLine1);
+
+            }
+            else
+            {
+                addButton(card.getPartType().ToString() + "          " + card.getPartsRemaining().ToString() + "                " + card.getTimeRemaining().ToString() + "        " + card.getTimeToFinish().ToString(), panelOffLine1);
+            }
+        }
+
+        private void addButton(String buttonText, Panel p)
+        {  
 
             int numButtons = p.Controls.Count;
             Button b = new Button();
-            b.Text = name;
+            b.Text = buttonText;
             b.Width = p.Width- 25;
             b.Height = panelOnLine1.Height / 4 + 5;
             if (p == panelOnLine1)// || p == panelOnLine2 || p == panelOnLine3)
