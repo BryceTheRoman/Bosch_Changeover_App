@@ -13,24 +13,33 @@ namespace Bosch_Changeover_App
 {
     public partial class PartAlarm : UserControl
     {
-        String pt;
-        String ln;
-        String stat;
+        int partType;
+        int lineNumber;
+        int station;
         String alarmT;
         Boolean desktopNot;
         Boolean emailNot;
-        public PartAlarm(String partType, String lineNumber, String station, String alarmTime, Boolean desktopNotificationInput, Boolean emailNotificationInput)
+        int msToSound;
+
+        public PartAlarm(String partT, String ln, String stat, String alarmTime, Boolean desktopNotificationInput, Boolean emailNotificationInput)
         {
             InitializeComponent();
-            partTypeLabel.Text = partType;
-            lineNum.Text = lineNumber;
-            emailNotification.Checked = emailNotificationInput;
-            pt = partType;
-            ln = lineNumber;
-            stat = station;
+
+            int.TryParse(partT, out partType);
+            int.TryParse(ln, out lineNumber);
+            int.TryParse(stat, out station);
             alarmT = alarmTime;
             desktopNot = desktopNotificationInput;
             emailNot = emailNotificationInput;
+
+            partTypeLabel.Text = partType.ToString();
+            lineNum.Text = lineNumber.ToString();
+            emailNotification.Checked = emailNotificationInput;
+        }
+
+        public void update_alarm()
+        {
+
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
@@ -47,7 +56,7 @@ namespace Bosch_Changeover_App
         {
             Form1 parentForm = (Form1)this.FindForm();
             ((Panel)this.Parent).Controls.Remove(this);
-            parentForm.editAlarm(pt, ln, stat,alarmT, desktopNot, emailNot);
+            parentForm.editAlarm(partType.ToString(), lineNumber.ToString(), station.ToString(), alarmT, desktopNot, emailNot);
 
         }
     }

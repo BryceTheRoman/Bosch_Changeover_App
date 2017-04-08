@@ -11,12 +11,12 @@ namespace Bosch_Changeover_App
         List<Card> line1List;
         List<Card> line2List;
         List<Card> line3List;
-
+        public static readonly int TIMER_INTERVAL = 1000;
         public Information(Form1 form)
         {
             this.form = form;
             System.Windows.Forms.Timer t = new System.Windows.Forms.Timer();
-            t.Interval = 1000;
+            t.Interval = TIMER_INTERVAL;
             t.Tick += new EventHandler(timerEvent);
             t.Start();
 
