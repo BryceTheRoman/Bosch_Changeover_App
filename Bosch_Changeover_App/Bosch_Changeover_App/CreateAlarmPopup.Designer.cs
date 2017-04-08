@@ -64,7 +64,7 @@
             this.partTypeTextBox.Name = "partTypeTextBox";
             this.partTypeTextBox.Size = new System.Drawing.Size(120, 26);
             this.partTypeTextBox.TabIndex = 1;
-            this.partTypeTextBox.Text = "5161201588";
+            this.partTypeTextBox.Text = "XXXXXXXXXX";
             // 
             // lineLabel
             // 
@@ -88,7 +88,7 @@
             this.lineComboBox.Name = "lineComboBox";
             this.lineComboBox.Size = new System.Drawing.Size(62, 24);
             this.lineComboBox.TabIndex = 2;
-            this.lineComboBox.Text = "2";
+            this.lineComboBox.Text = "1";
             // 
             // stationLabel
             // 

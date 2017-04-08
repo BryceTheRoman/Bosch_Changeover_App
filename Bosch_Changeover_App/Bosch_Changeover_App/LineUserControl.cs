@@ -16,20 +16,22 @@ namespace Bosch_Changeover_App
     //    private static LineUserControl _instance;
         private Form1 parentForm;
 
-   /*     public static LineUserControl Instance
-        {
-            get
-            {
-                if (_instance == null)
-                    _instance = new LineUserControl();
-                return _instance;
-            }
-        }*/
+        /*     public static LineUserControl Instance
+             {
+                 get
+                 {
+                     if (_instance == null)
+                         _instance = new LineUserControl();
+                     return _instance;
+                 }
+             }*/
+        int line;
         public LineUserControl(int line)
         {
             InitializeComponent();
             lineLabel.Text = "Line " + line.ToString() ;
-           /* addButton("6511588611          32                32-End        00:01:42", panelOnLine1);
+            this.line = line;
+            /* addButton("6511588611          32                32-End        00:01:42", panelOnLine1);
             addButton("6511588611          32                32-End        00:01:42", panelOnLine1);
             addButton("6511588611          32                32-End        00:01:42", panelOnLine1);
             addButton("6511588611          32                32-End        00:01:42", panelOnLine1);
@@ -105,7 +107,7 @@ namespace Bosch_Changeover_App
         private void btn_Click(object sender, EventArgs e)
         {
             parentForm = (Form1)this.FindForm();
-            parentForm.linebtn_Click(sender, e);
+            parentForm.linebtn_Click(sender, e, line);
             
 
         }
