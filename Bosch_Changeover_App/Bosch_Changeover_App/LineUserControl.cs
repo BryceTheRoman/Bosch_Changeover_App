@@ -105,7 +105,7 @@ namespace Bosch_Changeover_App
         private void btn_Click(object sender, EventArgs e)
         {
             parentForm = (Form1)this.FindForm();
-            parentForm.linebtn_Click();
+            parentForm.linebtn_Click(sender, e);
             
 
         }
