@@ -4,18 +4,20 @@ public class Card
 {
     int timeToFinish;
     int timeRemaining;
-    string stations;
+    int startStation;
+    int endStation;
     int partType;
     Boolean isOnline;
     int partsRemaining;
     int cycleTime;
 
 
-    public Card(int timeToFinish, int timeRemaining, string stations, int partType, Boolean isOnline, int partsRemaining, int cycleTime)
+    public Card(int timeToFinish, int timeRemaining, int startStation, int endStation, int partType, Boolean isOnline, int partsRemaining, int cycleTime)
     {
         this.timeToFinish = timeToFinish;
         this.timeRemaining = timeRemaining;
-        this.stations = stations;
+        this.startStation = startStation;
+        this.endStation = endStation;
         this.partType = partType;
         this.isOnline = isOnline;
         this.partsRemaining = partsRemaining;
@@ -38,13 +40,21 @@ public class Card
     {
         this.timeRemaining = setter;
     }
-    public String getStations()
+    public int getStartStation()
     {
-        return this.stations;
+        return this.startStation;
     }
-    public void setStations(String setter)
+    public void setStations(int setter)
     {
-        this.stations = setter;
+        this.startStation = setter;
+    }
+    public int getEndStation()
+    {
+        return this.endStation;
+    }
+    public void setEndStation(int setter)
+    {
+        this.endStation = setter;
     }
     public int getPartType()
     {
