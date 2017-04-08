@@ -12,7 +12,7 @@ namespace Bosch_Changeover_App
 {
     public partial class Form1 : Form
     {
-
+        CreateAlarmPopup popup;
         LinesLayoutUserControl lluc;
 
         public Form1()
@@ -73,7 +73,7 @@ namespace Bosch_Changeover_App
 
         public void linebtn_Click()
         {
-            CreateAlarmPopup popup = new CreateAlarmPopup();
+            popup = new CreateAlarmPopup(this);
             popup.ShowDialog();
 
 /*            PartAlarm pa1 = new PartAlarm();
@@ -87,7 +87,7 @@ namespace Bosch_Changeover_App
 
         private void plusButton_Click(object sender, EventArgs e)
         {
-            CreateAlarmPopup popup = new CreateAlarmPopup();
+            popup = new CreateAlarmPopup(this);
             popup.ShowDialog();
 
           /*  PartAlarm pa1 = new PartAlarm();
@@ -97,9 +97,20 @@ namespace Bosch_Changeover_App
             partAlarmsPanel.Controls.Add(pa1);*/
         }
 
-        private void addAlarm()
+        public void saveButtonClicked()
         {
-            PartAlarm pa1 = new PartAlarm();
+            String partType = popup.getPartType();
+            String lineNum = popup.getLine();
+            String station = popup.getStation();
+            String alarmTime = popup.getAlarmTime();
+            Boolean desktopNotification = popup.getDesktopNotification();
+            Boolean emailNotification = popup.getEmailNotification();
+            addAlarm(partType, lineNum, station, alarmTime, desktopNotification, emailNotification);
+        }
+
+        private void addAlarm(String partType, String lineNum, String station, String alarmTime, Boolean desktopNotification, Boolean emailNotification)
+        {
+            PartAlarm pa1 = new PartAlarm(partType, lineNum, station, alarmTime, desktopNotification, emailNotification);
             int numAlarms = partAlarmsPanel.Controls.Count;
             int locY = numAlarms * pa1.Height + 10 * numAlarms;
             pa1.Location = new Point(partAlarmsPanel.Location.X + partAlarmsPanel.Width / 2 - pa1.Width / 2, locY);
