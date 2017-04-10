@@ -7,15 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace Bosch_Changeover_App
 
 {
     public partial class PartAlarm : UserControl
     {
-        int partType;
-        int lineNumber;
-        int station;
+        String partType;
+        String lineNumber;
+        String station;
         String alarmT;
         Boolean desktopNot;
         Boolean emailNot;
@@ -25,15 +26,15 @@ namespace Bosch_Changeover_App
         {
             InitializeComponent();
 
-            int.TryParse(partT, out partType);
-            int.TryParse(ln, out lineNumber);
-            int.TryParse(stat, out station);
+            partType = partT;
+            lineNumber = ln;
+            station = stat;
             alarmT = alarmTime;
             desktopNot = desktopNotificationInput;
             emailNot = emailNotificationInput;
 
-            partTypeLabel.Text = partType.ToString();
-            lineNum.Text = lineNumber.ToString();
+            partTypeLabel.Text = partT;
+            lineNum.Text = lineNumber;
             emailNotification.Checked = emailNotificationInput;
         }
 
@@ -44,7 +45,9 @@ namespace Bosch_Changeover_App
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            ((Panel)this.Parent).Controls.Remove(this);
+            Form1 parentForm = (Form1)this.FindForm();
+            parentForm.removeAlarm(this);
+            //((Panel)this.Parent).Controls.Remove(this);
         }
 
         private void PartAlarm_Load(object sender, EventArgs e)
@@ -55,8 +58,9 @@ namespace Bosch_Changeover_App
         private void editButton_Click(object sender, EventArgs e)
         {
             Form1 parentForm = (Form1)this.FindForm();
-            ((Panel)this.Parent).Controls.Remove(this);
-            parentForm.editAlarm(partType.ToString(), lineNumber.ToString(), station.ToString(), alarmT, desktopNot, emailNot);
+            // ((Panel)this.Parent).Controls.Remove(this);
+            parentForm.removeAlarm(this);
+            parentForm.editAlarm(partType, lineNumber, station, alarmT, desktopNot, emailNot);
 
         }
     }

@@ -15,11 +15,14 @@ namespace Bosch_Changeover_App
     public partial class CreateAlarmPopup : Form
     {
         Form1 parentForm;
+        
+        Boolean editing = false;
+
         public CreateAlarmPopup(Form1 pf)
         {
             InitializeComponent();
+            this.FormClosed += SaveEditing;
             parentForm = pf;
-            alarmTimeComboBox.Text = "351";
         }
 
         public void createAlarmFromLineButton(Card partType)
@@ -33,6 +36,7 @@ namespace Bosch_Changeover_App
 
         public void editAlarm(String partType, String lineNum, String station, String alarmTime, Boolean desktopNotification, Boolean emailNotification)
         {
+            editing = true;
             partTypeTextBox.Text = partType;
             lineComboBox.SelectedIndex = lineComboBox.FindStringExact( lineNum );
             stationComboBox.SelectedIndex = stationComboBox.FindStringExact( station );
@@ -52,6 +56,11 @@ namespace Bosch_Changeover_App
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
+            if (editing)
+            {
+                parentForm.saveButtonClicked();
+                editing = false;
+            }
             this.Close();
         }
 
@@ -60,7 +69,7 @@ namespace Bosch_Changeover_App
             int i;
             int s;
             int l = -1;
-            Debug.WriteLine(partTypeTextBox.Text.All(char.IsDigit));
+           
             
             if (!partTypeTextBox.Text.All(char.IsDigit) || partTypeTextBox.Text.Length != 10)
             {
@@ -82,6 +91,7 @@ namespace Bosch_Changeover_App
             else
             {
                 parentForm.saveButtonClicked();
+                editing = false;
                 this.Close();
             }
         }
@@ -116,7 +126,15 @@ namespace Bosch_Changeover_App
             return emailCheckBox.Checked;
         }
 
-
+        private void SaveEditing(object sender, FormClosedEventArgs e)
+        {
+            
+            if (editing)
+            {
+                parentForm.saveButtonClicked();
+                editing = false;
+            }
+        }
 
     }
 }
