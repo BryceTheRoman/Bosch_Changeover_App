@@ -79,6 +79,22 @@ namespace Bosch_Changeover_App
             
         }
 
+        public void addCard(Card c)
+        {
+            if (c.getLine() == 1)
+            {
+                this.line1List.Add(c);
+            }
+            else if (c.getLine() == 2)
+            {
+                this.line2List.Add(c);
+            }
+            else
+            {
+                this.line3List.Add(c);
+            }
+        }
+
         public string calcNumberofSpanningStations(Card part)
         {
             return "";
