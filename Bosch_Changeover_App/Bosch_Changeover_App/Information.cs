@@ -114,7 +114,7 @@ namespace Bosch_Changeover_App
 
         public int calcTimeRemaining(Card part)
         {
-            return -2;
+            return -1;
         }
 
         public int calcTimeToFinish(Card part)

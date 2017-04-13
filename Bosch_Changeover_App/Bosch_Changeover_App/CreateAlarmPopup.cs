@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Media;
 
 namespace Bosch_Changeover_App
 
@@ -17,12 +18,25 @@ namespace Bosch_Changeover_App
         Form1 parentForm;
         
         Boolean editing = false;
+        string selectedTime;
+        string selectedMessage;
+
+        bool alarmSet = false;
+
+        string wavPath = @"C:\Windows\Media\Alarm01.wav";
+        SoundPlayer soundPlayer;
+        alarmNotification alarmNotification;
+
+
 
         public CreateAlarmPopup(Form1 pf)
         {
             InitializeComponent();
             this.FormClosed += SaveEditing;
             parentForm = pf;
+            update_currentTime();
+            soundPlayer = new SoundPlayer();
+            alarmNotification = new alarmNotification(this);
         }
 
         public void createAlarmFromLineButton(Card partType)
@@ -51,8 +65,22 @@ namespace Bosch_Changeover_App
 
         private void CreateAlarmPopup_Load(object sender, EventArgs e)
         {
-
+          
         }
+
+        public void update_currentTime()
+        {
+
+            currentTimeLabel.Text = DateTime.Now.ToString("hh:mm tt");
+        }
+
+        public void updateData()
+        {
+            string wavFile = "";
+            string wavName = wavFile.Replace(wavPath, string.Empty);
+            wavName = wavName.Replace(".wav", string.Empty);
+        }
+
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
@@ -94,6 +122,21 @@ namespace Bosch_Changeover_App
                 editing = false;
                 this.Close();
             }
+
+            int N = Int32.Parse(this.alarmTimeComboBox.SelectedItem.ToString());
+            selectedTime = currentTimeLabel + alarmTimeLabel.Text;
+            selectedMessage = "Alarm";
+
+            soundPlayer.SoundLocation = wavPath;
+
+            alarmNotification.Message(selectedMessage);
+            alarmSet = true;
+       
+        }
+
+        public void Resume()
+        {
+            soundPlayer.Stop();
         }
 
         public string getPartType()
@@ -126,6 +169,17 @@ namespace Bosch_Changeover_App
             return emailCheckBox.Checked;
         }
 
+        public int getN()
+        {
+            int N = Int32.Parse(this.alarmTimeComboBox.SelectedItem.ToString());
+            return N;
+        }
+
+        public Timer getTimer()
+        {
+            return timer1;
+        }
+
         private void SaveEditing(object sender, FormClosedEventArgs e)
         {
             
@@ -136,5 +190,30 @@ namespace Bosch_Changeover_App
             }
         }
 
+        public void timer1_Tick(object sender, EventArgs e)
+        {
+            
+            if (alarmSet)
+            {
+                if(currentTimeLabel.Text == selectedTime)
+                {
+                    alarmSet = false;
+
+                    soundPlayer.Play();
+                    alarmNotification.ShowDialog();
+                }
+            }
+
+        }
+
+        private void alarmTimeComboBox_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+
+        }
+
+        private void partTypeTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
