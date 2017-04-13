@@ -19,6 +19,8 @@ namespace Bosch_Changeover_App
         public Information(Form1 form)
         {
             this.form = form;
+
+            //Create Timer Object
             System.Windows.Forms.Timer t = new System.Windows.Forms.Timer();
             t.Interval = TIMER_INTERVAL;
             t.Tick += new EventHandler(timerEvent);
@@ -112,7 +114,7 @@ namespace Bosch_Changeover_App
 
         public int calcTimeRemaining(Card part)
         {
-            return 0;
+            return -2;
         }
 
         public int calcTimeToFinish(Card part)
