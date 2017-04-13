@@ -70,6 +70,4 @@ C:\Users\posey\Documents\GitHub\Bosch_Changeover_App\Bosch_Changeover_App\Bosch_
 C:\Users\papa\Desktop\git\Bosch_Changeover_App\Bosch_Changeover_App\Bosch_Changeover_App\bin\Debug\Chanveover App.exe.config
 C:\Users\papa\Desktop\git\Bosch_Changeover_App\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Chanveover App.exe
 C:\Users\papa\Desktop\git\Bosch_Changeover_App\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Chanveover App.pdb
-C:\Users\charydczakbr\Desktop\Bosch_Changeover_App\Bosch_Changeover_App\Bosch_Changeover_App\bin\Debug\Chanveover App.exe.config
-C:\Users\charydczakbr\Desktop\Bosch_Changeover_App\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Chanveover App.exe
-C:\Users\charydczakbr\Desktop\Bosch_Changeover_App\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Chanveover App.pdb
+C:\Users\posey\Documents\GitHub\Bosch_Changeover_App\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Bosch_Changeover_App.alarmNotification.resources
