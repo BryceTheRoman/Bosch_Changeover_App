@@ -21,8 +21,10 @@ namespace Bosch_Changeover_App
         Boolean desktopNot;
         Boolean emailNot;
         int msToSound;
+        int countDownSecs;
+        Timer partAlarmTimer;
 
-        public PartAlarm(String partT, String ln, String stat, String alarmTime, Boolean desktopNotificationInput, Boolean emailNotificationInput)
+        public PartAlarm(String partT, String ln, String stat, String alarmTime, Boolean desktopNotificationInput, Boolean emailNotificationInput, int N, Timer timer1)
         {
             InitializeComponent();
 
@@ -32,8 +34,12 @@ namespace Bosch_Changeover_App
             alarmT = alarmTime;
             desktopNot = desktopNotificationInput;
             emailNot = emailNotificationInput;
+            countDownSecs = N;
+            partAlarmTimer = timer1;
 
             partTypeLabel.Text = partT;
+            timeRemaining.Text = "00:00:" + alarmTime;
+            //countDownSecs = ((int)alarmHours * 3600) + 
             lineNum.Text = lineNumber;
             emailNotification.Checked = emailNotificationInput;
         }
@@ -62,6 +68,12 @@ namespace Bosch_Changeover_App
             parentForm.removeAlarm(this);
             parentForm.editAlarm(partType, lineNumber, station, alarmT, desktopNot, emailNot);
 
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            timer1 = partAlarmTimer;
+            partAlarmTimer.Start();
         }
     }
 }

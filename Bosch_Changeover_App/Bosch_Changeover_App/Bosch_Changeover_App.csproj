@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="alarmNotification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="alarmNotification.Designer.cs">
+      <DependentUpon>alarmNotification.cs</DependentUpon>
+    </Compile>
     <Compile Include="Card.cs" />
     <Compile Include="CreateAlarmPopup.cs">
       <SubType>Form</SubType>
@@ -91,6 +97,9 @@
       <DependentUpon>SettingsUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Station.cs" />
+    <EmbeddedResource Include="alarmNotification.resx">
+      <DependentUpon>alarmNotification.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CreateAlarmPopup.resx">
       <DependentUpon>CreateAlarmPopup.cs</DependentUpon>
     </EmbeddedResource>
