@@ -118,19 +118,22 @@ namespace Bosch_Changeover_App
             }
             else
             {
+
+                int N = i;//Int32.Parse(this.alarmTimeComboBox.SelectedItem.ToString());
+                selectedTime = currentTimeLabel + alarmTimeLabel.Text;
+                selectedMessage = "Alarm";
+
+                soundPlayer.SoundLocation = wavPath;
+
+                alarmNotification.Message(selectedMessage);
+                alarmSet = true;
+
+
                 parentForm.saveButtonClicked();
                 editing = false;
                 this.Close();
             }
 
-            int N = Int32.Parse(this.alarmTimeComboBox.SelectedItem.ToString());
-            selectedTime = currentTimeLabel + alarmTimeLabel.Text;
-            selectedMessage = "Alarm";
-
-            soundPlayer.SoundLocation = wavPath;
-
-            alarmNotification.Message(selectedMessage);
-            alarmSet = true;
        
         }
 
@@ -171,7 +174,8 @@ namespace Bosch_Changeover_App
 
         public int getN()
         {
-            int N = Int32.Parse(this.alarmTimeComboBox.SelectedItem.ToString());
+            int N;
+            int.TryParse(alarmTimeComboBox.Text, out N);//Int32.Parse(this.alarmTimeComboBox.SelectedItem.ToString());
             return N;
         }
 
