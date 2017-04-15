@@ -1,5 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Bosch_Changeover_App
 {
@@ -11,6 +18,7 @@ namespace Bosch_Changeover_App
         List<Card> line1List;
         List<Card> line2List;
         List<Card> line3List;
+        List<PartAlarm> alarms;
         public static readonly int TIMER_INTERVAL = 1000;
 
 
@@ -29,6 +37,7 @@ namespace Bosch_Changeover_App
             this.line1List = new List<Card>();
             this.line2List = new List<Card>();
             this.line3List = new List<Card>();
+            this.alarms = new List<PartAlarm>();
         }
 
 
@@ -39,9 +48,86 @@ namespace Bosch_Changeover_App
             form.update_currentTime();
 
             //read information from files
+
+
             //update array lists
             //send updated information to form1
         }
+
+
+        public void addAlarm(PartAlarm pa)
+        {
+            alarms.Add(pa);
+        }
+
+        public void removeAlarm(PartAlarm pa)
+        {
+            alarms.Remove(pa);
+        }
+
+
+        /*
+        public Station getStation(String filename)
+        {
+            int counter = 0;
+            string line;
+
+            int totalCounter;
+            int cycleTime;
+            int partNumber;
+            string lineNumber;
+            int stationNumber;
+
+            string[] keywords = { "LineNr:", "PartNrVar:", "TotalCounter:", "CycleTime" };
+            // Read the file and display it line by line.  
+            System.IO.StreamReader file =
+                new System.IO.StreamReader(filename);
+            while ((line = file.ReadLine()) != null)
+            {
+
+                    if (line.Contains(keywords[0]))
+                    {
+                        line.Replace(" ", string.Empty);
+                        int startPos = line.LastIndexOf(keywords[0]) + 1;
+                        int length = line.Length;
+                        string temp = line.Substring(5,length);
+                        string lineNumber = temp;
+                    }
+                    if (line.Contains(keywords[1]))
+                    {
+                        line.Replace(" ", string.Empty);
+                        int startPos = line.LastIndexOf(keywords[0]) + 1;
+                        int length = line.Length;
+                        string temp = line.Substring(5, length);
+                        string partNumber = temp;
+                    }
+                    if (line.Contains(keywords[2]))
+                    {
+                        line.Replace(" ", string.Empty);
+                        int startPos = line.LastIndexOf(keywords[0]) + 1;
+                        int length = line.Length;
+                        string temp = line.Substring(5, length);
+                        string totalCounter = temp;
+                    }
+                    if (line.Contains(keywords[3]))
+                    {
+                        line.Replace(" ", string.Empty);
+                        int startPos = line.LastIndexOf(keywords[0]) + 1;
+                        int length = line.Length;
+                        string temp = line.Substring(5, length);
+                        string cycleTime = temp;
+                    }
+                
+                counter++;
+            }
+
+            file.Close();
+
+            string stationTitle = "Station " + stationNumber;
+            Station station = new Station(stationNumber, lineNumber, totalCounter, cycleTime, partNumber);
+
+        }
+        */
 
         public Card getCard(String partType, int line)
         {
@@ -114,12 +200,16 @@ namespace Bosch_Changeover_App
 
         public int calcTimeRemaining(Card part)
         {
-            return -2;
+            return -1;
         }
 
         public int calcTimeToFinish(Card part)
         {
             return 0;
         }
+        public static void main(String [] args){
+
+}
     }
+
 }
