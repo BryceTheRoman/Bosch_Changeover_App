@@ -53,6 +53,17 @@ namespace Bosch_Changeover_App
             //update array lists
             //send updated information to form1
         }
+
+        public void addAlarm(PartAlarm pa)
+        {
+            this.alarms.Add(pa);
+        }
+
+        public void removeAlarm(PartAlarm pa)
+        {
+            this.alarms.Remove(pa);
+        }
+
         /*
         public Station getStation(String filename)
         {
