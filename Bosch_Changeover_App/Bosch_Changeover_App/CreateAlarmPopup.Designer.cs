@@ -54,21 +54,19 @@
             // 
             this.partTypeLabel.AutoSize = true;
             this.partTypeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.partTypeLabel.Location = new System.Drawing.Point(126, 174);
-            this.partTypeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.partTypeLabel.Location = new System.Drawing.Point(84, 113);
             this.partTypeLabel.Name = "partTypeLabel";
-            this.partTypeLabel.Size = new System.Drawing.Size(123, 29);
+            this.partTypeLabel.Size = new System.Drawing.Size(80, 20);
             this.partTypeLabel.TabIndex = 5;
             this.partTypeLabel.Text = "Part Type:";
             // 
             // partTypeTextBox
             // 
             this.partTypeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.partTypeTextBox.Location = new System.Drawing.Point(261, 169);
-            this.partTypeTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.partTypeTextBox.Location = new System.Drawing.Point(174, 110);
             this.partTypeTextBox.MaxLength = 10;
             this.partTypeTextBox.Name = "partTypeTextBox";
-            this.partTypeTextBox.Size = new System.Drawing.Size(178, 35);
+            this.partTypeTextBox.Size = new System.Drawing.Size(120, 26);
             this.partTypeTextBox.TabIndex = 1;
             this.partTypeTextBox.Text = "XXXXXXXXXX";
             this.partTypeTextBox.TextChanged += new System.EventHandler(this.partTypeTextBox_TextChanged);
@@ -77,10 +75,9 @@
             // 
             this.lineLabel.AutoSize = true;
             this.lineLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lineLabel.Location = new System.Drawing.Point(182, 243);
-            this.lineLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lineLabel.Location = new System.Drawing.Point(121, 158);
             this.lineLabel.Name = "lineLabel";
-            this.lineLabel.Size = new System.Drawing.Size(65, 29);
+            this.lineLabel.Size = new System.Drawing.Size(43, 20);
             this.lineLabel.TabIndex = 8;
             this.lineLabel.Text = "Line:";
             // 
@@ -92,10 +89,9 @@
             "1",
             "2",
             "3"});
-            this.lineComboBox.Location = new System.Drawing.Point(261, 243);
-            this.lineComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.lineComboBox.Location = new System.Drawing.Point(174, 158);
             this.lineComboBox.Name = "lineComboBox";
-            this.lineComboBox.Size = new System.Drawing.Size(91, 33);
+            this.lineComboBox.Size = new System.Drawing.Size(62, 24);
             this.lineComboBox.TabIndex = 2;
             this.lineComboBox.Text = "1";
             // 
@@ -103,10 +99,9 @@
             // 
             this.stationLabel.AutoSize = true;
             this.stationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stationLabel.Location = new System.Drawing.Point(76, 318);
-            this.stationLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.stationLabel.Location = new System.Drawing.Point(51, 207);
             this.stationLabel.Name = "stationLabel";
-            this.stationLabel.Size = new System.Drawing.Size(171, 25);
+            this.stationLabel.Size = new System.Drawing.Size(113, 16);
             this.stationLabel.TabIndex = 11;
             this.stationLabel.Text = "(Optional) Station:";
             // 
@@ -155,10 +150,9 @@
             "71",
             "72",
             "74"});
-            this.stationComboBox.Location = new System.Drawing.Point(261, 314);
-            this.stationComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.stationComboBox.Location = new System.Drawing.Point(174, 204);
             this.stationComboBox.Name = "stationComboBox";
-            this.stationComboBox.Size = new System.Drawing.Size(91, 33);
+            this.stationComboBox.Size = new System.Drawing.Size(62, 24);
             this.stationComboBox.TabIndex = 3;
             this.stationComboBox.Text = "02";
             // 
@@ -166,10 +160,9 @@
             // 
             this.alarmTimeLabel.AutoSize = true;
             this.alarmTimeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.alarmTimeLabel.Location = new System.Drawing.Point(111, 409);
-            this.alarmTimeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.alarmTimeLabel.Location = new System.Drawing.Point(74, 266);
             this.alarmTimeLabel.Name = "alarmTimeLabel";
-            this.alarmTimeLabel.Size = new System.Drawing.Size(149, 29);
+            this.alarmTimeLabel.Size = new System.Drawing.Size(96, 20);
             this.alarmTimeLabel.TabIndex = 14;
             this.alarmTimeLabel.Text = "Alarm Time: ";
             // 
@@ -179,17 +172,14 @@
             this.alarmTimeComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.alarmTimeComboBox.FormattingEnabled = true;
             this.alarmTimeComboBox.Items.AddRange(new object[] {
-            "00",
-            "01",
             "15",
             "30",
             "45",
             "60",
             "Custom"});
-            this.alarmTimeComboBox.Location = new System.Drawing.Point(261, 405);
-            this.alarmTimeComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.alarmTimeComboBox.Location = new System.Drawing.Point(174, 263);
             this.alarmTimeComboBox.Name = "alarmTimeComboBox";
-            this.alarmTimeComboBox.Size = new System.Drawing.Size(133, 37);
+            this.alarmTimeComboBox.Size = new System.Drawing.Size(90, 28);
             this.alarmTimeComboBox.TabIndex = 4;
             this.alarmTimeComboBox.Text = "30";
             // 
@@ -198,10 +188,9 @@
             this.minutesLabel.AutoSize = true;
             this.minutesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.minutesLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(130)))), ((int)(((byte)(133)))));
-            this.minutesLabel.Location = new System.Drawing.Point(405, 409);
-            this.minutesLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.minutesLabel.Location = new System.Drawing.Point(270, 266);
             this.minutesLabel.Name = "minutesLabel";
-            this.minutesLabel.Size = new System.Drawing.Size(432, 29);
+            this.minutesLabel.Size = new System.Drawing.Size(290, 20);
             this.minutesLabel.TabIndex = 16;
             this.minutesLabel.Text = "Minutes Before Part Enters Line/Station";
             // 
@@ -212,10 +201,9 @@
             this.desktopCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.desktopCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.desktopCheckBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(95)))), ((int)(((byte)(139)))));
-            this.desktopCheckBox.Location = new System.Drawing.Point(261, 494);
-            this.desktopCheckBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.desktopCheckBox.Location = new System.Drawing.Point(174, 321);
             this.desktopCheckBox.Name = "desktopCheckBox";
-            this.desktopCheckBox.Size = new System.Drawing.Size(348, 33);
+            this.desktopCheckBox.Size = new System.Drawing.Size(232, 24);
             this.desktopCheckBox.TabIndex = 5;
             this.desktopCheckBox.Text = "Recieve Desktop Notification";
             this.desktopCheckBox.UseVisualStyleBackColor = true;
@@ -227,10 +215,9 @@
             this.emailCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.emailCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.emailCheckBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(95)))), ((int)(((byte)(139)))));
-            this.emailCheckBox.Location = new System.Drawing.Point(261, 549);
-            this.emailCheckBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.emailCheckBox.Location = new System.Drawing.Point(174, 357);
             this.emailCheckBox.Name = "emailCheckBox";
-            this.emailCheckBox.Size = new System.Drawing.Size(320, 33);
+            this.emailCheckBox.Size = new System.Drawing.Size(211, 24);
             this.emailCheckBox.TabIndex = 6;
             this.emailCheckBox.Text = "Recieve Email Notification";
             this.emailCheckBox.UseVisualStyleBackColor = true;
@@ -243,10 +230,9 @@
             this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelButton.ForeColor = System.Drawing.Color.Black;
-            this.cancelButton.Location = new System.Drawing.Point(723, 657);
-            this.cancelButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cancelButton.Location = new System.Drawing.Point(482, 427);
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(224, 83);
+            this.cancelButton.Size = new System.Drawing.Size(149, 54);
             this.cancelButton.TabIndex = 8;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = false;
@@ -260,10 +246,9 @@
             this.saveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.saveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveButton.ForeColor = System.Drawing.Color.White;
-            this.saveButton.Location = new System.Drawing.Point(87, 657);
-            this.saveButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.saveButton.Location = new System.Drawing.Point(58, 427);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(224, 83);
+            this.saveButton.Size = new System.Drawing.Size(149, 54);
             this.saveButton.TabIndex = 7;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = false;
@@ -276,9 +261,8 @@
             this.panel3.Controls.Add(this.selectionLabel);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1026, 111);
+            this.panel3.Size = new System.Drawing.Size(684, 72);
             this.panel3.TabIndex = 21;
             // 
             // currentTimeLabel
@@ -287,10 +271,9 @@
             this.currentTimeLabel.AutoSize = true;
             this.currentTimeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.currentTimeLabel.ForeColor = System.Drawing.Color.White;
-            this.currentTimeLabel.Location = new System.Drawing.Point(712, 20);
-            this.currentTimeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.currentTimeLabel.Location = new System.Drawing.Point(475, 13);
             this.currentTimeLabel.Name = "currentTimeLabel";
-            this.currentTimeLabel.Size = new System.Drawing.Size(267, 64);
+            this.currentTimeLabel.Size = new System.Drawing.Size(178, 42);
             this.currentTimeLabel.TabIndex = 3;
             this.currentTimeLabel.Text = "00:00 PM";
             // 
@@ -299,10 +282,9 @@
             this.selectionLabel.AutoSize = true;
             this.selectionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.selectionLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.selectionLabel.Location = new System.Drawing.Point(48, 28);
-            this.selectionLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.selectionLabel.Location = new System.Drawing.Point(32, 18);
             this.selectionLabel.Name = "selectionLabel";
-            this.selectionLabel.Size = new System.Drawing.Size(408, 55);
+            this.selectionLabel.Size = new System.Drawing.Size(274, 37);
             this.selectionLabel.TabIndex = 0;
             this.selectionLabel.Text = "Create Part Alarm";
             // 
@@ -313,10 +295,10 @@
             // 
             // CreateAlarmPopup
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1026, 786);
+            this.ClientSize = new System.Drawing.Size(684, 511);
             this.Controls.Add(this.desktopCheckBox);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.stationComboBox);
@@ -332,7 +314,6 @@
             this.Controls.Add(this.partTypeLabel);
             this.Controls.Add(this.partTypeTextBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "CreateAlarmPopup";
