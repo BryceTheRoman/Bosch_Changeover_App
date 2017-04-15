@@ -94,7 +94,7 @@ namespace Bosch_Changeover_App
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            int alarmTime;
+            int i;
             int s;
             int l = -1;
            
@@ -112,27 +112,25 @@ namespace Bosch_Changeover_App
             {
                 MessageBox.Show("Line must be either 1, 2, or 3.");
             }
-            else if (!int.TryParse(alarmTimeComboBox.Text, out alarmTime))
+            else if (!int.TryParse(alarmTimeComboBox.Text, out i))
             {
                 MessageBox.Show("Alarm Time must be an integer.");
             }
             else
             {
-
-
-                int N = alarmTime;
-                selectedTime = currentTimeLabel + alarmTimeLabel.Text;
-                selectedMessage = "Alarm";
-
-                soundPlayer.SoundLocation = wavPath;
-
-                alarmNotification.Message(selectedMessage);
-                alarmSet = true;
                 parentForm.saveButtonClicked();
                 editing = false;
                 this.Close();
             }
 
+            int N = Int32.Parse(this.alarmTimeComboBox.SelectedItem.ToString());
+            selectedTime = currentTimeLabel + alarmTimeLabel.Text;
+            selectedMessage = "Alarm";
+
+            soundPlayer.SoundLocation = wavPath;
+
+            alarmNotification.Message(selectedMessage);
+            alarmSet = true;
        
         }
 
@@ -173,8 +171,7 @@ namespace Bosch_Changeover_App
 
         public int getN()
         {
-            int N;
-            int.TryParse(alarmTimeComboBox.Text, out N);//Int32.Parse(this.alarmTimeComboBox.SelectedItem.ToString());
+            int N = Int32.Parse(this.alarmTimeComboBox.SelectedItem.ToString());
             return N;
         }
 
