@@ -67,6 +67,37 @@ namespace Bosch_Changeover_App
             this.alarms.Remove(pa);
         }
 
+        public int hasCard(int partType)
+        {
+            foreach(Card c in line1List)
+            {
+                if(c.getPartType() == partType)
+                {
+                    return 1;
+                }
+            }
+            foreach (Card c in line2List)
+            {
+                if (c.getPartType() == partType)
+                {
+                    return 2;
+                }
+            }
+            foreach (Card c in line3List)
+            {
+                if (c.getPartType() == partType)
+                {
+                    return 3;
+                }
+            }
+            return -1;
+        }
+
+        public void updateAlarms()
+        {
+
+        }
+
         /*
         public Station getStation(String filename)
         {

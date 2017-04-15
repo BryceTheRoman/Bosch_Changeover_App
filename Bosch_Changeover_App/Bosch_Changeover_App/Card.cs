@@ -116,5 +116,11 @@ namespace Bosch_Changeover_App
         {
             this.line = line;
         }
+
+        public void updateCard(int timeInterval)
+        {
+
+        }
+            
     }
 }
