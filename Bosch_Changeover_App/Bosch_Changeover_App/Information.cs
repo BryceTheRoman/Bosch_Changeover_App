@@ -46,13 +46,27 @@ namespace Bosch_Changeover_App
         void timerEvent(Object sender, EventArgs e)
         {
             form.update_currentTime();
+            for( int i = 0; i< this.alarms.Count; i++)
+            {
 
+            }
             //read information from files
 
 
             //update array lists
             //send updated information to form1
         }
+
+        public void addAlarm(PartAlarm pa)
+        {
+            this.alarms.Add(pa);
+        }
+
+        public void removeAlarm(PartAlarm pa)
+        {
+            this.alarms.Remove(pa);
+        }
+
         /*
         public Station getStation(String filename)
         {
