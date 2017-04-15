@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Bosch_Changeover_App</RootNamespace>
     <AssemblyName>Chanveover App</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -49,6 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="alarmNotification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="alarmNotification.Designer.cs">
+      <DependentUpon>alarmNotification.cs</DependentUpon>
+    </Compile>
     <Compile Include="Card.cs" />
     <Compile Include="CreateAlarmPopup.cs">
       <SubType>Form</SubType>
@@ -62,6 +69,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Information.cs" />
     <Compile Include="InformationInterface.cs" />
     <Compile Include="LinesLayoutUserControl.cs">
       <SubType>UserControl</SubType>
@@ -90,6 +98,9 @@
       <DependentUpon>SettingsUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Station.cs" />
+    <EmbeddedResource Include="alarmNotification.resx">
+      <DependentUpon>alarmNotification.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CreateAlarmPopup.resx">
       <DependentUpon>CreateAlarmPopup.cs</DependentUpon>
     </EmbeddedResource>
