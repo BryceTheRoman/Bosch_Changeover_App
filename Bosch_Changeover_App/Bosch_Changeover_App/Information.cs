@@ -18,6 +18,7 @@ namespace Bosch_Changeover_App
         List<Card> line1List;
         List<Card> line2List;
         List<Card> line3List;
+        List<PartAlarm> alarms;
         public static readonly int TIMER_INTERVAL = 1000;
 
 
@@ -36,6 +37,7 @@ namespace Bosch_Changeover_App
             this.line1List = new List<Card>();
             this.line2List = new List<Card>();
             this.line3List = new List<Card>();
+            this.alarms = new List<PartAlarm>();
         }
 
 
@@ -44,7 +46,10 @@ namespace Bosch_Changeover_App
         void timerEvent(Object sender, EventArgs e)
         {
             form.update_currentTime();
+            for( int i = 0; i< this.alarms.Count; i++)
+            {
 
+            }
             //read information from files
 
 
@@ -52,6 +57,17 @@ namespace Bosch_Changeover_App
             //send updated information to form1
         }
 
+        public void addAlarm(PartAlarm pa)
+        {
+            this.alarms.Add(pa);
+        }
+
+        public void removeAlarm(PartAlarm pa)
+        {
+            this.alarms.Remove(pa);
+        }
+
+        /*
         public Station getStation(String filename)
         {
             int counter = 0;
@@ -112,6 +128,8 @@ namespace Bosch_Changeover_App
             Station station = new Station(stationNumber, lineNumber, totalCounter, cycleTime, partNumber);
 
         }
+
+    */
         public Card getCard(String partType, int line)
         {
             if (line == 1)
