@@ -46,7 +46,10 @@ namespace Bosch_Changeover_App
         void timerEvent(Object sender, EventArgs e)
         {
             form.update_currentTime();
+            for( int i = 0; i< this.alarms.Count; i++)
+            {
 
+            }
             //read information from files
 
 
