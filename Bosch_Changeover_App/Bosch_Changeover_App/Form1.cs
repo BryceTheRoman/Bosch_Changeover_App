@@ -16,7 +16,16 @@ namespace Bosch_Changeover_App
         LinesLayoutUserControl lluc;
         Information information;
         List<PartAlarm> alarms;
+        /*
+        string selectedTime;
+        string selectedMessage;
 
+        bool alarmSet = false;
+
+        string wavPath = @"C:\Windows\Media\Alarm01.wav";
+        SoundPlayer soundPlayer;
+        alarmNotification alarmNotification;
+        */
         public Form1()
         {
 
@@ -33,6 +42,10 @@ namespace Bosch_Changeover_App
             lluc.BringToFront();
             update_currentTime();
             alarms = new List<PartAlarm>();
+            /*
+            soundPlayer = new SoundPlayer();
+            alarmNotification = new alarmNotification(this);
+            */
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)

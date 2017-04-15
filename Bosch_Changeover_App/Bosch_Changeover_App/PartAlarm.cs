@@ -38,6 +38,7 @@ namespace Bosch_Changeover_App
             partAlarmTimer = timer1;
 
             partTypeLabel.Text = partT;
+            
             timeRemaining.Text = "00:00:" + alarmTime;
             //countDownSecs = ((int)alarmHours * 3600) + 
             lineNum.Text = lineNumber;

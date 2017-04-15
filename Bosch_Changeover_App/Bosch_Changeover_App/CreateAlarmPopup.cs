@@ -18,6 +18,8 @@ namespace Bosch_Changeover_App
         Form1 parentForm;
         
         Boolean editing = false;
+
+        
         string selectedTime;
         string selectedMessage;
 
@@ -26,7 +28,7 @@ namespace Bosch_Changeover_App
         string wavPath = @"C:\Windows\Media\Alarm01.wav";
         SoundPlayer soundPlayer;
         alarmNotification alarmNotification;
-
+        
 
 
         public CreateAlarmPopup(Form1 pf)
@@ -35,8 +37,11 @@ namespace Bosch_Changeover_App
             this.FormClosed += SaveEditing;
             parentForm = pf;
             update_currentTime();
+
+            
             soundPlayer = new SoundPlayer();
             alarmNotification = new alarmNotification(this);
+            
         }
 
         public void createAlarmFromLineButton(Card partType)
@@ -120,17 +125,20 @@ namespace Bosch_Changeover_App
             {
                 parentForm.saveButtonClicked();
                 editing = false;
+                
                 this.Close();
+
+                int N =  Int32.Parse(this.alarmTimeComboBox.SelectedItem.ToString());
+                selectedTime = currentTimeLabel + alarmTimeLabel.Text;
+                selectedMessage = "Alarm";
+
+                soundPlayer.SoundLocation = wavPath;
+
+                alarmNotification.Message(selectedMessage);
+                alarmSet = true;
             }
 
-            int N = Int32.Parse(this.alarmTimeComboBox.SelectedItem.ToString());
-            selectedTime = currentTimeLabel + alarmTimeLabel.Text;
-            selectedMessage = "Alarm";
 
-            soundPlayer.SoundLocation = wavPath;
-
-            alarmNotification.Message(selectedMessage);
-            alarmSet = true;
        
         }
 
