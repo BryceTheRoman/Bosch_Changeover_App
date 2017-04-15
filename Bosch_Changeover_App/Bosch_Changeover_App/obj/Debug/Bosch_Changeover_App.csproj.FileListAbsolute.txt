@@ -13,3 +13,6 @@ D:\git\Bosch_Changeover_App\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\
 D:\git\Bosch_Changeover_App\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Bosch_Changeover_App.csproj.GenerateResource.Cache
 D:\git\Bosch_Changeover_App\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Chanveover App.exe
 D:\git\Bosch_Changeover_App\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Chanveover App.pdb
+X:\Users\Eric\Desktop\Bosch_Changeover_App\Bosch_Changeover_App\Bosch_Changeover_App\bin\Debug\Chanveover App.exe.config
+X:\Users\Eric\Desktop\Bosch_Changeover_App\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Chanveover App.exe
+X:\Users\Eric\Desktop\Bosch_Changeover_App\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Chanveover App.pdb
