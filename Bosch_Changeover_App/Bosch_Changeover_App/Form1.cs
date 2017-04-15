@@ -130,12 +130,14 @@ namespace Bosch_Changeover_App
             pa1.Location = new Point(partAlarmsPanel.Location.X + partAlarmsPanel.Width / 2 - pa1.Width / 2, locY);
             partAlarmsPanel.Controls.Add(pa1);
             alarms.Add(pa1);
+            information.addAlarm(pa1);
         }
 
         public void removeAlarm(PartAlarm pa)
         {
             alarms.Remove(pa);
             partAlarmsPanel.Controls.Remove(pa);
+            information.removeAlarm(pa);
         }
 
 
