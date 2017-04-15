@@ -25,7 +25,13 @@ namespace Bosch_Changeover_App
 
         List<PartAlarm> alarms;
         public static readonly int TIMER_INTERVAL = 1000;
-       
+
+
+        List<string> stationComponents;
+        string totalCounter;
+        string cycleTime;
+        string partNumber;
+        string lineNumber;
 
 
 
@@ -48,7 +54,9 @@ namespace Bosch_Changeover_App
             this.line2StationList = new List<Station>();
             this.line3StationList = new List<Station>();
 
-           // string directoryPath = "@blah blah blah Bosch Directory Location";
+           
+        
+            // string directoryPath = "@blah blah blah Bosch Directory Location";
 
 
         }
