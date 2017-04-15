@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,6 +20,18 @@ namespace Bosch_Changeover_App
         List<Card> line2List;
         List<Card> line3List;
         List<PartAlarm> alarms;
+
+        
+        string selectedTime;
+        string selectedMessage;
+
+        bool alarmSet = false;
+
+        string wavPath = @"C:\Windows\Media\Alarm01.wav";
+        SoundPlayer soundPlayer;
+        alarmNotification alarmNotification;
+        
+
         public static readonly int TIMER_INTERVAL = 1000;
 
 
@@ -38,6 +51,11 @@ namespace Bosch_Changeover_App
             this.line2List = new List<Card>();
             this.line3List = new List<Card>();
             this.alarms = new List<PartAlarm>();
+
+            
+            soundPlayer = new SoundPlayer();
+            alarmNotification = new alarmNotification(this);
+            
         }
 
 
@@ -56,6 +74,37 @@ namespace Bosch_Changeover_App
             //update array lists
             //send updated information to form1
         }
+
+        public void updateAlarm()
+        {
+            
+            int N;//Int32.Parse(this.alarmTimeComboBox.SelectedItem.ToString());
+            //selectedTime = currentTimeLabel + alarmTimeLabel.Text;
+            selectedMessage = "Alarm";
+
+            soundPlayer.SoundLocation = wavPath;
+
+            alarmNotification.Message(selectedMessage);
+            alarmSet = true;
+            
+        }
+        
+        public void timer1_Tick(object sender, EventArgs e)
+        {
+
+            if (alarmSet)
+            {
+                if (currentTimeLabel.Text == selectedTime)
+                {
+                    alarmSet = false;
+
+                    soundPlayer.Play();
+                    alarmNotification.ShowDialog();
+                }
+            }
+
+        }
+        
 
         public void addAlarm(PartAlarm pa)
         {

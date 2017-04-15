@@ -128,6 +128,7 @@ namespace Bosch_Changeover_App
                 alarmNotification.Message(selectedMessage);
                 alarmSet = true;
 
+                //Information.updateAlarm();
 
                 parentForm.saveButtonClicked();
                 editing = false;

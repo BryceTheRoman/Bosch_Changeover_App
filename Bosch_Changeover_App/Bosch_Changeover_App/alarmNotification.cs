@@ -14,11 +14,18 @@ namespace Bosch_Changeover_App
     {
         static CreateAlarmPopup form;
         string _message;
+        private Information information;
+
         public alarmNotification(CreateAlarmPopup f)
         {
             InitializeComponent();
 
             form = f;
+        }
+
+        public alarmNotification(Information information)
+        {
+            this.information = information;
         }
 
         public void Message(string message)
