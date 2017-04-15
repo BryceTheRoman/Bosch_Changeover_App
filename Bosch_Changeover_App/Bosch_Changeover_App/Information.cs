@@ -15,12 +15,17 @@ namespace Bosch_Changeover_App
     public class Information : AbstractInformation
     {
         Form1 form;
-        List<Card> line1List;
-        List<Card> line2List;
-        List<Card> line3List;
+        List<Card> line1CardList;
+        List<Card> line2CardList;
+        List<Card> line3CardList;
+         
+        List<Station> line1StationList;
+        List<Station> line2StationList;
+        List<Station> line3StationList;
+
         List<PartAlarm> alarms;
         public static readonly int TIMER_INTERVAL = 1000;
-
+       
 
 
 
@@ -34,10 +39,18 @@ namespace Bosch_Changeover_App
             t.Tick += new EventHandler(timerEvent);
             t.Start();
 
-            this.line1List = new List<Card>();
-            this.line2List = new List<Card>();
-            this.line3List = new List<Card>();
+            this.line1CardList = new List<Card>();
+            this.line2CardList = new List<Card>();
+            this.line3CardList = new List<Card>();
             this.alarms = new List<PartAlarm>();
+
+            this.line1StationList = new List<Station>();
+            this.line2StationList = new List<Station>();
+            this.line3StationList = new List<Station>();
+
+           // string directoryPath = "@blah blah blah Bosch Directory Location";
+
+
         }
 
 
@@ -51,7 +64,10 @@ namespace Bosch_Changeover_App
 
             }
             //read information from files
+            while ()
+            {
 
+            }
 
             //update array lists
             //send updated information to form1
@@ -66,18 +82,36 @@ namespace Bosch_Changeover_App
         {
             this.alarms.Remove(pa);
         }
-
-        /*
-        public Station getStation(String filename)
+        public Station getAllStations(String directoryPath)
         {
+            while (System.IO.Directory.Exists(directoryName){
+                List<string> fileList;
+                fileList.Add(System.IO.Directory.GetFiles);
+
+                string stationTitle = "Station " + stationNumber;.
+                Station station = new Station(stationNumber, lineNumber, totalCounter, cycleTime, partNumber);
+
+
+            }
+            return null;
+        }
+        
+        public void addStation(String filename)
+        {
+
             int counter = 0;
             string line;
 
-            int totalCounter;
-            int cycleTime;
-            int partNumber;
+            List<string> stationComponents;
+            string totalCounter;
+            string cycleTime;
+            string partNumber;
             string lineNumber;
-            int stationNumber;
+
+            int lastIndex = filename.IndexOf(".dat") - 1;
+            int firstIndex = filename.LastIndexOf("MCD_") + 1;
+            string stationNumber = filename.Substring(firstIndex, lastIndex);
+
 
             string[] keywords = { "LineNr:", "PartNrVar:", "TotalCounter:", "CycleTime" };
             // Read the file and display it line by line.  
@@ -91,76 +125,82 @@ namespace Bosch_Changeover_App
                         line.Replace(" ", string.Empty);
                         int startPos = line.LastIndexOf(keywords[0]) + 1;
                         int length = line.Length;
-                        string temp = line.Substring(5,length);
-                        string lineNumber = temp;
+                        string tempLineNumber = line.Substring(startPos, length);
+                        lineNumber = tempLineNumber;
                     }
                     if (line.Contains(keywords[1]))
                     {
                         line.Replace(" ", string.Empty);
                         int startPos = line.LastIndexOf(keywords[0]) + 1;
                         int length = line.Length;
-                        string temp = line.Substring(5, length);
-                        string partNumber = temp;
+                        string tempPartNumber = line.Substring(startPos, length);
+                        partNumber = tempPartNumber;
                     }
                     if (line.Contains(keywords[2]))
                     {
                         line.Replace(" ", string.Empty);
                         int startPos = line.LastIndexOf(keywords[0]) + 1;
                         int length = line.Length;
-                        string temp = line.Substring(5, length);
-                        string totalCounter = temp;
+                        string temp = line.Substring(startPos, length);
+                        totalCounter = temp;
                     }
                     if (line.Contains(keywords[3]))
                     {
                         line.Replace(" ", string.Empty);
                         int startPos = line.LastIndexOf(keywords[0]) + 1;
                         int length = line.Length;
-                        string temp = line.Substring(5, length);
-                        string cycleTime = temp;
+                        string tempCycleTime = line.Substring(startPos, length);
+                         cycleTime = tempCycleTime;
                     }
                 
                 counter++;
             }
 
+
+
             file.Close();
 
-            string stationTitle = "Station " + stationNumber;
-            Station station = new Station(stationNumber, lineNumber, totalCounter, cycleTime, partNumber);
+            
+            stationComponents.Add(stationNumber);
+            stationComponents.Add(lineNumber);
+            stationComponents.Add(totalCounter);
+            stationComponents.Add(cycleTime);
+            stationComponents.Add(partNumber);
 
         }
 
-    */
+    
         public Card getCard(String partType, int line)
         {
             if (line == 1)
             {
                 //look through line lists to get the part type card
-                for (int i = 0; i < line1List.Count; i++)
+                for (int i = 0; i < line1CardList.Count; i++)
                 {
-                    if (line1List[i].getPartType().ToString() == partType)
+                    if (line1CardList[i].getPartType().ToString() == partType)
                     {
-                        return line1List[i];
+                        return line1CardList[i];
                     }
                 }
             }
 
             else if (line == 2)
             {
-                for (int i = 0; i < line2List.Count; i++)
+                for (int i = 0; i < line2CardList.Count; i++)
                 {
-                    if (line2List[i].getPartType().ToString() == partType)
+                    if (line2CardList[i].getPartType().ToString() == partType)
                     {
-                        return line2List[i];
+                        return line2CardList[i];
                     }
                 }
             }
             else if (line == 3)
             {
-                for (int i = 0; i < line3List.Count; i++)
+                for (int i = 0; i < line3CardList.Count; i++)
                 {
-                    if (line3List[i].getPartType().ToString() == partType)
+                    if (line3CardList[i].getPartType().ToString() == partType)
                     {
-                        return line3List[i];
+                        return line3CardList[i];
                     }
                 }
             }
@@ -172,15 +212,15 @@ namespace Bosch_Changeover_App
         {
             if (c.getLine() == 1)
             {
-                this.line1List.Add(c);
+                this.line1CardList.Add(c);
             }
             else if (c.getLine() == 2)
             {
-                this.line2List.Add(c);
+                this.line2CardList.Add(c);
             }
             else
             {
-                this.line3List.Add(c);
+                this.line3CardList.Add(c);
             }
         }
 
