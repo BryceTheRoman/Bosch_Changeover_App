@@ -64,13 +64,14 @@ namespace Bosch_Changeover_App
 
             }
             //read information from files
-            while ()
-            {
+            //        while ()
+            //        {
 
-            }
+            //        }
 
             //update array lists
             //send updated information to form1
+            form.update_lines(line1CardList, line2CardList, line3CardList);
         }
 
         public void addAlarm(PartAlarm pa)
@@ -82,6 +83,7 @@ namespace Bosch_Changeover_App
         {
             this.alarms.Remove(pa);
         }
+        /*
         public Station getAllStations(String directoryPath)
         {
             while (System.IO.Directory.Exists(directoryName){
@@ -169,7 +171,7 @@ namespace Bosch_Changeover_App
 
         }
 
-    
+    */
         public Card getCard(String partType, int line)
         {
             if (line == 1)
