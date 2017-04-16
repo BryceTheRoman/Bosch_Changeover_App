@@ -60,9 +60,37 @@ namespace Bosch_Changeover_App
             panelLine3.Controls.Add(line3);
      //       line3.Dock = DockStyle.Fill;
      //       line3.BringToFront();
+
+        }
+
+
+        public void addPartLine1(Card c)
+        {
+            line1.addButtonToPanel(c);
+        }
+
+        public void updatePartLine1(Card c)
+        {
             
+        }
 
+        public void addPartLine2(Card c)
+        {
+            line2.addButtonToPanel(c);
+        }
 
+        public void updatePartLine2(Card c)
+        {
+
+        }
+
+        public void addPartLine3(Card c)
+        {
+            line3.addButtonToPanel(c);
+        }
+
+        public void updatePartLine3(Card c)
+        {
 
         }
 
