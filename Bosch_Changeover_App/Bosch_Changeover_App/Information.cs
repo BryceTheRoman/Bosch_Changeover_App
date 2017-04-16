@@ -26,12 +26,12 @@ namespace Bosch_Changeover_App
         List<PartAlarm> alarms;
         public static readonly int TIMER_INTERVAL = 1000;
 
-
         List<string> stationComponents;
         string totalCounter;
         string cycleTime;
         string partNumber;
         string lineNumber;
+        string stationNumber;
 
 
 
@@ -54,8 +54,9 @@ namespace Bosch_Changeover_App
             this.line2StationList = new List<Station>();
             this.line3StationList = new List<Station>();
 
-           
-        
+            this.stationComponents = new List<string>();
+
+
             // string directoryPath = "@blah blah blah Bosch Directory Location";
 
 
@@ -72,10 +73,7 @@ namespace Bosch_Changeover_App
 
             }
             //read information from files
-            while ()
-            {
 
-            }
 
             //update array lists
             //send updated information to form1
@@ -90,18 +88,33 @@ namespace Bosch_Changeover_App
         {
             this.alarms.Remove(pa);
         }
-        public Station getAllStations(String directoryPath)
+        public void getAllStations(String directoryPath)
         {
-            while (System.IO.Directory.Exists(directoryName){
-                List<string> fileList;
-                fileList.Add(System.IO.Directory.GetFiles);
 
-                string stationTitle = "Station " + stationNumber;.
-                Station station = new Station(stationNumber, lineNumber, totalCounter, cycleTime, partNumber);
+                string[] files = System.IO.Directory.GetFiles(directoryPath, "*ProfileHandler.cs", System.IO.SearchOption.TopDirectoryOnly);
+            foreach (string file in files)
+            {
+                addStation(file);
+
+                Station tempStation = new Station(Int32.Parse(this.stationComponents[0]), 
+                    Int32.Parse(this.stationComponents[1]), 
+                    Int32.Parse(this.stationComponents[2]), 
+                    Int32.Parse(this.stationComponents[3]), 
+                    Int32.Parse(this.stationComponents[4]));
 
 
+                this.stationComponents.Clear();
+                
+
+                /*
+                   string stationTitle = "Station " + stationNumber;
+                   Station station = new Station(stationNumber, lineNumber, totalCounter, cycleTime, partNumber);
+
+
+               }
+               */
+                
             }
-            return null;
         }
         
         public void addStation(String filename)
@@ -110,15 +123,12 @@ namespace Bosch_Changeover_App
             int counter = 0;
             string line;
 
-            List<string> stationComponents;
-            string totalCounter;
-            string cycleTime;
-            string partNumber;
-            string lineNumber;
+
 
             int lastIndex = filename.IndexOf(".dat") - 1;
             int firstIndex = filename.LastIndexOf("MCD_") + 1;
             string stationNumber = filename.Substring(firstIndex, lastIndex);
+
 
 
             string[] keywords = { "LineNr:", "PartNrVar:", "TotalCounter:", "CycleTime" };
@@ -169,11 +179,11 @@ namespace Bosch_Changeover_App
             file.Close();
 
             
-            stationComponents.Add(stationNumber);
-            stationComponents.Add(lineNumber);
-            stationComponents.Add(totalCounter);
-            stationComponents.Add(cycleTime);
-            stationComponents.Add(partNumber);
+            this.stationComponents.Add(stationNumber);
+            this.stationComponents.Add(lineNumber);
+            this.stationComponents.Add(totalCounter);
+            this.stationComponents.Add(cycleTime);
+            this.stationComponents.Add(partNumber);
 
         }
 
