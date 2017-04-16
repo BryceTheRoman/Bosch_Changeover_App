@@ -73,10 +73,10 @@ namespace Bosch_Changeover_App
 
             }
             //read information from files
-            //        while ()
-            //        {
+            while ()
+            {
 
-            //        }
+            }
 
             //update array lists
             //send updated information to form1
