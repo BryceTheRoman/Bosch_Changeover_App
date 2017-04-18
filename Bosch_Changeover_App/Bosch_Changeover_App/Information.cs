@@ -73,10 +73,7 @@ namespace Bosch_Changeover_App
 
             }
             //read information from files
-            while ()
-            {
 
-            }
 
             //update array lists
             //send updated information to form1
@@ -98,14 +95,20 @@ namespace Bosch_Changeover_App
                 string[] files = System.IO.Directory.GetFiles(directoryPath, "*ProfileHandler.cs", System.IO.SearchOption.TopDirectoryOnly);
             foreach (string file in files)
             {
-                addStation(file);
+                Station newStation = addStation(file);
 
-                Station tempStation = new Station(Int32.Parse(this.stationComponents[0]), 
-                    Int32.Parse(this.stationComponents[1]), 
-                    Int32.Parse(this.stationComponents[2]), 
-                    Int32.Parse(this.stationComponents[3]), 
-                    Int32.Parse(this.stationComponents[4]));
-
+                if (newStation.getLineNumber() == 1)
+                {
+                    line1StationList.Add(newStation);
+                }
+                if (newStation.getLineNumber() == 2)
+                {
+                    line2StationList.Add(newStation);
+                }
+                if (newStation.getLineNumber() == 3)
+                {
+                    line3StationList.Add(newStation);
+                }
 
                 this.stationComponents.Clear();
                 
@@ -121,7 +124,11 @@ namespace Bosch_Changeover_App
             }
         }
         
-        public void addStation(String filename)
+
+        
+
+
+        public Station addStation(String filename)
         {
 
             int counter = 0;
@@ -182,16 +189,13 @@ namespace Bosch_Changeover_App
 
             file.Close();
 
-            
-            this.stationComponents.Add(stationNumber);
-            this.stationComponents.Add(lineNumber);
-            this.stationComponents.Add(totalCounter);
-            this.stationComponents.Add(cycleTime);
-            this.stationComponents.Add(partNumber);
+            Station station = new Station(Int32.Parse(stationNumber), Int32.Parse(lineNumber), Int32.Parse(totalCounter), Int32.Parse(cycleTime), Int32.Parse(partNumber));
+
+            return station;
 
         }
 
-    */
+    
         public Card getCard(String partType, int line)
         {
             if (line == 1)
