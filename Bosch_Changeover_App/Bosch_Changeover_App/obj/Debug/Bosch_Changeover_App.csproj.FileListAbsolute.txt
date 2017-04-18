@@ -26,3 +26,15 @@ X:\Users\Eric\Desktop\Bosch_Changeover_App\Bosch_Changeover_App\Bosch_Changeover
 X:\Users\Eric\Desktop\Bosch_Changeover_App\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Bosch_Changeover_App.Properties.Resources.resources
 X:\Users\Eric\Desktop\Bosch_Changeover_App\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Bosch_Changeover_App.SettingsUserControl.resources
 X:\Users\Eric\Desktop\Bosch_Changeover_App\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Bosch_Changeover_App.csproj.GenerateResource.Cache
+C:\Users\posey\Documents\GitHub\Bosch_Changeover_App\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Bosch_Changeover_App.csprojResolveAssemblyReference.cache
+C:\Users\posey\Documents\GitHub\Bosch_Changeover_App\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Bosch_Changeover_App.alarmNotification.resources
+C:\Users\posey\Documents\GitHub\Bosch_Changeover_App\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Bosch_Changeover_App.CreateAlarmPopup.resources
+C:\Users\posey\Documents\GitHub\Bosch_Changeover_App\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Bosch_Changeover_App.Form1.resources
+C:\Users\posey\Documents\GitHub\Bosch_Changeover_App\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Bosch_Changeover_App.LinesLayoutUserControl.resources
+C:\Users\posey\Documents\GitHub\Bosch_Changeover_App\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Bosch_Changeover_App.LineUserControl.resources
+C:\Users\posey\Documents\GitHub\Bosch_Changeover_App\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Bosch_Changeover_App.PartAlarm.resources
+C:\Users\posey\Documents\GitHub\Bosch_Changeover_App\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Bosch_Changeover_App.Properties.Resources.resources
+C:\Users\posey\Documents\GitHub\Bosch_Changeover_App\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Bosch_Changeover_App.SettingsUserControl.resources
+C:\Users\posey\Documents\GitHub\Bosch_Changeover_App\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Bosch_Changeover_App.csproj.GenerateResource.Cache
+C:\Users\posey\Documents\GitHub\Bosch_Changeover_App\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Chanveover App.exe
+C:\Users\posey\Documents\GitHub\Bosch_Changeover_App\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Chanveover App.pdb
