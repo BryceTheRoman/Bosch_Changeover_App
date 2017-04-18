@@ -14,8 +14,6 @@ namespace Bosch_Changeover_App
     {
         static CreateAlarmPopup form;
         string _message;
-        private Information information;
-
         public alarmNotification(CreateAlarmPopup f)
         {
             InitializeComponent();
@@ -23,25 +21,25 @@ namespace Bosch_Changeover_App
             form = f;
         }
 
-        public alarmNotification(Information information)
-        {
-            this.information = information;
-        }
-
         public void Message(string message)
         {
            _message = message;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void ringingForm_Shown(object sender, EventArgs e)
+        {
+           messageLabel.Text = _message;
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
             form.Resume();
         }
 
-        private void ringingForm_Shown(object sender, EventArgs e)
+        private void alarmNotification_Load(object sender, EventArgs e)
         {
-           richTextBox1.Text = _message;
+
         }
     }
 }

@@ -24,7 +24,7 @@ namespace Bosch_Changeover_App
         int countDownSecs;
         Timer partAlarmTimer;
 
-        public PartAlarm(String partT, String ln, String stat, String alarmTime, Boolean desktopNotificationInput, Boolean emailNotificationInput, int N, Timer timer1)
+        public PartAlarm(string partT, string ln, string stat, string alarmTime, Boolean desktopNotificationInput, Boolean emailNotificationInput, int N, Timer timer1)
         {
             InitializeComponent();
 
@@ -38,7 +38,6 @@ namespace Bosch_Changeover_App
             partAlarmTimer = timer1;
 
             partTypeLabel.Text = partT;
-            
             timeRemaining.Text = "00:00:" + alarmTime;
             //countDownSecs = ((int)alarmHours * 3600) + 
             lineNum.Text = lineNumber;
