@@ -112,6 +112,21 @@ namespace Bosch_Changeover_App
                 
             }
         }
+        public Station getStation(int station, int line)
+        {
+
+            String lineSelector = "Line" + line + "CardList";
+            List<Station> tempStation;
+            if(line == 1){
+                tempStation = line1StationList;
+            } else if (line == 2){
+                tempStation = line2StationList;
+            } else {
+                tempStation = line3StationList;
+            }
+
+            return requiredStation;
+        }
 
         public Station addStation(String filename)
         {
