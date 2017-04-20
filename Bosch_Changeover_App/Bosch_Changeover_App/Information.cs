@@ -97,36 +97,21 @@ namespace Bosch_Changeover_App
             {
                 Station newStation = addStation(file);
 
-                if (newStation.getLineNumber() == 1)
+                int currentLineNumber = newStation.getLineNumber();
+
+                if (currentLineNumber == 1)
                 {
                     line1StationList.Add(newStation);
-                }
-                if (newStation.getLineNumber() == 2)
-                {
+                } else if (currentLineNumber == 2){
                     line2StationList.Add(newStation);
-                }
-                if (newStation.getLineNumber() == 3)
-                {
+                } else {
                     line3StationList.Add(newStation);
                 }
-
-                this.stationComponents.Clear();
                 
 
-                /*
-                   string stationTitle = "Station " + stationNumber;
-                   Station station = new Station(stationNumber, lineNumber, totalCounter, cycleTime, partNumber);
-
-
-               }
-               */
                 
             }
         }
-        
-
-        
-
 
         public Station addStation(String filename)
         {
