@@ -73,10 +73,7 @@ namespace Bosch_Changeover_App
 
             }
             //read information from files
-            while ()
-            {
 
-            }
 
             //update array lists
             //send updated information to form1
@@ -98,30 +95,40 @@ namespace Bosch_Changeover_App
                 string[] files = System.IO.Directory.GetFiles(directoryPath, "*ProfileHandler.cs", System.IO.SearchOption.TopDirectoryOnly);
             foreach (string file in files)
             {
-                addStation(file);
+                Station newStation = addStation(file);
 
-                Station tempStation = new Station(Int32.Parse(this.stationComponents[0]), 
-                    Int32.Parse(this.stationComponents[1]), 
-                    Int32.Parse(this.stationComponents[2]), 
-                    Int32.Parse(this.stationComponents[3]), 
-                    Int32.Parse(this.stationComponents[4]));
+                int currentLineNumber = newStation.getLineNumber();
 
-
-                this.stationComponents.Clear();
+                if (currentLineNumber == 1)
+                {
+                    line1StationList.Add(newStation);
+                } else if (currentLineNumber == 2){
+                    line2StationList.Add(newStation);
+                } else {
+                    line3StationList.Add(newStation);
+                }
                 
 
-                /*
-                   string stationTitle = "Station " + stationNumber;
-                   Station station = new Station(stationNumber, lineNumber, totalCounter, cycleTime, partNumber);
-
-
-               }
-               */
                 
             }
         }
-        
-        public void addStation(String filename)
+        public Station getStation(int station, int line)
+        {
+
+            String lineSelector = "Line" + line + "CardList";
+            List<Station> tempStation;
+            if(line == 1){
+                tempStation = line1StationList;
+            } else if (line == 2){
+                tempStation = line2StationList;
+            } else {
+                tempStation = line3StationList;
+            }
+
+            return requiredStation;
+        }
+
+        public Station addStation(String filename)
         {
 
             int counter = 0;
@@ -182,16 +189,13 @@ namespace Bosch_Changeover_App
 
             file.Close();
 
-            
-            this.stationComponents.Add(stationNumber);
-            this.stationComponents.Add(lineNumber);
-            this.stationComponents.Add(totalCounter);
-            this.stationComponents.Add(cycleTime);
-            this.stationComponents.Add(partNumber);
+            Station station = new Station(Int32.Parse(stationNumber), Int32.Parse(lineNumber), Int32.Parse(totalCounter), Int32.Parse(cycleTime), Int32.Parse(partNumber));
+
+            return station;
 
         }
 
-    */
+    
         public Card getCard(String partType, int line)
         {
             if (line == 1)
