@@ -26,3 +26,6 @@ X:\Users\Eric\Desktop\Bosch_Changeover_App\Bosch_Changeover_App\Bosch_Changeover
 X:\Users\Eric\Desktop\Bosch_Changeover_App\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Bosch_Changeover_App.Properties.Resources.resources
 X:\Users\Eric\Desktop\Bosch_Changeover_App\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Bosch_Changeover_App.SettingsUserControl.resources
 X:\Users\Eric\Desktop\Bosch_Changeover_App\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Bosch_Changeover_App.csproj.GenerateResource.Cache
+C:\Users\charydczakbr\Desktop\GitHub\Bosch_Changeover_App\Bosch_Changeover_App\Bosch_Changeover_App\bin\Debug\Chanveover App.exe.config
+C:\Users\charydczakbr\Desktop\GitHub\Bosch_Changeover_App\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Chanveover App.exe
+C:\Users\charydczakbr\Desktop\GitHub\Bosch_Changeover_App\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Chanveover App.pdb
