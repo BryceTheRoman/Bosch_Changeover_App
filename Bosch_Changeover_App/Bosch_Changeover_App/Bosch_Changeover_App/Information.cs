@@ -114,20 +114,43 @@ namespace Bosch_Changeover_App
         }
         public Station getStation(int station, int line)
         {
-
+            /*
             String lineSelector = "Line" + line + "CardList";
             List<Station> tempStation;
-            if(line == 1){
+            if (line == 1)
+            {
                 tempStation = line1StationList;
-            } else if (line == 2){
-                tempStation = line2StationList;
-            } else {
-                tempStation = line3StationList;
             }
+            else if (line == 2)
+            {
+                tempStation = line2StationList;
+            }
+            else
+            {
+                tempStation = line3StationList;
 
+            }
+            */
+            List<List<Station>> selectableStations = new List<List<Station>>();
+            selectableStations.Add(line1StationList);
+            selectableStations.Add(line2StationList);
+            selectableStations.Add(line3StationList);
+            List<Station> termStation = selectableStations[line - 1];
+            Station requiredStation = null;
+
+
+
+
+            foreach (Station number in termStation)
+            {
+                int stationNum = number.getStationNumber();
+                if (stationNum == station)
+                {
+                    requiredStation = number;
+                }
+            }
             return requiredStation;
         }
-
         public Station addStation(String filename)
         {
 
