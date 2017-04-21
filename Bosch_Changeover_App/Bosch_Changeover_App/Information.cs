@@ -54,8 +54,7 @@ namespace Bosch_Changeover_App
             this.line2StationList = new List<Station>();
             this.line3StationList = new List<Station>();
 
-           
-        
+
             // string directoryPath = "@blah blah blah Bosch Directory Location";
 
 

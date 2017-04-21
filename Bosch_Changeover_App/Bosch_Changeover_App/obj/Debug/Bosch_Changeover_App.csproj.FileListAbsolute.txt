@@ -16,3 +16,6 @@ D:\git\Bosch_Changeover_App\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\
 X:\Users\Eric\Desktop\Bosch_Changeover_App\Bosch_Changeover_App\Bosch_Changeover_App\bin\Debug\Chanveover App.exe.config
 X:\Users\Eric\Desktop\Bosch_Changeover_App\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Chanveover App.exe
 X:\Users\Eric\Desktop\Bosch_Changeover_App\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Chanveover App.pdb
+C:\Users\THABEAST\Documents\cofc 2017\CSCI 462\CSCI462_CO\Bosch_Changeover_App\Bosch_Changeover_App\Bosch_Changeover_App\bin\Debug\Chanveover App.exe.config
+C:\Users\THABEAST\Documents\cofc 2017\CSCI 462\CSCI462_CO\Bosch_Changeover_App\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Chanveover App.exe
+C:\Users\THABEAST\Documents\cofc 2017\CSCI 462\CSCI462_CO\Bosch_Changeover_App\Bosch_Changeover_App\Bosch_Changeover_App\obj\Debug\Chanveover App.pdb
