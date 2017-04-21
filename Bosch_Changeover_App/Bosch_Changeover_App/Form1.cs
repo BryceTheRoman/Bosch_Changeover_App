@@ -60,6 +60,21 @@ namespace Bosch_Changeover_App
             lluc.BringToFront();
         }
 
+        public void addCard(Card c)
+        {
+
+        }
+
+        public void removeCard(Card c)
+        {
+
+        }
+
+        public void updateCard(Card c)
+        {
+
+        }
+
         public void update_lines(List<Card> line1CardList,   List<Card> line2CardList, List<Card> line3CardList)
         {
             foreach(Card c1 in line1CardList)
