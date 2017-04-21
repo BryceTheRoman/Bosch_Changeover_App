@@ -218,6 +218,10 @@ namespace Bosch_Changeover_App
 
         }
 
+        public Card fillACard()
+        {
+
+        }
     
         public Card getCard(String partType, int line)
         {
