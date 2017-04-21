@@ -45,11 +45,11 @@ namespace Bosch_Changeover_App
         */
         }
 
-        public void addButtonToPanel(Card card, int panelNum, bool OnTrueOffFalse)
+        public void addButtonToPanel(Card card)
         {
-            if (OnTrueOffFalse)
+            if (card.checkOnline())
             {
-                addButton(card.getPartType().ToString() + "          " + card.getPartsRemaining().ToString() + "                "+"32-82"+ "        " +card.getTimeToFinish().ToString(), panelOnLine1);
+                addButton(card.getPartType().ToString() + "          " + card.getPartsRemaining().ToString() + "                "+card.getStartStation().ToString()+"-"+card.getEndStation().ToString()+ "        " +card.getTimeToFinish().ToString(), panelOnLine1);
 
             }
             else
