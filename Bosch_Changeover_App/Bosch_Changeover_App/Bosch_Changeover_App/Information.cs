@@ -26,7 +26,6 @@ namespace Bosch_Changeover_App
         List<PartAlarm> alarms;
         public static readonly int TIMER_INTERVAL = 1000;
 
-        List<string> stationComponents;
         string totalCounter;
         string cycleTime;
         string partNumber;
@@ -53,9 +52,6 @@ namespace Bosch_Changeover_App
             this.line1StationList = new List<Station>();
             this.line2StationList = new List<Station>();
             this.line3StationList = new List<Station>();
-
-            this.stationComponents = new List<string>();
-
 
             // string directoryPath = "@blah blah blah Bosch Directory Location";
 
@@ -217,10 +213,49 @@ namespace Bosch_Changeover_App
             return station;
 
         }
+        
+        public int distinctStationNum(List<Station> line)
+        {
+            List<int> parts = new List<int>();
+
+            foreach (Station station in line)
+            {
+                int name = station.getCurrentPart();
+                if (parts.Contains(name) == false)
+                {
+                    parts.Add(name);
+                }
+            }
+
+            int number = parts.Count;
+
+            return number;
+        }
+
+        public Card fillAllCards(List<Station> line)
+        {
+            int distinctCards = 0;
+            List<String> disCards;
+            for ( int i = 0; i < line.Capacity; i++)
+            {
+                if (disCards.Contains(Int32.Parse(line[i].getCurrentPart())))
+                {
+
+                } 
+            }
+
+        }
+
 
         public Card fillACard()
         {
 
+
+
+
+            Card createdCard
+
+            return createdCard;
         }
     
         public Card getCard(String partType, int line)
@@ -292,7 +327,7 @@ namespace Bosch_Changeover_App
             return "";
         }
 
-        public int calcTimeRemaining(Card part)
+        public int calcTimeRemaining()
         {
             return -1;
         }
