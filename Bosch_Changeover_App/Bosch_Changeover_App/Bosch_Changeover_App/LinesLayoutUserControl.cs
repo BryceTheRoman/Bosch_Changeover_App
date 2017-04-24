@@ -66,7 +66,7 @@ namespace Bosch_Changeover_App
 
         public void addPartLine1(Card c)
         {
-            line1.addButtonToPanel(c);
+            line1.addButton(c);
         }
 
         public void updatePartLine1(Card c)
@@ -76,7 +76,7 @@ namespace Bosch_Changeover_App
 
         public void addPartLine2(Card c)
         {
-            line2.addButtonToPanel(c);
+            line2.addButton(c);
         }
 
         public void updatePartLine2(Card c)
@@ -86,7 +86,7 @@ namespace Bosch_Changeover_App
 
         public void addPartLine3(Card c)
         {
-            line3.addButtonToPanel(c);
+            line3.addButton(c);
         }
 
         public void updatePartLine3(Card c)

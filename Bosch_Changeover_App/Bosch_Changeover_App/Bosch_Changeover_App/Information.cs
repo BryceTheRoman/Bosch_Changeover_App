@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace Bosch_Changeover_App
 {
@@ -18,12 +20,22 @@ namespace Bosch_Changeover_App
         List<Card> line1CardList;
         List<Card> line2CardList;
         List<Card> line3CardList;
-         
+
+        List<Card> offLine1CardList;
+        List<Card> offLine2CardList;
+        List<Card> offLine3CardList;
+
         List<Station> line1StationList;
         List<Station> line2StationList;
         List<Station> line3StationList;
 
         List<PartAlarm> alarms;
+
+        //Negative stations are ones that can be run in parallel with the adjacent negative station
+        public static readonly int[] LINE1_STATIONS = { 02, -18, -16, 12, 14, 20, 24, 28, 29, 30, 32, 38, 22, 40, 42, 142, -44, -46, 34, 51, 52, 58, 60, -62, -64, 66, -84, -85, 86, 65, 68, 70, 71, 72, 74 };
+        public static readonly int[] LINE2_STATIONS = { 02, 18, 17, 16, 12, 14, 20, 22, -24, -25, 28, 29, 30, 31, 32, 38, 48, 49, 39, 42, 40, 140, -44, -46, 34, 50, 150, 51, 53, 58, 60, -62, -64, 66, 94, 68, 70, 71, 72, 74 };
+        public static readonly int[] LINE3_STATIONS = { 02, -18, -16, 12, 14, 20, 24, 28, 29, 30, 32, 38, 22, 42, 40, 140, -44, -46, 34, 51, 52, 58, 60, -62, -64, 66, 68, 70, 71, 72, 74 };
+
         public static readonly int TIMER_INTERVAL = 1000;
 
         List<string> stationComponents;
@@ -48,6 +60,11 @@ namespace Bosch_Changeover_App
             this.line1CardList = new List<Card>();
             this.line2CardList = new List<Card>();
             this.line3CardList = new List<Card>();
+
+            this.offLine1CardList = new List<Card>();
+            this.offLine2CardList = new List<Card>();
+            this.offLine3CardList = new List<Card>();
+
             this.alarms = new List<PartAlarm>();
 
             this.line1StationList = new List<Station>();
@@ -89,16 +106,40 @@ namespace Bosch_Changeover_App
         {
             this.alarms.Remove(pa);
         }
-        public void getAllStations(String directoryPath)
+
+
+        public void incorporateStationToCard(Card c, Station s)
+        {
+            int line = c.getLine();
+            if(line != s.getLineNumber())
+            {
+                return;
+            }
+            int startStation = c.getStartStation();
+            int endStation = c.getEndStation();
+            if(line == 1)
+            {
+                
+            }else if(line == 2)
+            {
+
+            }else if(line == 3)
+            {
+
+            }
+        }
+
+
+        public void initializeAllStations(String directoryPath)
         {
 
-                string[] files = System.IO.Directory.GetFiles(directoryPath, "*ProfileHandler.cs", System.IO.SearchOption.TopDirectoryOnly);
+            string[] files = System.IO.Directory.GetFiles(directoryPath, "*ProfileHandler.cs", System.IO.SearchOption.TopDirectoryOnly);
             foreach (string file in files)
             {
                 Station newStation = addStation(file);
 
                 int currentLineNumber = newStation.getLineNumber();
-
+                int stationNumber = newStation.getStationNumber();
                 if (currentLineNumber == 1)
                 {
                     line1StationList.Add(newStation);
@@ -106,12 +147,65 @@ namespace Bosch_Changeover_App
                     line2StationList.Add(newStation);
                 } else {
                     line3StationList.Add(newStation);
-                }
-                
+                } 
+            }
 
-                
+        }
+
+
+        public void updateAllStations(String directoryPath)   //each timer tick update all stations and see what parts are now held within
+        {
+            string[] files = System.IO.Directory.GetFiles(directoryPath, "*ProfileHandler.cs", System.IO.SearchOption.TopDirectoryOnly);
+            foreach (string file in files)
+            {
+                Station newStation = addStation(file);
+
+
             }
         }
+
+        public void updateStation(Station station)
+        {
+            int lineNum = station.getLineNumber();
+            if(lineNum == 1)
+            {
+                int index = getStationIndex(station.getStationNumber(), 1);
+                
+
+            }else if(lineNum == 2)
+            {
+
+            }else if(lineNum == 3)
+            {
+
+            }
+        }
+
+
+
+
+        public int getStationIndex(int station, int line)
+        {
+
+            List<List<Station>> selectableStations = new List<List<Station>>();
+            selectableStations.Add(line1StationList);
+            selectableStations.Add(line2StationList);
+            selectableStations.Add(line3StationList);
+            List<Station> termStation = selectableStations[line - 1];
+            Station requiredStation = null;
+
+            foreach (Station number in termStation)
+            {
+                int stationNum = number.getStationNumber();
+                if (stationNum == station)
+                {
+                    requiredStation = number;
+                }
+            }
+            return termStation.IndexOf(requiredStation);
+        }
+
+
         public Station getStation(int station, int line)
         {
             /*
@@ -220,7 +314,7 @@ namespace Bosch_Changeover_App
 
         public Card fillACard()
         {
-
+            return null;
         }
     
         public Card getCard(String partType, int line)
