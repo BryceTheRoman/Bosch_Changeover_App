@@ -22,7 +22,6 @@ namespace Bosch_Changeover_App
         Boolean emailNot;
         int msToSound;
         int countDownSecs;
-        Timer partAlarmTimer;
 
         public PartAlarm(string partT, string ln, string stat, string alarmTime, Boolean desktopNotificationInput, Boolean emailNotificationInput, int N, Timer timer1)
         {
@@ -35,7 +34,6 @@ namespace Bosch_Changeover_App
             desktopNot = desktopNotificationInput;
             emailNot = emailNotificationInput;
             countDownSecs = N;
-            partAlarmTimer = timer1;
 
             partTypeLabel.Text = partT;
             timeRemaining.Text = "00:00:" + alarmTime;
@@ -70,11 +68,6 @@ namespace Bosch_Changeover_App
 
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            timer1 = partAlarmTimer;
-            partAlarmTimer.Start();
-        }
     }
 }
 

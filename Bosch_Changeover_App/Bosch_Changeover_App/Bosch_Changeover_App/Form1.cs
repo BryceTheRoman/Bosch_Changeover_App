@@ -15,7 +15,6 @@ namespace Bosch_Changeover_App
         CreateAlarmPopup popup;
         LinesLayoutUserControl lluc;
         Information information;
-        List<PartAlarm> alarms;
 
         public Form1()
         {
@@ -32,7 +31,6 @@ namespace Bosch_Changeover_App
             lluc.Dock = DockStyle.Fill;
             lluc.BringToFront();
             update_currentTime();
-            alarms = new List<PartAlarm>();
             //update_lines();
         }
 
@@ -147,13 +145,11 @@ namespace Bosch_Changeover_App
             int locY = numAlarms * pa1.Height + 10 * numAlarms;
             pa1.Location = new Point(partAlarmsPanel.Location.X + partAlarmsPanel.Width / 2 - pa1.Width / 2, locY);
             partAlarmsPanel.Controls.Add(pa1);
-            alarms.Add(pa1);
             information.addAlarm(pa1);
         }
 
         public void removeAlarm(PartAlarm pa)
         {
-            alarms.Remove(pa);
             partAlarmsPanel.Controls.Remove(pa);
             information.removeAlarm(pa);
         }

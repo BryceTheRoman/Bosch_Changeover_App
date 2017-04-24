@@ -171,10 +171,6 @@
             this.lineNum.TabIndex = 9;
             this.lineNum.Text = "1";
             // 
-            // timer1
-            // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
             // PartAlarm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);

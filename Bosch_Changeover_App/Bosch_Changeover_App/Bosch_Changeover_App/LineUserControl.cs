@@ -45,20 +45,57 @@ namespace Bosch_Changeover_App
         */
         }
 
-        public void addButtonToPanel(Card card)
+        public void removeButton(Card card)
         {
             if (card.checkOnline())
             {
-                addButton(card.getPartType().ToString() + "          " + card.getPartsRemaining().ToString() + "                "+card.getStartStation().ToString()+"-"+card.getEndStation().ToString()+ "        " +card.getTimeToFinish().ToString(), panelOnLine1);
+                addButtontoPanel(card.getPartType().ToString() + "          " + card.getPartsRemaining().ToString() + "                " + card.getStartStation().ToString() + "-" + card.getEndStation().ToString() + "        " + card.getTimeToFinish().ToString(), panelOnLine1);
 
             }
             else
             {
-                addButton(card.getPartType().ToString() + "          " + card.getPartsRemaining().ToString() + "                " + card.getTimeRemaining().ToString() + "        " + card.getTimeToFinish().ToString(), panelOffLine1);
+                addButtontoPanel(card.getPartType().ToString() + "          " + card.getPartsRemaining().ToString() + "                " + card.getTimeRemaining().ToString() + "        " + card.getTimeToFinish().ToString(), panelOffLine1);
             }
         }
 
-        private void addButton(String buttonText, Panel p)
+        private void removeButtonFromPanel()
+        {
+
+        }
+
+        public void removeAll()
+        {
+            foreach(Button b in panelOnLine1.Controls)
+            {
+                panelOnLine1.Controls.Remove(b);
+            }
+            foreach(Button b in panelOffLine1.Controls){
+                panelOffLine1.Controls.Remove(b);
+            }
+        }
+
+        public void addAll(List<Card> listCards)
+        {
+            foreach(Card c in listCards)
+            {
+                addButton(c);
+            }
+        }
+
+        public void addButton(Card card)
+        {
+            if (card.checkOnline())
+            {
+                addButtontoPanel(card.getPartType().ToString() + "          " + card.getPartsRemaining().ToString() + "                "+card.getStartStation().ToString()+"-"+card.getEndStation().ToString()+ "        " +card.getTimeToFinish().ToString(), panelOnLine1);
+
+            }
+            else
+            {
+                addButtontoPanel(card.getPartType().ToString() + "          " + card.getPartsRemaining().ToString() + "                " + card.getTimeRemaining().ToString() + "        " + card.getTimeToFinish().ToString(), panelOffLine1);
+            }
+        }
+
+        private void addButtontoPanel(String buttonText, Panel p)
         {  
 
             int numButtons = p.Controls.Count;
