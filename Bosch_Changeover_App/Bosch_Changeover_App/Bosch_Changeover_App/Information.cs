@@ -213,8 +213,8 @@ namespace Bosch_Changeover_App
             return station;
 
         }
-        
-        public int distinctStationNum(List<Station> line)
+
+        public int distinctPartNum(List<Station> line)
         {
             List<int> parts = new List<int>();
 
@@ -236,15 +236,16 @@ namespace Bosch_Changeover_App
         {
             int distinctCards = 0;
             List<String> disCards;
-            for ( int i = 0; i < line.Capacity; i++)
+            for (int i = 0; i < line.Capacity; i++)
             {
                 if (disCards.Contains(Int32.Parse(line[i].getCurrentPart())))
                 {
 
-                } 
+                }
             }
 
         }
+
 
 
         public Card fillACard()
