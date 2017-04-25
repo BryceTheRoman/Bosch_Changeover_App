@@ -25,7 +25,7 @@ namespace Bosch_Changeover_App
         int msToSound;
         int countDownSecs;
 
-        public PartAlarm(string partT, string ln, string stat, string alarmTime, Boolean desktopNotificationInput, Boolean emailNotificationInput, int N, Timer timer1)
+        public PartAlarm(string partT, string ln, string stat, string alarmTime, Boolean desktopNotificationInput, Boolean emailNotificationInput, int N, Card c)
         {
             InitializeComponent();
 
