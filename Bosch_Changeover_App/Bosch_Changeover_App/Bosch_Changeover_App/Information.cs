@@ -73,20 +73,21 @@ namespace Bosch_Changeover_App
 
             // string directoryPath = "@blah blah blah Bosch Directory Location";
 
-           offLine1CardList.Add(new Card(590000, 324000, -1, -1, 1234567890, false, 50, 3, 1));
-           line1CardList.Add(new Card(740000, 320000, 02, 18, 1234567890, true, 50, 3, 1));
-            form.update_lines(line1CardList, offLine1CardList, line2CardList, offLine2CardList, line3CardList, offLine3CardList);
-        }
+            offLine1CardList.Add(new Card(590, 324, -1, -1, 1234567899, false, 50, 3, 1));
+            line1CardList.Add(new Card(74000, 320, 02, 18, 1234567890, true, 50, 3, 1));
+            form.add_lines(line1CardList, offLine1CardList, line2CardList, offLine2CardList, line3CardList, offLine3CardList);
+        
+    }
 
        private void updateCardLists()
         {
             for(int i =0; i < this.line1CardList.Count; i++)
             {
-                this.line1CardList[i].updateCard(TIMER_INTERVAL);
+                this.line1CardList[i].updateCard(TIMER_INTERVAL/1000);
             }
             for (int i = 0; i < this.offLine1CardList.Count; i++)
             {
-                this.offLine1CardList[i].updateCard(TIMER_INTERVAL);
+                this.offLine1CardList[i].updateCard(TIMER_INTERVAL/1000);
             }
         }
 
@@ -309,7 +310,7 @@ namespace Bosch_Changeover_App
 
         public int lineCycleTime(List<Station> line)
         {
-
+            return 1;
         }
 
         public void distinctPartNum(List<Station> line)
@@ -340,7 +341,7 @@ namespace Bosch_Changeover_App
                 {
                     card.isOnlineSwitch();
                 }
-                card
+      //          card
 
             }
         }
