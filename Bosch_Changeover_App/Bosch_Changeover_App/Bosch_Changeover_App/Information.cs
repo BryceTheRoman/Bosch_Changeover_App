@@ -313,11 +313,16 @@ namespace Bosch_Changeover_App
             return 1;
         }
 
-        public void distinctPartNum(List<Station> line)
+        public void addingCards(List<Station> line)
         {
             List<int> parts = new List<int>();
             int cycleTimeForLine = line[1].getCycleTime();
             int lineNumbForPart = line[1].getLineNumber();
+            List<List<Card>> cardList= new List<List<Card>>();
+            cardList.Add(line1CardList);
+            cardList.Add(line2CardList);
+            cardList.Add(line3CardList);
+            List<Card> tempCard = cardList[lineNumbForPart - 1];
 
             foreach (Station station in line)
             {
@@ -341,7 +346,23 @@ namespace Bosch_Changeover_App
                 {
                     card.isOnlineSwitch();
                 }
-      //          card
+
+
+                card.setStations();
+                foreach (Station station in line)
+                {
+                    station.getCurrentPart()
+                }
+
+
+
+                card.setEndStation();
+
+
+                tempCard.Add(card);
+
+
+
 
             }
         }
