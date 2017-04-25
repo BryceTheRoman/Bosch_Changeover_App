@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Net;
+using System.Net.Mail;
 
 namespace Bosch_Changeover_App
 
@@ -66,6 +68,28 @@ namespace Bosch_Changeover_App
             parentForm.removeAlarm(this);
             parentForm.editAlarm(partType, lineNumber, station, alarmT, desktopNot, emailNot);
 
+        }
+
+
+        private void sendEmail()
+        {
+            NetworkCredential login;
+            SmtpClient client;
+            MailMessage msg;
+            string emailRecipient = "bosch.changeover@gmail.com";
+
+            login = new NetworkCredential("bosch.changeover", "boschcharleston");
+            client = new SmtpClient("smtp.gmail.com");
+            client.Port = 587;
+            client.EnableSsl = true;
+            client.Timeout = 10000;
+            client.DeliveryMethod = SmtpDeliveryMethod.Network;
+            client.Credentials = login;
+            msg = new MailMessage("bosch.changeover@gmail.com", emailRecipient, "Part "+this.partType+" is Entering Line "+this.lineNumber, "Email send test from visual studio");
+            msg.BodyEncoding = UTF8Encoding.UTF8;
+            msg.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
+
+            client.Send(msg);
         }
 
     }

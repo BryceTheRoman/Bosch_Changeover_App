@@ -119,7 +119,8 @@ namespace Bosch_Changeover_App
 
         public void updateCard(int timeInterval)
         {
-
+            this.timeToFinish -= timeInterval;
+            this.timeRemaining -= timeInterval;
         }
             
     }
