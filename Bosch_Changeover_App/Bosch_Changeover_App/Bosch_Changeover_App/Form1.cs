@@ -58,6 +58,12 @@ namespace Bosch_Changeover_App
             lluc.BringToFront();
         }
 
+
+        public void add_lines(List<Card> line1List, List<Card> offline1List, List<Card> line2List, List<Card> offline2List, List<Card> line3List, List<Card> offline3List)
+        {
+            lluc.addAll(line1List, offline1List, line2List, offline2List, line3List, offline3List);
+        }
+
         public void update_lines(List<Card> line1List, List<Card> offline1List, List<Card> line2List, List<Card> offline2List, List<Card> line3List, List<Card> offline3List)
         {
             lluc.updateAll(line1List, offline1List, line2List, offline2List, line3List, offline3List);
