@@ -324,6 +324,11 @@ namespace Bosch_Changeover_App
             cardList.Add(line3CardList);
             List<Card> tempCard = cardList[lineNumbForPart - 1];
 
+            List<int[]> possibleStations = new List<int[]>();
+            possibleStations.Add(LINE1_STATIONS);
+            possibleStations.Add(LINE2_STATIONS);
+            possibleStations.Add(LINE3_STATIONS);
+
             foreach (Station station in line)
             {
                 int name = station.getCurrentPart();
@@ -351,7 +356,11 @@ namespace Bosch_Changeover_App
                 card.setStations();
                 foreach (Station station in line)
                 {
-                    station.getCurrentPart()
+                    int[] tempPoss = possibleStations[lineNumbForPart - 1];
+                    int lookingPart = station.getCurrentPart();
+                    //if (tempPoss.Contains(look))
+                    int setStartStation;
+                    int setEndStation;
                 }
 
 
