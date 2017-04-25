@@ -36,7 +36,7 @@
             // panelLine1
             // 
             this.panelLine1.AutoScroll = true;
-            this.panelLine1.Location = new System.Drawing.Point(30, 33);
+            this.panelLine1.Location = new System.Drawing.Point(16, 33);
             this.panelLine1.Name = "panelLine1";
             this.panelLine1.Size = new System.Drawing.Size(466, 636);
             this.panelLine1.TabIndex = 61;
@@ -44,7 +44,7 @@
             // panelLine2
             // 
             this.panelLine2.AutoScroll = true;
-            this.panelLine2.Location = new System.Drawing.Point(504, 33);
+            this.panelLine2.Location = new System.Drawing.Point(485, 33);
             this.panelLine2.Name = "panelLine2";
             this.panelLine2.Size = new System.Drawing.Size(466, 636);
             this.panelLine2.TabIndex = 62;
@@ -52,7 +52,7 @@
             // panelLine3
             // 
             this.panelLine3.AutoScroll = true;
-            this.panelLine3.Location = new System.Drawing.Point(976, 33);
+            this.panelLine3.Location = new System.Drawing.Point(955, 33);
             this.panelLine3.Name = "panelLine3";
             this.panelLine3.Size = new System.Drawing.Size(466, 636);
             this.panelLine3.TabIndex = 63;
