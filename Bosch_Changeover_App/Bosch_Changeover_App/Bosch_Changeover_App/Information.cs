@@ -204,23 +204,7 @@ namespace Bosch_Changeover_App
 
         public Station getStation(int station, int line)
         {
-            /*
-            String lineSelector = "Line" + line + "CardList";
-            List<Station> tempStation;
-            if (line == 1)
-            {
-                tempStation = line1StationList;
-            }
-            else if (line == 2)
-            {
-                tempStation = line2StationList;
-            }
-            else
-            {
-                tempStation = line3StationList;
 
-            }
-            */
             List<List<Station>> selectableStations = new List<List<Station>>();
             selectableStations.Add(line1StationList);
             selectableStations.Add(line2StationList);
@@ -308,9 +292,16 @@ namespace Bosch_Changeover_App
 
         }
 
-        public int distinctPartNum(List<Station> line)
+        public int lineCycleTime(List<Station> line)
+        {
+
+        }
+
+        public void distinctPartNum(List<Station> line)
         {
             List<int> parts = new List<int>();
+            int cycleTimeForLine = line[1].getCycleTime();
+            int lineNumbForPart = line[1].getLineNumber();
 
             foreach (Station station in line)
             {
@@ -323,7 +314,20 @@ namespace Bosch_Changeover_App
 
             int number = parts.Count;
 
-            return number;
+            
+
+            foreach( int partnum in parts)
+            {
+                Card card = new Card(0, 0, 0, 0, partnum, false, 0, 0, 0);
+                card.setCycleTime(cycleTimeForLine);
+                card.setLine(lineNumbForPart);
+                if (card.getStartStation() > 0 && card.checkOnline() == false)
+                {
+                    card.isOnlineSwitch();
+                }
+                card
+
+            }
         }
 
         public Card fillAllCards(List<Station> line)
@@ -348,7 +352,7 @@ namespace Bosch_Changeover_App
 
 
 
-            Card createdCard
+            Card createdCard;
 
             return createdCard;
         }
