@@ -10,12 +10,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-
 namespace Bosch_Changeover_App
 {
 
 
-    public class Information 
+    public class Information : AbstractInformation
     {
         Form1 form;
         List<Card> line1CardList;
@@ -73,22 +72,9 @@ namespace Bosch_Changeover_App
 
             // string directoryPath = "@blah blah blah Bosch Directory Location";
 
-           offLine1CardList.Add(new Card(590000, 324000, -1, -1, 1234567890, false, 50, 3, 1));
-           line1CardList.Add(new Card(740000, 320000, 02, 18, 1234567890, true, 50, 3, 1));
-            form.update_lines(line1CardList, offLine1CardList, line2CardList, offLine2CardList, line3CardList, offLine3CardList);
+
         }
 
-       private void updateCardLists()
-        {
-            for(int i =0; i < this.line1CardList.Count; i++)
-            {
-                this.line1CardList[i].updateCard(TIMER_INTERVAL);
-            }
-            for (int i = 0; i < this.offLine1CardList.Count; i++)
-            {
-                this.offLine1CardList[i].updateCard(TIMER_INTERVAL);
-            }
-        }
 
 
         //timer that controls all updates for the program!
@@ -100,12 +86,11 @@ namespace Bosch_Changeover_App
 
             }
             //read information from files
-            updateCardLists();
+
 
             //update array lists
             //send updated information to form1
-            form.update_lines(line1CardList, offLine1CardList, line2CardList, offLine2CardList, line3CardList, offLine3CardList);
-
+            form.update_lines(line1CardList, line2CardList, line3CardList);
         }
 
         public void addAlarm(PartAlarm pa)
@@ -219,7 +204,23 @@ namespace Bosch_Changeover_App
 
         public Station getStation(int station, int line)
         {
+            /*
+            String lineSelector = "Line" + line + "CardList";
+            List<Station> tempStation;
+            if (line == 1)
+            {
+                tempStation = line1StationList;
+            }
+            else if (line == 2)
+            {
+                tempStation = line2StationList;
+            }
+            else
+            {
+                tempStation = line3StationList;
 
+            }
+            */
             List<List<Station>> selectableStations = new List<List<Station>>();
             selectableStations.Add(line1StationList);
             selectableStations.Add(line2StationList);
@@ -307,16 +308,9 @@ namespace Bosch_Changeover_App
 
         }
 
-        public int lineCycleTime(List<Station> line)
-        {
-
-        }
-
-        public void distinctPartNum(List<Station> line)
+        public int distinctPartNum(List<Station> line)
         {
             List<int> parts = new List<int>();
-            int cycleTimeForLine = line[1].getCycleTime();
-            int lineNumbForPart = line[1].getLineNumber();
 
             foreach (Station station in line)
             {
@@ -329,23 +323,10 @@ namespace Bosch_Changeover_App
 
             int number = parts.Count;
 
-            
-
-            foreach( int partnum in parts)
-            {
-                Card card = new Card(0, 0, 0, 0, partnum, false, 0, 0, 0);
-                card.setCycleTime(cycleTimeForLine);
-                card.setLine(lineNumbForPart);
-                if (card.getStartStation() > 0 && card.checkOnline() == false)
-                {
-                    card.isOnlineSwitch();
-                }
-                card
-
-            }
+            return number;
         }
 
-/*        public Card fillAllCards(List<Station> line)
+        public Card fillAllCards(List<Station> line)
         {
             int distinctCards = 0;
             List<String> disCards;
@@ -357,7 +338,7 @@ namespace Bosch_Changeover_App
                 }
             }
 
-        }*/
+        }
 
 
 
@@ -367,7 +348,7 @@ namespace Bosch_Changeover_App
 
 
 
-            Card createdCard = null;
+            Card createdCard
 
             return createdCard;
         }
@@ -450,8 +431,6 @@ namespace Bosch_Changeover_App
         {
             return 0;
         }
-
-
         public static void main(String [] args){
 
 }
