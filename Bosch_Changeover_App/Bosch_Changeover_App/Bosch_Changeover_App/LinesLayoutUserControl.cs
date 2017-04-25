@@ -94,6 +94,24 @@ namespace Bosch_Changeover_App
 
         }
 
+        public void updateAll(List<Card> line1List, List<Card> offline1List, List<Card> line2List, List<Card> offline2List, List<Card> line3List, List<Card> offline3List)
+        {
+            line1.removeAll();
+            line1.addAll(line1List, offline1List);
+            line2.removeAll();
+            line2.addAll(line2List, offline2List);
+            line3.removeAll();
+            line3.addAll(line3List, offline3List);
+        }
+
+        public void removeAll()
+        {
+            line1.removeAll();
+            line2.removeAll();
+            line3.removeAll();
+        }
+
+
         public void formResized()
         {
             panelLine1.Height = mp.Height - 20;

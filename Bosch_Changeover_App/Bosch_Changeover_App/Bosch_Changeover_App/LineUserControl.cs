@@ -45,16 +45,28 @@ namespace Bosch_Changeover_App
         */
         }
 
+        private string convertStoString(int s)
+        {
+            // Thanks to walther on stackoverflow: http://stackoverflow.com/questions/9993883/convert-milliseconds-to-human-readable-time-lapse
+            long ms = s * 1000;
+            TimeSpan t = TimeSpan.FromMilliseconds(ms);
+            string answer = string.Format("{0:D2}:{1:D2}:{2:D2}",
+                                    t.Hours,
+                                    t.Minutes,
+                                    t.Seconds);
+            return answer;
+        }
+
         public void removeButton(Card card)
         {
             if (card.checkOnline())
             {
-                addButtontoPanel(card.getPartType().ToString() + "          " + card.getPartsRemaining().ToString() + "                " + card.getStartStation().ToString() + "-" + card.getEndStation().ToString() + "        " + card.getTimeToFinish().ToString(), panelOnLine1);
+                addButtontoPanel(card.getPartType().ToString() + "          " + card.getPartsRemaining().ToString() + "                " + card.getStartStation().ToString() + "-" + card.getEndStation().ToString() + "        " + convertStoString( card.getTimeToFinish() ), panelOnLine1);
 
             }
             else
             {
-                addButtontoPanel(card.getPartType().ToString() + "          " + card.getPartsRemaining().ToString() + "                " + card.getTimeRemaining().ToString() + "        " + card.getTimeToFinish().ToString(), panelOffLine1);
+                addButtontoPanel(card.getPartType().ToString() + "          " + card.getPartsRemaining().ToString() + "                " + convertStoString( card.getTimeRemaining() ) + "        " + convertStoString( card.getTimeToFinish() ), panelOffLine1);
             }
         }
 
@@ -74,9 +86,13 @@ namespace Bosch_Changeover_App
             }
         }
 
-        public void addAll(List<Card> listCards)
+        public void addAll(List<Card> listCards, List<Card> offLineCards)
         {
             foreach(Card c in listCards)
+            {
+                addButton(c);
+            }
+            foreach(Card c in offLineCards)
             {
                 addButton(c);
             }
@@ -86,12 +102,12 @@ namespace Bosch_Changeover_App
         {
             if (card.checkOnline())
             {
-                addButtontoPanel(card.getPartType().ToString() + "          " + card.getPartsRemaining().ToString() + "                "+card.getStartStation().ToString()+"-"+card.getEndStation().ToString()+ "        " +card.getTimeToFinish().ToString(), panelOnLine1);
+                addButtontoPanel(card.getPartType().ToString() + "          " + card.getPartsRemaining().ToString() + "                  " + card.getStartStation().ToString() + " - " + card.getEndStation().ToString() + "           " + convertStoString(card.getTimeToFinish()), panelOnLine1);
 
             }
             else
             {
-                addButtontoPanel(card.getPartType().ToString() + "          " + card.getPartsRemaining().ToString() + "                " + card.getTimeRemaining().ToString() + "        " + card.getTimeToFinish().ToString(), panelOffLine1);
+                addButtontoPanel(card.getPartType().ToString() + "          " + card.getPartsRemaining().ToString() + "                " + convertStoString(card.getTimeRemaining()) + "        " + convertStoString(card.getTimeToFinish()), panelOffLine1);
             }
         }
 
