@@ -73,18 +73,24 @@ namespace Bosch_Changeover_App
             this.line3StationList = new List<Station>();
 
             // string directoryPath = "@blah blah blah Bosch Directory Location";
-
+            
             offLine1CardList.Add(new Card(597, 3, -1, -1, 1234567899, false, 50, 3, 1));
             line1CardList.Add(new Card(74000, 320, 02, 18, 1234567890, true, 50, 3, 1));
             offLine1CardList.Add(new Card(595, 324, -1, -1, 1234567889, false, 50, 3, 1));
-            line1CardList.Add(new Card(74001, 320, 02, 18, 1234567880, true, 50, 3, 1));
+            line1CardList.Add(new Card(74001, 320, Math.Abs(LINE1_STATIONS[2]), Math.Abs(LINE1_STATIONS[3]) , 1234567880, true, 50, 3, 1));
+            offLine1CardList.Add(new Card(595, 324, -1, -1, 1836567889, false, 50, 3, 1));
+            offLine1CardList.Add(new Card(595, 334, -1, -1, 1234501989, false, 50, 3, 1));
+            offLine1CardList.Add(new Card(595, 354, -1, -1, 1234395889, false, 50, 3, 1));
+            offLine1CardList.Add(new Card(595, 362, -1, -1, 1234567204, false, 50, 3, 1));
+            offLine1CardList.Add(new Card(595, 389, -1, -1, 1234567172, false, 50, 3, 1));
+            offLine1CardList.Add(new Card(595, 405, -1, -1, 1234538289, false, 50, 3, 1));
 
             offLine2CardList.Add(new Card(5937, 4, -1, -1, 1111111111, false, 50, 3, 2));
             line2CardList.Add(new Card(74050, 74, 02, 18, 1234567880, true, 50, 3, 2));
             offLine2CardList.Add(new Card(999, 329, -1, -1, 1222222222, false, 50, 3, 2));
-            line2CardList.Add(new Card(74009, 326, 02, 18, 1234567890, true, 50, 3, 2));
+            line2CardList.Add(new Card(74009, 326, 17, 16, 1234567890, true, 50, 3, 2));
             offLine2CardList.Add(new Card(896, 328, -1, -1, 1333333333, false, 50, 3, 2));
-            line2CardList.Add(new Card(74008, 320, 02, 18, 1234567780, true, 50, 3, 2));
+            line2CardList.Add(new Card(74008, 320, 12, 14, 1234567780, true, 50, 3, 2));
             offLine2CardList.Add(new Card(320, 324, -1, -1, 1444444444, false, 50, 3, 2));
             offLine2CardList.Add(new Card(635, 222, -1, -1, 1555555555, false, 50, 3, 2));
             offLine2CardList.Add(new Card(780, 123, -1, -1, 1666666666, false, 50, 3, 2));
@@ -93,6 +99,17 @@ namespace Bosch_Changeover_App
 
             offLine3CardList.Add(new Card(590, 2, -1, -1, 1234567899, false, 50, 3, 3));
             line3CardList.Add(new Card(74002, 320, 02, 18, 1234567890, true, 50, 3, 3));
+            offLine3CardList.Add(new Card(830, 10, -1, -1, 1234567869, false, 50, 3, 3));
+            offLine3CardList.Add(new Card(860, 20, -1, -1, 1234564899, false, 50, 3, 3));
+            offLine3CardList.Add(new Card(890, 27, -1, -1, 1234367899, false, 50, 3, 3));
+            offLine3CardList.Add(new Card(990, 38, -1, -1, 1234557899, false, 50, 3, 3));
+            offLine3CardList.Add(new Card(1070, 42, -1, -1, 1233567899, false, 50, 3, 3));
+            offLine3CardList.Add(new Card(1101, 56, -1, -1, 1232201899, false, 50, 3, 3));
+            offLine3CardList.Add(new Card(1235, 63, -1, -1, 1235877899, false, 50, 3, 3));
+            offLine3CardList.Add(new Card(1700, 102, -1, -1, 1231037899, false, 50, 3, 3));
+            offLine3CardList.Add(new Card(1800, 200, -1, -1, 1232877899, false, 50, 3, 3));
+            offLine3CardList.Add(new Card(2105, 359, -1, -1, 1232599099, false, 50, 3, 3));
+            offLine3CardList.Add(new Card(3000, 720, -1, -1, 1234728499, false, 50, 3, 3));
             form.add_lines(line1CardList, offLine1CardList, line2CardList, offLine2CardList, line3CardList, offLine3CardList);
 
         }
@@ -115,11 +132,23 @@ namespace Bosch_Changeover_App
                 int timeRem = this.offLine1CardList[i].getTimeRemaining();
                 if (timeRem <= 0)
                 {
+                    Card lastCard = this.line1CardList[line1CardList.Count() - 1];
+                    int lastStat = lastCard.getEndStation();
                     Card card = this.offLine1CardList[i];
                     this.offLine1CardList.RemoveAt(i);
                     card.isOnlineSwitch();
                     this.line1CardList.Add(card);
 
+
+
+                    for (int j = 0; j < LINE1_STATIONS.Length; j++)
+                    {
+                        if (Math.Abs(LINE1_STATIONS[j]) == Math.Abs(lastStat))
+                        {
+                            card.setStations(LINE1_STATIONS[j + 1]);
+                            card.setEndStation(LINE1_STATIONS[j + 2]);
+                        }
+                    }
                 }
             }
 
@@ -139,10 +168,23 @@ namespace Bosch_Changeover_App
 
                 if (timeRem <= 0)
                 {
+                    Card lastCard = this.line2CardList[line2CardList.Count() - 1];
+                    int lastStat = lastCard.getEndStation();
                     Card card = this.offLine2CardList[i];
                     this.offLine2CardList.RemoveAt(i);
                     card.isOnlineSwitch();
                     this.line2CardList.Add(card);
+
+
+                 
+                   for (int j = 0; j < LINE2_STATIONS.Length; j++)
+                    {
+                        if (Math.Abs(LINE2_STATIONS[j]) == Math.Abs(lastStat))
+                        {
+                            card.setStations(LINE2_STATIONS[j + 1]);
+                            card.setEndStation(LINE2_STATIONS[j + 2]);
+                        }
+                    }
                 }
             }
 
@@ -161,10 +203,34 @@ namespace Bosch_Changeover_App
                 int timeRem = this.offLine3CardList[i].getTimeRemaining();
                 if (timeRem <= 0)
                 {
+                    Card lastCard = this.line3CardList[line3CardList.Count() - 1];
+                    int lastStat = lastCard.getEndStation();
                     Card card = this.offLine3CardList[i];
                     this.offLine3CardList.RemoveAt(i);
                     card.isOnlineSwitch();
                     this.line3CardList.Add(card);
+
+
+
+                    for (int j = 0; j < LINE3_STATIONS.Length; j++)
+                    {
+                        if (Math.Abs(LINE3_STATIONS[j]) == Math.Abs(lastStat))
+                        {
+                            card.setStations(LINE3_STATIONS[j + 1]);
+                            card.setEndStation(LINE3_STATIONS[j + 2]);
+                        }
+                    }
+
+                    /*
+                    Random rnd = new Random();
+                    int partNum = rnd.Next(1000000000, 2000000000);
+
+                    Card newCard = new Card(offLine3CardList[offLine3CardList.Count - 1].getTimeToFinish() + 10, 
+                        offLine3CardList[offLine3CardList.Count - 1].getTimeRemaining() + 10, -1,-1, partNum,false, 50, 3, 3);
+
+
+                    offLine3CardList.Add(newCard);
+                    */
 
                 }
 
