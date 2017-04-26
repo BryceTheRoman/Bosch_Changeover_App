@@ -17,7 +17,7 @@ namespace Bosch_Changeover_App
     {
         Form1 parentForm;
 
-        Boolean editing = false;
+        bool editing = false;
         string selectedTime;
         string selectedMessage;
 
@@ -25,8 +25,12 @@ namespace Bosch_Changeover_App
 
         string wavPath = @"C:\Windows\Media\Alarm01.wav";
         SoundPlayer soundPlayer;
-        alarmNotification alarmNotification;
+        //alarmNotification alarmNotification;
 
+        private string partType;
+        private string line;
+        private string alarmTime;
+        private string station;
 
 
         public CreateAlarmPopup(Form1 pf)
@@ -36,7 +40,12 @@ namespace Bosch_Changeover_App
             parentForm = pf;
             update_currentTime();
             soundPlayer = new SoundPlayer();
-            alarmNotification = new alarmNotification(this);
+            //alarmNotification = new alarmNotification(this);
+
+            partType = "";
+            line = "";
+            alarmTime = "";
+            station = "";
         }
 
         public void createAlarmFromLineButton(Card partType)
@@ -45,11 +54,11 @@ namespace Bosch_Changeover_App
             partTypeTextBox.Text = partType.getPartType().ToString();
             Debug.WriteLine(partType.getLine().ToString());
             lineComboBox.SelectedIndex = lineComboBox.FindStringExact(partType.getLine().ToString());
-            //      stationComboBox.SelectedIndex = stationComboBox.FindStringExact( partType.getStartStation().ToString());
+            //      stationComboBox.SelectedIndex = stationComboBox.FindstringExact( partType.getStartStation().ToString());
         }
 
 
-        public void editAlarm(String partType, String lineNum, String station, String alarmTime, Boolean desktopNotification, Boolean emailNotification)
+        public void editAlarm(string partType, string lineNum, string station, string alarmTime, bool desktopNotification, bool emailNotification)
         {
             editing = true;
             partTypeTextBox.Text = partType;
@@ -124,9 +133,15 @@ namespace Bosch_Changeover_App
                 selectedTime = currentTimeLabel + alarmTimeLabel.Text;
                 selectedMessage = "Alarm";
 
+                //gotta set the variables that get sent back to the parent form
+                partType = partTypeTextBox.Text;
+                line = lineComboBox.Text;
+                alarmTime = alarmTimeComboBox.Text;
+                station = stationComboBox.Text;
+
                 soundPlayer.SoundLocation = wavPath;
 
-                alarmNotification.Message(selectedMessage);
+                //alarmNotification.Message(selectedMessage);
                 alarmSet = true;
 
 
@@ -145,30 +160,30 @@ namespace Bosch_Changeover_App
 
         public string getPartType()
         {
-            return partTypeTextBox.Text;
+            return partType;
         }
 
         public string getLine()
         {
-            return lineComboBox.Text;
+            return line;
         }
 
         public string getStation()
         {
-            return stationComboBox.Text;
+            return station;
         }
 
         public string getAlarmTime()
         {
-            return alarmTimeComboBox.Text;
+            return alarmTime;
         }
 
-        public Boolean getDesktopNotification()
+        public bool getDesktopNotification()
         {
             return desktopCheckBox.Checked;
         }
 
-        public Boolean getEmailNotification()
+        public bool getEmailNotification()
         {
             return emailCheckBox.Checked;
         }
@@ -205,7 +220,7 @@ namespace Bosch_Changeover_App
                     alarmSet = false;
 
                     soundPlayer.Play();
-                    alarmNotification.ShowDialog();
+                    //alarmNotification.ShowDialog();
                 }
             }
 

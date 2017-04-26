@@ -74,26 +74,25 @@ namespace Bosch_Changeover_App
 
             // string directoryPath = "@blah blah blah Bosch Directory Location";
 
-            offLine1CardList.Add(new Card(597, 322, -1, -1, 1234567899, false, 50, 3, 1));
-            line1CardList.Add(new Card(542, 322, 02, 18, 1234567890, true, 50, 3, 1));
-            offLine1CardList.Add(new Card(691, 524, -1, -1, 1234567889, false, 50, 3, 1));
-            line1CardList.Add(new Card(741, 1320, 19, 74, 1234567880, true, 50, 3, 1));
+            offLine1CardList.Add(new Card(597, 324, -1, -1, 1234567899, false, 50, 3, 1));
+            line1CardList.Add(new Card(74000, 320, 02, 18, 1234567890, true, 50, 3, 1));
+            offLine1CardList.Add(new Card(595, 324, -1, -1, 1234567889, false, 50, 3, 1));
+            line1CardList.Add(new Card(74001, 320, 02, 18, 1234567880, true, 50, 3, 1));
 
-            offLine2CardList.Add(new Card(537, 224, -1, -1, 1234567899, false, 50, 3, 2));
-            line2CardList.Add(new Card(74050, 320, 02, 18, 1234567880, true, 50, 3, 2));
-            offLine2CardList.Add(new Card(699, 429, -1, -1, 1234567889, false, 50, 3, 2));
-            line2CardList.Add(new Card(74009, 526, 18, 22, 1234567890, true, 50, 3, 2));
-            offLine2CardList.Add(new Card(896, 628, -1, -1, 1234567897, false, 50, 3, 2));
-            line2CardList.Add(new Card(74008, 720, 22, 74, 1234567780, true, 50, 3, 2));
-            offLine2CardList.Add(new Card(1320, 824, -1, -1, 1234557789, false, 50, 3, 2));
-            offLine2CardList.Add(new Card(1635, 922, -1, -1, 1244567789, false, 50, 3, 2));
-            offLine2CardList.Add(new Card(1780, 1113, -1, -1, 1334567789, false, 50, 3, 2));
-            offLine2CardList.Add(new Card(19152, 1224, -1, -1, 1244355789, false, 50, 3, 2));
-            offLine2CardList.Add(new Card(111003, 12527, -1, -1, 1222257789, false, 50, 3, 2));
+            offLine2CardList.Add(new Card(5937, 4324, -1, -1, 1234567899, false, 50, 3, 2));
+            line2CardList.Add(new Card(74050, 620, 02, 18, 1234567880, true, 50, 3, 2));
+            offLine2CardList.Add(new Card(999, 329, -1, -1, 1234567889, false, 50, 3, 2));
+            line2CardList.Add(new Card(74009, 326, 02, 18, 1234567890, true, 50, 3, 2));
+            offLine2CardList.Add(new Card(896, 328, -1, -1, 1234567897, false, 50, 3, 2));
+            line2CardList.Add(new Card(74008, 320, 02, 18, 1234567780, true, 50, 3, 2));
+            offLine2CardList.Add(new Card(320, 324, -1, -1, 1234557789, false, 50, 3, 2));
+            offLine2CardList.Add(new Card(635, 222, -1, -1, 1244567789, false, 50, 3, 2));
+            offLine2CardList.Add(new Card(780, 123, -1, -1, 1334567789, false, 50, 3, 2));
+            offLine2CardList.Add(new Card(952, 624, -1, -1, 1244355789, false, 50, 3, 2));
+            offLine2CardList.Add(new Card(1003, 527, -1, -1, 1222257789, false, 50, 3, 2));
 
             offLine3CardList.Add(new Card(590, 324, -1, -1, 1234567899, false, 50, 3, 3));
-            line3CardList.Add(new Card(742, 320, 02, 74, 1234567890, true, 50, 3, 3));
-            Debug.WriteLine("information");
+            line3CardList.Add(new Card(74002, 320, 02, 18, 1234567890, true, 50, 3, 3));
             form.add_lines(line1CardList, offLine1CardList, line2CardList, offLine2CardList, line3CardList, offLine3CardList);
 
         }
@@ -137,9 +136,9 @@ namespace Bosch_Changeover_App
         void timerEvent(Object sender, EventArgs e)
         {
             form.update_currentTime();
-            for (int i = 0; i < this.alarms.Count; i++)
+            for (int i = 0; i < alarms.Count; i++)
             {
-
+                alarms[i].countDown();
             }
             //read information from files
             updateCardLists();
@@ -185,7 +184,7 @@ namespace Bosch_Changeover_App
         }
 
 
-        public void initializeAllStations(String directoryPath)
+        public void initializeAllStations(string directoryPath)
         {
 
             string[] files = System.IO.Directory.GetFiles(directoryPath, "*ProfileHandler.cs", System.IO.SearchOption.TopDirectoryOnly);
@@ -212,7 +211,7 @@ namespace Bosch_Changeover_App
         }
 
 
-        public void updateAllStations(String directoryPath)   //each timer tick update all stations and see what parts are now held within
+        public void updateAllStations(string directoryPath)   //each timer tick update all stations and see what parts are now held within
         {
             string[] files = System.IO.Directory.GetFiles(directoryPath, "*ProfileHandler.cs", System.IO.SearchOption.TopDirectoryOnly);
             foreach (string file in files)
@@ -290,7 +289,7 @@ namespace Bosch_Changeover_App
             }
             return requiredStation;
         }
-        public Station addStation(String filename)
+        public Station addStation(string filename)
         {
 
             int counter = 0;
@@ -397,7 +396,7 @@ namespace Bosch_Changeover_App
                 }
 
 
-               // card.setStations();
+                // card.setStations();
                 foreach (Station station in line)
                 {
                     int[] tempPoss = possibleStations[lineNumbForPart - 1];
@@ -412,7 +411,7 @@ namespace Bosch_Changeover_App
                 //card.setEndStation();
 
 
-     //           tempCard.Add(card);
+                //tempCard.Add(card);
 
 
 
@@ -423,7 +422,7 @@ namespace Bosch_Changeover_App
         /*        public Card fillAllCards(List<Station> line)
                 {
                     int distinctCards = 0;
-                    List<String> disCards;
+                    List<string> disCards;
                     for (int i = 0; i < line.Capacity; i++)
                     {
                         if (disCards.Contains(Int32.Parse(line[i].getCurrentPart())))
@@ -447,7 +446,7 @@ namespace Bosch_Changeover_App
             return createdCard;
         }
 
-        public Card getCard(String partType, int line)
+        public Card getCard(string partType, int line)
         {
             if (line == 1)
             {
@@ -527,7 +526,7 @@ namespace Bosch_Changeover_App
         }
 
 
-        public static void main(String[] args)
+        public static void main(string[] args)
         {
 
         }
