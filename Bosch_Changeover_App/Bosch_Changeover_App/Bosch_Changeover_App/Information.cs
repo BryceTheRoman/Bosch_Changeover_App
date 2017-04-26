@@ -353,7 +353,7 @@ namespace Bosch_Changeover_App
                 }
 
 
-                card.setStations();
+               // card.setStations();
                 foreach (Station station in line)
                 {
                     int[] tempPoss = possibleStations[lineNumbForPart - 1];
@@ -365,7 +365,7 @@ namespace Bosch_Changeover_App
 
 
 
-                card.setEndStation();
+                //card.setEndStation();
 
 
                 tempCard.Add(card);
