@@ -78,11 +78,12 @@
             this.messageLabel.AutoSize = true;
             this.messageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.messageLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.messageLabel.Location = new System.Drawing.Point(32, 145);
+            this.messageLabel.Location = new System.Drawing.Point(144, 156);
             this.messageLabel.Name = "messageLabel";
-            this.messageLabel.Size = new System.Drawing.Size(671, 29);
+            this.messageLabel.Size = new System.Drawing.Size(450, 29);
             this.messageLabel.TabIndex = 1;
-            this.messageLabel.Text = "Line 1 will changeover to Part Type 1111111111 in 30 minutes";
+            this.messageLabel.Text = "Your part is getting ready to change over.";
+            this.messageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // alarmNotification
             // 
@@ -94,7 +95,7 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.cancelButton);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "alarmNotification";
