@@ -72,9 +72,9 @@ namespace Bosch_Changeover_App
             }*/
         }
 
-        private void removeButtonFromPanel()
+        private void removeButtonFromPanel(Button b, Panel p)
         {
-
+            p.Controls.Remove(b);
         }
 
         public void removeAll()
@@ -83,6 +83,7 @@ namespace Bosch_Changeover_App
             {
                 panelOnLine1.Controls.Remove(b);
             }
+            buttons = new Dictionary<int, Button>();
             foreach(Button b in panelOffLine1.Controls){
                 panelOffLine1.Controls.Remove(b);
             }
@@ -90,13 +91,34 @@ namespace Bosch_Changeover_App
 
         public void updateAll(List<Card> listCards, List<Card> offLineCards)
         {
+            int removed = 0;
             foreach (Card card in listCards)
             {
-                buttons[card.getPartType()].Text = card.getPartType().ToString() + "          " + card.getPartsRemaining().ToString() + "                  " + card.getStartStation().ToString() + " - " + card.getEndStation().ToString() + "           " + convertStoString(card.getTimeToFinish());
+                Button b = buttons[card.getPartType()];
+
+
+                string text = card.getPartType().ToString() + "          " + card.getPartsRemaining().ToString() + "                  " + card.getStartStation().ToString() + " - " + card.getEndStation().ToString() + "           " + convertStoString(card.getTimeToFinish());
+                if (panelOffLine1.Contains(b))
+                {
+                    panelOffLine1.Controls.Remove(b);
+                    buttons.Remove(card.getPartType());
+                    addButtontoPanel(card.getPartType(),text, panelOnLine1);
+                    removed++;
+                }
+                else
+                {
+                    b.Text = text;
+                }
             }
             foreach (Card card in offLineCards)
             {
-                buttons[card.getPartType()].Text = card.getPartType().ToString() + "          " + card.getPartsRemaining().ToString() + "                " + convertStoString(card.getTimeRemaining()) + "        " + convertStoString(card.getTimeToFinish());
+                Button b = buttons[card.getPartType()];
+
+                if (removed != 0)
+                {
+                    b.Location = new Point(b.Location.X, b.Location.Y - removed * (b.Height + 5));
+                }
+                b.Text = card.getPartType().ToString() + "          " + card.getPartsRemaining().ToString() + "                " + convertStoString(card.getTimeRemaining()) + "        " + convertStoString(card.getTimeToFinish());
             }
         }
 
@@ -155,6 +177,8 @@ namespace Bosch_Changeover_App
 
 
                 b.Location = new Point(p.Controls[numButtons-1].Location.X, p.Controls[numButtons-1].Location.Y+b.Height + 5);
+                Debug.WriteLine(p.Controls[numButtons - 1].Location.Y + b.Height + 5);
+                Debug.WriteLine(partType);
             }
             else
             {
@@ -164,6 +188,23 @@ namespace Bosch_Changeover_App
             buttons.Add(partType, b);
             
 
+        }
+
+        private void addOneButtonToPanel(Button b, Panel p)
+        {
+
+            int numButtons = p.Controls.Count;
+            if (numButtons != 0)
+            {
+
+
+                b.Location = new Point(p.Controls[numButtons - 1].Location.X, p.Controls[numButtons - 1].Location.Y + b.Height + 5);
+            }
+            else
+            {
+                b.Location = new Point(0, 0);
+            }
+            p.Controls.Add(b);
         }
 
         private void LineUserControl_Load(object sender, EventArgs e)
