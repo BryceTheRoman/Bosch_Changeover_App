@@ -15,6 +15,7 @@ namespace Bosch_Changeover_App
     {
     //    private static LineUserControl _instance;
         private Form1 parentForm;
+        private Dictionary<int, Button> buttons;
 
         /*     public static LineUserControl Instance
              {
@@ -31,6 +32,7 @@ namespace Bosch_Changeover_App
             InitializeComponent();
             lineLabel.Text = "Line " + line.ToString() ;
             this.line = line;
+            buttons = new Dictionary<int, Button>();
             /* addButton("6511588611          32                32-End        00:01:42", panelOnLine1);
             addButton("6511588611          32                32-End        00:01:42", panelOnLine1);
             addButton("6511588611          32                32-End        00:01:42", panelOnLine1);
@@ -59,15 +61,15 @@ namespace Bosch_Changeover_App
 
         public void removeButton(Card card)
         {
-            if (card.checkOnline())
+    /*        if (card.checkOnline())
             {
-                addButtontoPanel(card.getPartType().ToString() + "          " + card.getPartsRemaining().ToString() + "                " + card.getStartStation().ToString() + "-" + card.getEndStation().ToString() + "        " + convertStoString( card.getTimeToFinish() ), panelOnLine1);
+                addButtontoPanel(card.getPartType(), card.getPartType().ToString() + "          " + card.getPartsRemaining().ToString() + "                " + card.getStartStation().ToString() + "-" + card.getEndStation().ToString() + "        " + convertStoString( card.getTimeToFinish() ), panelOnLine1);
 
             }
             else
             {
-                addButtontoPanel(card.getPartType().ToString() + "          " + card.getPartsRemaining().ToString() + "                " + convertStoString( card.getTimeRemaining() ) + "        " + convertStoString( card.getTimeToFinish() ), panelOffLine1);
-            }
+                addButtontoPanel(card.getPartType(), card.getPartType().ToString() + "          " + card.getPartsRemaining().ToString() + "                " + convertStoString( card.getTimeRemaining() ) + "        " + convertStoString( card.getTimeToFinish() ), panelOffLine1);
+            }*/
         }
 
         private void removeButtonFromPanel()
@@ -83,6 +85,18 @@ namespace Bosch_Changeover_App
             }
             foreach(Button b in panelOffLine1.Controls){
                 panelOffLine1.Controls.Remove(b);
+            }
+        }
+
+        public void updateAll(List<Card> listCards, List<Card> offLineCards)
+        {
+            foreach (Card card in listCards)
+            {
+                buttons[card.getPartType()].Text = card.getPartType().ToString() + "          " + card.getPartsRemaining().ToString() + "                  " + card.getStartStation().ToString() + " - " + card.getEndStation().ToString() + "           " + convertStoString(card.getTimeToFinish());
+            }
+            foreach (Card card in offLineCards)
+            {
+                buttons[card.getPartType()].Text = card.getPartType().ToString() + "          " + card.getPartsRemaining().ToString() + "                " + convertStoString(card.getTimeRemaining()) + "        " + convertStoString(card.getTimeToFinish());
             }
         }
 
@@ -102,16 +116,16 @@ namespace Bosch_Changeover_App
         {
             if (card.checkOnline())
             {
-                addButtontoPanel(card.getPartType().ToString() + "          " + card.getPartsRemaining().ToString() + "                  " + card.getStartStation().ToString() + " - " + card.getEndStation().ToString() + "           " + convertStoString(card.getTimeToFinish()), panelOnLine1);
+                addButtontoPanel(card.getPartType(), card.getPartType().ToString() + "          " + card.getPartsRemaining().ToString() + "                  " + card.getStartStation().ToString() + " - " + card.getEndStation().ToString() + "           " + convertStoString(card.getTimeToFinish()), panelOnLine1);
 
             }
             else
             {
-                addButtontoPanel(card.getPartType().ToString() + "          " + card.getPartsRemaining().ToString() + "                " + convertStoString(card.getTimeRemaining()) + "        " + convertStoString(card.getTimeToFinish()), panelOffLine1);
+                addButtontoPanel(card.getPartType(), card.getPartType().ToString() + "          " + card.getPartsRemaining().ToString() + "                " + convertStoString(card.getTimeRemaining()) + "        " + convertStoString(card.getTimeToFinish()), panelOffLine1);
             }
         }
 
-        private void addButtontoPanel(String buttonText, Panel p)
+        private void addButtontoPanel(int partType, String buttonText, Panel p)
         {  
 
             int numButtons = p.Controls.Count;
@@ -147,6 +161,7 @@ namespace Bosch_Changeover_App
                 b.Location = new Point(0, 0);
             }
             p.Controls.Add(b);
+            buttons.Add(partType, b);
             
 
         }

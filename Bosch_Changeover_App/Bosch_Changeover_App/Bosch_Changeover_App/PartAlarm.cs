@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using System.Net;
 using System.Net.Mail;
+using System.Media;
+using System.Timers;
 
 namespace Bosch_Changeover_App
 
@@ -24,11 +26,18 @@ namespace Bosch_Changeover_App
         Boolean emailNot;
         int msToSound;
         int countDownSecs;
+        System.Threading.Timer partAlarmTimer;
 
-        public PartAlarm(string partT, string ln, string stat, string alarmTime, Boolean desktopNotificationInput, Boolean emailNotificationInput, int N, Timer timer1)
+        private System.Timers.Timer timer;
+        private TimeSpan currentTime;
+        private TimeSpan userTimer;
+        private Card part;
+
+        public PartAlarm(string partT, string ln, string stat, string alarmTime, Boolean desktopNotificationInput, Boolean emailNotificationInput, int N, Card c)
         {
             InitializeComponent();
 
+            /*
             partType = partT;
             lineNumber = ln;
             station = stat;
@@ -42,11 +51,50 @@ namespace Bosch_Changeover_App
             //countDownSecs = ((int)alarmHours * 3600) + 
             lineNum.Text = lineNumber;
             emailNotification.Checked = emailNotificationInput;
+            */
+
+            currentTime = DateTime.Now - DateTime.Now.Date;
+            userTimer = new TimeSpan(0, 0, 0);
+            timer = new System.Timers.Timer();
+            timer.Interval = 1000;
+            timer.Elapsed += Timer_Elapsed;
+            this.part = part;
+
+        }
+
+        public void startTimer()
+        {
+            timer.Start();
+        }
+
+        private void Timer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            currentTime = DateTime.Now - DateTime.Now.Date;
+
+            if (userTimer.Equals(currentTime))
+            {
+                timer.Stop();
+                try
+                {
+                    SoundPlayer player = new SoundPlayer();
+                    player.SoundLocation = @"C:\WINDOWS\MEDIA\Alarm01.wav";
+                    player.PlayLooping();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+            }
         }
 
         public void update_alarm()
         {
+            currentTime = DateTime.Now - DateTime.Now.Date;
 
+            int minutesToAlarm = part.getPartsRemaining() * part.getCycletime();
+
+            userTimer = currentTime - new TimeSpan(0, minutesToAlarm, 0) + new TimeSpan(0, 30, 0);
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
@@ -70,9 +118,16 @@ namespace Bosch_Changeover_App
 
         }
 
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            timer1 = partAlarmTimer;
+            partAlarmTimer.Start();
+        }
+
 
         private void sendEmail()
         {
+
             NetworkCredential login;
             SmtpClient client;
             MailMessage msg;
