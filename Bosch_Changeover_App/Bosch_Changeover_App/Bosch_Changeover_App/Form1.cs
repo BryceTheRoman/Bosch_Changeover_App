@@ -70,6 +70,11 @@ namespace Bosch_Changeover_App
             lluc.updateAll(line1List, offline1List, line2List, offline2List, line3List, offline3List);
         }
 
+        public void remove_lines()
+        {
+            lluc.removeAll();
+        }
+
 
         private void selectionLabel_Click(object sender, EventArgs e)
         {
