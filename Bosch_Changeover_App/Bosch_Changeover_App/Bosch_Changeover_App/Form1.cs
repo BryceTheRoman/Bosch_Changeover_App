@@ -127,14 +127,14 @@ namespace Bosch_Changeover_App
             Boolean desktopNotification = popup.getDesktopNotification();
             Boolean emailNotification = popup.getEmailNotification();
             int n = popup.getN();
-            Timer timer1 = popup.getTimer();
-            addAlarmtoPanel(partType, lineNum, station, alarmTime, desktopNotification, emailNotification, n, timer1);
+            addAlarmtoPanel(partType, lineNum, station, alarmTime, desktopNotification, emailNotification, n, null);
         }
 
         public void addAlarmtoPanel(String partType, String lineNum, String station, String alarmTime, Boolean desktopNotification, Boolean emailNotification, int n, Timer timer1)
         {
 
-            PartAlarm pa1 = new PartAlarm(partType, lineNum, station, alarmTime, desktopNotification, emailNotification, n, timer1);
+            Card c = information.getCard(partType, Int32.Parse(lineNum));
+            PartAlarm pa1 = new PartAlarm(partType, lineNum, station, alarmTime, desktopNotification, emailNotification, n, c);
             int numAlarms = partAlarmsPanel.Controls.Count;
             int locY = numAlarms * pa1.Height + 10 * numAlarms;
             pa1.Location = new Point(partAlarmsPanel.Location.X + partAlarmsPanel.Width / 2 - pa1.Width / 2, locY);
