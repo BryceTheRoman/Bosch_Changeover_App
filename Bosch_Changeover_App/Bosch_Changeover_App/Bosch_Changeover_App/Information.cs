@@ -412,7 +412,7 @@ namespace Bosch_Changeover_App
                 //card.setEndStation();
 
 
-                tempCard.Add(card);
+     //           tempCard.Add(card);
 
 
 
