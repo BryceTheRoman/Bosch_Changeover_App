@@ -74,42 +74,42 @@ namespace Bosch_Changeover_App
 
             // string directoryPath = "@blah blah blah Bosch Directory Location";
             
-            offLine1CardList.Add(new Card(597, 3, -1, -1, 1234567899, false, 50, 3, 1));
-            line1CardList.Add(new Card(74000, 320, 02, 18, 1234567890, true, 50, 3, 1));
-            offLine1CardList.Add(new Card(595, 324, -1, -1, 1234567889, false, 50, 3, 1));
-            line1CardList.Add(new Card(74001, 320, Math.Abs(LINE1_STATIONS[2]), Math.Abs(LINE1_STATIONS[3]) , 1234567880, true, 50, 3, 1));
-            offLine1CardList.Add(new Card(595, 324, -1, -1, 1836567889, false, 50, 3, 1));
-            offLine1CardList.Add(new Card(595, 334, -1, -1, 1234501989, false, 50, 3, 1));
-            offLine1CardList.Add(new Card(595, 354, -1, -1, 1234395889, false, 50, 3, 1));
-            offLine1CardList.Add(new Card(595, 362, -1, -1, 1234567204, false, 50, 3, 1));
-            offLine1CardList.Add(new Card(595, 389, -1, -1, 1234567172, false, 50, 3, 1));
-            offLine1CardList.Add(new Card(595, 405, -1, -1, 1234538289, false, 50, 3, 1));
+            offLine1CardList.Add(new Card(597, 10, -1, -1, 1234567899, false, 20, 3, 1));
+            line1CardList.Add(new Card(74000, 320, 02, 18, 1234567890, true, 32, 3, 1));
+            offLine1CardList.Add(new Card(595, 324, -1, -1, 1234567889, false, 26, 3, 1));
+            line1CardList.Add(new Card(74001, 320, Math.Abs(LINE1_STATIONS[2]), Math.Abs(LINE1_STATIONS[3]) , 1234567880, true, 16, 3, 1));
+            offLine1CardList.Add(new Card(595, 324, -1, -1, 1836567889, false, 101, 3, 1));
+            offLine1CardList.Add(new Card(595, 334, -1, -1, 1234501989, false, 35, 3, 1));
+            offLine1CardList.Add(new Card(595, 354, -1, -1, 1234395889, false, 204, 3, 1));
+            offLine1CardList.Add(new Card(595, 362, -1, -1, 1234567204, false, 11, 3, 1));
+            offLine1CardList.Add(new Card(595, 389, -1, -1, 1234567172, false, 16, 3, 1));
+            offLine1CardList.Add(new Card(595, 405, -1, -1, 1234538289, false, 34, 3, 1));
 
-            offLine2CardList.Add(new Card(5937, 4, -1, -1, 1111111111, false, 50, 3, 2));
-            line2CardList.Add(new Card(74050, 74, 02, 18, 1234567880, true, 50, 3, 2));
-            offLine2CardList.Add(new Card(999, 329, -1, -1, 1222222222, false, 50, 3, 2));
-            line2CardList.Add(new Card(74009, 326, 17, 16, 1234567890, true, 50, 3, 2));
-            offLine2CardList.Add(new Card(896, 328, -1, -1, 1333333333, false, 50, 3, 2));
-            line2CardList.Add(new Card(74008, 320, 12, 14, 1234567780, true, 50, 3, 2));
-            offLine2CardList.Add(new Card(320, 324, -1, -1, 1444444444, false, 50, 3, 2));
-            offLine2CardList.Add(new Card(635, 222, -1, -1, 1555555555, false, 50, 3, 2));
-            offLine2CardList.Add(new Card(780, 123, -1, -1, 1666666666, false, 50, 3, 2));
-            offLine2CardList.Add(new Card(952, 624, -1, -1, 1777777777, false, 50, 3, 2));
-            offLine2CardList.Add(new Card(1003, 527, -1, -1, 1888888888, false, 50, 3, 2));
+            offLine2CardList.Add(new Card(5937, 4, -1, -1, 1111111111, false, 10, 3, 2));
+            line2CardList.Add(new Card(74050, 74, 02, 18, 1234567880, true, 23, 3, 2));
+            offLine2CardList.Add(new Card(999, 329, -1, -1, 1222222222, false, 12, 3, 2));
+            line2CardList.Add(new Card(74009, 326, 17, 16, 1234567890, true, 14, 3, 2));
+            offLine2CardList.Add(new Card(896, 330, -1, -1, 1333333333, false, 13, 3, 2));
+            line2CardList.Add(new Card(74008, 320, 12, 14, 1234567780, true, 36, 3, 2));
+            offLine2CardList.Add(new Card(320, 350, -1, -1, 1444444444, false, 24, 3, 2));
+            offLine2CardList.Add(new Card(635, 376, -1, -1, 1555555555, false, 52, 3, 2));
+            offLine2CardList.Add(new Card(780, 492, -1, -1, 1666666666, false, 27, 3, 2));
+            offLine2CardList.Add(new Card(952, 624, -1, -1, 1777777777, false, 32, 3, 2));
+            offLine2CardList.Add(new Card(1003, 527, -1, -1, 1888888888, false, 44, 3, 2));
 
-            offLine3CardList.Add(new Card(590, 2, -1, -1, 1234567899, false, 50, 3, 3));
+            offLine3CardList.Add(new Card(590, 2, -1, -1, 1234567899, false, 12, 3, 3));
             line3CardList.Add(new Card(74002, 320, 02, 18, 1234567890, true, 50, 3, 3));
-            offLine3CardList.Add(new Card(830, 10, -1, -1, 1234567869, false, 50, 3, 3));
-            offLine3CardList.Add(new Card(860, 20, -1, -1, 1234564899, false, 50, 3, 3));
-            offLine3CardList.Add(new Card(890, 27, -1, -1, 1234367899, false, 50, 3, 3));
-            offLine3CardList.Add(new Card(990, 38, -1, -1, 1234557899, false, 50, 3, 3));
-            offLine3CardList.Add(new Card(1070, 42, -1, -1, 1233567899, false, 50, 3, 3));
-            offLine3CardList.Add(new Card(1101, 56, -1, -1, 1232201899, false, 50, 3, 3));
-            offLine3CardList.Add(new Card(1235, 63, -1, -1, 1235877899, false, 50, 3, 3));
-            offLine3CardList.Add(new Card(1700, 102, -1, -1, 1231037899, false, 50, 3, 3));
-            offLine3CardList.Add(new Card(1800, 200, -1, -1, 1232877899, false, 50, 3, 3));
-            offLine3CardList.Add(new Card(2105, 359, -1, -1, 1232599099, false, 50, 3, 3));
-            offLine3CardList.Add(new Card(3000, 720, -1, -1, 1234728499, false, 50, 3, 3));
+            offLine3CardList.Add(new Card(830, 10, -1, -1, 1234567869, false, 11, 3, 3));
+            offLine3CardList.Add(new Card(860, 20, -1, -1, 1234564899, false, 8, 3, 3));
+            offLine3CardList.Add(new Card(890, 27, -1, -1, 1234367899, false, 26, 3, 3));
+            offLine3CardList.Add(new Card(990, 38, -1, -1, 1234557899, false, 45, 3, 3));
+            offLine3CardList.Add(new Card(1070, 42, -1, -1, 1233567899, false, 72, 3, 3));
+            offLine3CardList.Add(new Card(1101, 56, -1, -1, 1232201899, false, 34, 3, 3));
+            offLine3CardList.Add(new Card(1235, 63, -1, -1, 1235877899, false, 52, 3, 3));
+            offLine3CardList.Add(new Card(1700, 102, -1, -1, 1231037899, false, 101, 3, 3));
+            offLine3CardList.Add(new Card(1800, 200, -1, -1, 1232877899, false, 123, 3, 3));
+            offLine3CardList.Add(new Card(2105, 359, -1, -1, 1232599099, false, 142, 3, 3));
+            offLine3CardList.Add(new Card(3000, 720, -1, -1, 1234728499, false, 162, 3, 3));
             form.add_lines(line1CardList, offLine1CardList, line2CardList, offLine2CardList, line3CardList, offLine3CardList);
 
         }
@@ -145,8 +145,8 @@ namespace Bosch_Changeover_App
                     {
                         if (Math.Abs(LINE1_STATIONS[j]) == Math.Abs(lastStat))
                         {
-                            card.setStations(LINE1_STATIONS[j + 1]);
-                            card.setEndStation(LINE1_STATIONS[j + 2]);
+                            card.setStations(Math.Abs(LINE1_STATIONS[j + 1]));
+                            card.setEndStation(Math.Abs(LINE1_STATIONS[j + 2]));
                         }
                     }
                 }
@@ -181,8 +181,8 @@ namespace Bosch_Changeover_App
                     {
                         if (Math.Abs(LINE2_STATIONS[j]) == Math.Abs(lastStat))
                         {
-                            card.setStations(LINE2_STATIONS[j + 1]);
-                            card.setEndStation(LINE2_STATIONS[j + 2]);
+                            card.setStations(Math.Abs(LINE2_STATIONS[j + 1]));
+                            card.setEndStation(Math.Abs(LINE2_STATIONS[j + 2]));
                         }
                     }
                 }
@@ -216,8 +216,8 @@ namespace Bosch_Changeover_App
                     {
                         if (Math.Abs(LINE3_STATIONS[j]) == Math.Abs(lastStat))
                         {
-                            card.setStations(LINE3_STATIONS[j + 1]);
-                            card.setEndStation(LINE3_STATIONS[j + 2]);
+                            card.setStations(Math.Abs(LINE3_STATIONS[j + 1]));
+                            card.setEndStation(Math.Abs(LINE3_STATIONS[j + 2]));
                         }
                     }
 
