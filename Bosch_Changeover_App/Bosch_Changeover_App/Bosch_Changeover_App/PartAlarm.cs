@@ -37,28 +37,49 @@ namespace Bosch_Changeover_App
         {
             InitializeComponent();
 
+            if(c == null)
+            {
+                partType = partT;
+                lineNumber = ln;
+                station = stat;
+                alarmT = alarmTime; //a string that is number ofminutes before goes on line to sound the alarm
+                desktopNot = desktopNotificationInput;
+                emailNot = emailNotificationInput;
+                countDownSecs = N; //not sure what this is used for
 
-            partType = partT;
-            lineNumber = ln;
-            station = stat;
-            alarmT = alarmTime; //a string that is number ofminutes before goes on line to sound the alarm
-            desktopNot = desktopNotificationInput;
-            emailNot = emailNotificationInput;
-            countDownSecs = N; //not sure what this is used for
+                partTypeLabel.Text = partT;
+                timeRemaining.Text = "Not in Queue";
 
-            partTypeLabel.Text = partT;
-            timeRemaining.Text = "00:00:00";
+                lineNum.Text = lineNumber;
+                emailNotification.Checked = emailNotificationInput;
 
-            lineNum.Text = lineNumber;
-            emailNotification.Checked = emailNotificationInput;
+            }
+            else
+            {
+                partType = partT;
+                lineNumber = ln;
+                station = stat;
+                alarmT = alarmTime; //a string that is number ofminutes before goes on line to sound the alarm
+                desktopNot = desktopNotificationInput;
+                emailNot = emailNotificationInput;
+                countDownSecs = N; //not sure what this is used for
+
+                partTypeLabel.Text = partT;
+                timeRemaining.Text = "00:00:00";
+
+                lineNum.Text = lineNumber;
+                emailNotification.Checked = emailNotificationInput;
 
 
-            currentTime = DateTime.Now - DateTime.Now.Date;
-            userTimer = new TimeSpan(0, 0, 0);
-            //timer = new System.Timers.Timer();
-            //timer.Interval = 1000;
-            //timer.Elapsed += Timer_Elapsed;
-            part = c;
+                currentTime = DateTime.Now - DateTime.Now.Date;
+                userTimer = new TimeSpan(0, 0, 0);
+                //timer = new System.Timers.Timer();
+                //timer.Interval = 1000;
+                //timer.Elapsed += Timer_Elapsed;
+                part = c;
+            }
+
+
 
         }
 
