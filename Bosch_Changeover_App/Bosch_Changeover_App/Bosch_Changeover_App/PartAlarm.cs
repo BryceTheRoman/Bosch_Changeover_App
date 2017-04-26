@@ -120,6 +120,9 @@ namespace Bosch_Changeover_App
             //if (userTimer.Equals(currentTime))
             if (userTimer.Equals(new TimeSpan(0, 0, 0)))
             {
+                Form1 parentForm = (Form1)this.FindForm();
+                parentForm.removeAlarm(this);
+
                 //timer.Stop();
                 try
                 {
@@ -134,6 +137,7 @@ namespace Bosch_Changeover_App
                     MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 }
+                sendEmail();
             }
         }
 
@@ -190,7 +194,6 @@ namespace Bosch_Changeover_App
             SmtpClient client;
             MailMessage msg;
             string emailRecipient = "bosch.changeover@gmail.com";
-
             login = new NetworkCredential("bosch.changeover", "boschcharleston");
             client = new SmtpClient("smtp.gmail.com");
             client.Port = 587;
@@ -198,7 +201,7 @@ namespace Bosch_Changeover_App
             client.Timeout = 10000;
             client.DeliveryMethod = SmtpDeliveryMethod.Network;
             client.Credentials = login;
-            msg = new MailMessage("bosch.changeover@gmail.com", emailRecipient, "Part " + this.partType + " is Entering Line " + this.lineNumber, "Email send test from visual studio");
+            msg = new MailMessage("bosch.changeover@gmail.com", emailRecipient, "Part " + this.partType + " is Entering Line " + this.lineNumber, "Part " + this.partType + " is Entering Line " + this.lineNumber);
             msg.BodyEncoding = UTF8Encoding.UTF8;
             msg.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
 
