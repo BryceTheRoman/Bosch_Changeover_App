@@ -167,15 +167,12 @@ namespace Bosch_Changeover_App
                     this.line3CardList.Add(card);
 
                 }
+
             }
 
         }
 
 
-  //      public Card randomCardGenerator(int timeCrank)
-   //     {
-            
-     //   }
 
 
         //timer that controls all updates for the program!
