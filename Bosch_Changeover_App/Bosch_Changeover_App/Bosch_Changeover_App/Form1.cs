@@ -93,8 +93,9 @@ namespace Bosch_Changeover_App
             Button Lbtn = sender as Button;
             String partNum = Lbtn.Text.Substring(0, 10);
             popup = new CreateAlarmPopup(this);
-            popup.ShowDialog();
             popup.createAlarmFromLineButton(information.getCard(partNum, line));
+            popup.ShowDialog();
+
 
 /*            PartAlarm pa1 = new PartAlarm();
             int numAlarms = partAlarmsPanel.Controls.Count;
