@@ -38,9 +38,10 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
+            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox1.Location = new System.Drawing.Point(39, 107);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(159, 17);
+            this.checkBox1.Size = new System.Drawing.Size(197, 20);
             this.checkBox1.TabIndex = 0;
             this.checkBox1.Text = "Send Alarm Email by Default";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -48,18 +49,20 @@
             // 
             // emailAddressTextBox
             // 
-            this.emailAddressTextBox.Location = new System.Drawing.Point(198, 52);
+            this.emailAddressTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.emailAddressTextBox.Location = new System.Drawing.Point(266, 52);
             this.emailAddressTextBox.Name = "emailAddressTextBox";
-            this.emailAddressTextBox.Size = new System.Drawing.Size(262, 20);
+            this.emailAddressTextBox.Size = new System.Drawing.Size(262, 22);
             this.emailAddressTextBox.TabIndex = 1;
             this.emailAddressTextBox.Text = "someone@us.bosch.com";
             // 
             // emailAddressLabel
             // 
             this.emailAddressLabel.AutoSize = true;
+            this.emailAddressLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.emailAddressLabel.Location = new System.Drawing.Point(37, 55);
             this.emailAddressLabel.Name = "emailAddressLabel";
-            this.emailAddressLabel.Size = new System.Drawing.Size(155, 13);
+            this.emailAddressLabel.Size = new System.Drawing.Size(195, 16);
             this.emailAddressLabel.TabIndex = 2;
             this.emailAddressLabel.Text = "Email To Recieve Notifications:";
             // 
@@ -106,7 +109,7 @@
             this.Controls.Add(this.emailAddressTextBox);
             this.Controls.Add(this.checkBox1);
             this.Name = "SettingsUserControl";
-            this.Size = new System.Drawing.Size(494, 458);
+            this.Size = new System.Drawing.Size(641, 458);
             this.ResumeLayout(false);
             this.PerformLayout();
 

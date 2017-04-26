@@ -120,8 +120,8 @@ namespace Bosch_Changeover_App
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            timer1 = partAlarmTimer;
-            partAlarmTimer.Start();
+    //        timer1 = partAlarmTimer;
+    //        partAlarmTimer.Start();
         }
 
 

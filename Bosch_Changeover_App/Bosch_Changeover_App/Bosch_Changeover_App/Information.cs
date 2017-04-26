@@ -74,25 +74,26 @@ namespace Bosch_Changeover_App
 
             // string directoryPath = "@blah blah blah Bosch Directory Location";
 
-            offLine1CardList.Add(new Card(597, 324, -1, -1, 1234567899, false, 50, 3, 1));
-            line1CardList.Add(new Card(74000, 320, 02, 18, 1234567890, true, 50, 3, 1));
-            offLine1CardList.Add(new Card(595, 324, -1, -1, 1234567889, false, 50, 3, 1));
-            line1CardList.Add(new Card(74001, 320, 02, 18, 1234567880, true, 50, 3, 1));
+            offLine1CardList.Add(new Card(597, 322, -1, -1, 1234567899, false, 50, 3, 1));
+            line1CardList.Add(new Card(542, 322, 02, 18, 1234567890, true, 50, 3, 1));
+            offLine1CardList.Add(new Card(691, 524, -1, -1, 1234567889, false, 50, 3, 1));
+            line1CardList.Add(new Card(741, 1320, 19, 74, 1234567880, true, 50, 3, 1));
 
-            offLine2CardList.Add(new Card(5937, 4324, -1, -1, 1234567899, false, 50, 3, 2));
-            line2CardList.Add(new Card(74050, 620, 02, 18, 1234567880, true, 50, 3, 2));
-            offLine2CardList.Add(new Card(999, 329, -1, -1, 1234567889, false, 50, 3, 2));
-            line2CardList.Add(new Card(74009, 326, 02, 18, 1234567890, true, 50, 3, 2));
-            offLine2CardList.Add(new Card(896, 328, -1, -1, 1234567897, false, 50, 3, 2));
-            line2CardList.Add(new Card(74008, 320, 02, 18, 1234567780, true, 50, 3, 2));
-            offLine2CardList.Add(new Card(320, 324, -1, -1, 1234557789, false, 50, 3, 2));
-            offLine2CardList.Add(new Card(635, 222, -1, -1, 1244567789, false, 50, 3, 2));
-            offLine2CardList.Add(new Card(780, 123, -1, -1, 1334567789, false, 50, 3, 2));
-            offLine2CardList.Add(new Card(952, 624, -1, -1, 1244355789, false, 50, 3, 2));
-            offLine2CardList.Add(new Card(1003, 527, -1, -1, 1222257789, false, 50, 3, 2));
+            offLine2CardList.Add(new Card(537, 224, -1, -1, 1234567899, false, 50, 3, 2));
+            line2CardList.Add(new Card(74050, 320, 02, 18, 1234567880, true, 50, 3, 2));
+            offLine2CardList.Add(new Card(699, 429, -1, -1, 1234567889, false, 50, 3, 2));
+            line2CardList.Add(new Card(74009, 526, 18, 22, 1234567890, true, 50, 3, 2));
+            offLine2CardList.Add(new Card(896, 628, -1, -1, 1234567897, false, 50, 3, 2));
+            line2CardList.Add(new Card(74008, 720, 22, 74, 1234567780, true, 50, 3, 2));
+            offLine2CardList.Add(new Card(1320, 824, -1, -1, 1234557789, false, 50, 3, 2));
+            offLine2CardList.Add(new Card(1635, 922, -1, -1, 1244567789, false, 50, 3, 2));
+            offLine2CardList.Add(new Card(1780, 1113, -1, -1, 1334567789, false, 50, 3, 2));
+            offLine2CardList.Add(new Card(19152, 1224, -1, -1, 1244355789, false, 50, 3, 2));
+            offLine2CardList.Add(new Card(111003, 12527, -1, -1, 1222257789, false, 50, 3, 2));
 
             offLine3CardList.Add(new Card(590, 324, -1, -1, 1234567899, false, 50, 3, 3));
-            line3CardList.Add(new Card(74002, 320, 02, 18, 1234567890, true, 50, 3, 3));
+            line3CardList.Add(new Card(742, 320, 02, 74, 1234567890, true, 50, 3, 3));
+            Debug.WriteLine("information");
             form.add_lines(line1CardList, offLine1CardList, line2CardList, offLine2CardList, line3CardList, offLine3CardList);
 
         }
@@ -411,7 +412,7 @@ namespace Bosch_Changeover_App
                 //card.setEndStation();
 
 
-                tempCard.Add(card);
+    //            tempCard.Add(card);
 
 
 
