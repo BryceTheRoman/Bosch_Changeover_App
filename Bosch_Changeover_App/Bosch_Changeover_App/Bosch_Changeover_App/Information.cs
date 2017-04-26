@@ -170,11 +170,6 @@ namespace Bosch_Changeover_App
         }
 
 
-        public Card randomCardGenerator(int 10, List<Card> line)
-        {
-            Card finishedCard = new Card();
-            return finishedCard;
-        }
 
 
         //timer that controls all updates for the program!
