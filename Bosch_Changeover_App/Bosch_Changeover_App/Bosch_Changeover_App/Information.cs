@@ -102,33 +102,76 @@ namespace Bosch_Changeover_App
             for (int i = 0; i < this.line1CardList.Count; i++)
             {
                 this.line1CardList[i].updateCard(TIMER_INTERVAL / 1000);
+                int timeOff = this.line1CardList[i].getTimeToFinish();
+                if(timeOff <= 0)
+                {
+                    this.line1CardList.RemoveAt(i);
+                }
+                
             }
             for (int i = 0; i < this.offLine1CardList.Count; i++)
             {
                 this.offLine1CardList[i].updateCard(TIMER_INTERVAL / 1000);
+                int timeRem = this.offLine1CardList[i].getTimeRemaining();
+                if (timeRem <= 0)
+                {
+                    Card card = this.offLine1CardList[i];
+                    this.offLine1CardList.RemoveAt(i);
+                    this.line1CardList.Add(card);
+
+                }
             }
 
             for (int i = 0; i < this.line2CardList.Count; i++)
             {
                 this.line2CardList[i].updateCard(TIMER_INTERVAL / 1000);
+                int timeOff = this.line2CardList[i].getTimeToFinish();
+                if (timeOff <= 0)
+                {
+                    this.line2CardList.RemoveAt(i);
+                }
             }
             for (int i = 0; i < this.offLine2CardList.Count; i++)
             {
                 this.offLine2CardList[i].updateCard(TIMER_INTERVAL / 1000);
+                int timeRem = this.offLine2CardList[i].getTimeRemaining();
+                if (timeRem <= 0)
+                {
+                    Card card = this.offLine2CardList[i];
+                    this.offLine2CardList.RemoveAt(i);
+                    this.line2CardList.Add(card);
+
+                }
             }
 
             for (int i = 0; i < this.line3CardList.Count; i++)
             {
                 this.line3CardList[i].updateCard(TIMER_INTERVAL / 1000);
+                int timeOff = this.line3CardList[i].getTimeToFinish();
+                if (timeOff <= 0)
+                {
+                    this.line3CardList.RemoveAt(i);
+                }
             }
             for (int i = 0; i < this.offLine3CardList.Count; i++)
             {
                 this.offLine3CardList[i].updateCard(TIMER_INTERVAL / 1000);
+                int timeRem = this.offLine3CardList[i].getTimeRemaining();
+                if (timeRem <= 0)
+                {
+                    Card card = this.offLine3CardList[i];
+                    this.offLine3CardList.RemoveAt(i);
+                    this.line3CardList.Add(card);
+
+                }
             }
 
+        }
 
 
-
+        public Card randomCardGenerator(int timeCrank)
+        {
+            
         }
 
 
