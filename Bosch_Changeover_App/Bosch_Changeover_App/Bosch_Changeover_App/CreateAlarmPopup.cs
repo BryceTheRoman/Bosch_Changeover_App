@@ -43,8 +43,9 @@ namespace Bosch_Changeover_App
         {
 
             partTypeTextBox.Text = partType.getPartType().ToString();
+            Debug.WriteLine(partType.getLine().ToString());
             lineComboBox.SelectedIndex = lineComboBox.FindStringExact( partType.getLine().ToString() );
-            stationComboBox.SelectedIndex = stationComboBox.FindStringExact( partType.getStartStation().ToString() + "-" + partType.getEndStation().ToString() );
+      //      stationComboBox.SelectedIndex = stationComboBox.FindStringExact( partType.getStartStation().ToString());
         }
 
 

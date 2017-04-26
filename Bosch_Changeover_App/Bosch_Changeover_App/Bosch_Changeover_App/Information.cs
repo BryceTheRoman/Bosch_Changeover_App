@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.OleDb;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -73,8 +74,25 @@ namespace Bosch_Changeover_App
 
             // string directoryPath = "@blah blah blah Bosch Directory Location";
 
-            offLine1CardList.Add(new Card(590, 324, -1, -1, 1234567899, false, 50, 3, 1));
+            offLine1CardList.Add(new Card(597, 324, -1, -1, 1234567899, false, 50, 3, 1));
             line1CardList.Add(new Card(74000, 320, 02, 18, 1234567890, true, 50, 3, 1));
+            offLine1CardList.Add(new Card(595, 324, -1, -1, 1234567889, false, 50, 3, 1));
+            line1CardList.Add(new Card(74001, 320, 02, 18, 1234567880, true, 50, 3, 1));
+
+            offLine2CardList.Add(new Card(5937, 4324, -1, -1, 1234567899, false, 50, 3, 2));
+            line2CardList.Add(new Card(74050, 620, 02, 18, 1234567880, true, 50, 3, 2));
+            offLine2CardList.Add(new Card(999, 329, -1, -1, 1234567889, false, 50, 3, 2));
+            line2CardList.Add(new Card(74009, 326, 02, 18, 1234567890, true, 50, 3, 2));
+            offLine2CardList.Add(new Card(896, 328, -1, -1, 1234567897, false, 50, 3, 2));
+            line2CardList.Add(new Card(74008, 320, 02, 18, 1234567780, true, 50, 3, 2));
+            offLine2CardList.Add(new Card(320, 324, -1, -1, 1234557789, false, 50, 3, 2));
+            offLine2CardList.Add(new Card(635, 222, -1, -1, 1244567789, false, 50, 3, 2));
+            offLine2CardList.Add(new Card(780, 123, -1, -1, 1334567789, false, 50, 3, 2));
+            offLine2CardList.Add(new Card(952, 624, -1, -1, 1244355789, false, 50, 3, 2));
+            offLine2CardList.Add(new Card(1003, 527, -1, -1, 1222257789, false, 50, 3, 2));
+
+            offLine3CardList.Add(new Card(590, 324, -1, -1, 1234567899, false, 50, 3, 3));
+            line3CardList.Add(new Card(74002, 320, 02, 18, 1234567890, true, 50, 3, 3));
             form.add_lines(line1CardList, offLine1CardList, line2CardList, offLine2CardList, line3CardList, offLine3CardList);
         
     }
@@ -89,6 +107,28 @@ namespace Bosch_Changeover_App
             {
                 this.offLine1CardList[i].updateCard(TIMER_INTERVAL/1000);
             }
+
+            for (int i = 0; i < this.line2CardList.Count; i++)
+            {
+                this.line2CardList[i].updateCard(TIMER_INTERVAL / 1000);
+            }
+            for (int i = 0; i < this.offLine2CardList.Count; i++)
+            {
+                this.offLine2CardList[i].updateCard(TIMER_INTERVAL / 1000);
+            }
+
+            for (int i = 0; i < this.line3CardList.Count; i++)
+            {
+                this.line3CardList[i].updateCard(TIMER_INTERVAL / 1000);
+            }
+            for (int i = 0; i < this.offLine3CardList.Count; i++)
+            {
+                this.offLine3CardList[i].updateCard(TIMER_INTERVAL / 1000);
+            }
+
+
+
+
         }
 
 
@@ -378,32 +418,32 @@ namespace Bosch_Changeover_App
             if (line == 1)
             {
                 //look through line lists to get the part type card
-                for (int i = 0; i < line1CardList.Count; i++)
+                for (int i = 0; i < offLine1CardList.Count; i++)
                 {
-                    if (line1CardList[i].getPartType().ToString() == partType)
+                    if (offLine1CardList[i].getPartType().ToString() == partType)
                     {
-                        return line1CardList[i];
+                        return offLine1CardList[i];
                     }
                 }
             }
 
             else if (line == 2)
             {
-                for (int i = 0; i < line2CardList.Count; i++)
+                for (int i = 0; i < offLine2CardList.Count; i++)
                 {
-                    if (line2CardList[i].getPartType().ToString() == partType)
+                    if (offLine2CardList[i].getPartType().ToString() == partType)
                     {
-                        return line2CardList[i];
+                        return offLine2CardList[i];
                     }
                 }
             }
             else if (line == 3)
             {
-                for (int i = 0; i < line3CardList.Count; i++)
+                for (int i = 0; i < offLine3CardList.Count; i++)
                 {
-                    if (line3CardList[i].getPartType().ToString() == partType)
+                    if (offLine3CardList[i].getPartType().ToString() == partType)
                     {
-                        return line3CardList[i];
+                        return offLine3CardList[i];
                     }
                 }
             }
