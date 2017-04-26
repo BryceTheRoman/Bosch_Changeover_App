@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -91,15 +90,11 @@ namespace Bosch_Changeover_App
 
         public void linebtn_Click(object sender, EventArgs e, int line)
         {
-            Debug.WriteLine("click");
             Button Lbtn = sender as Button;
             String partNum = Lbtn.Text.Substring(0, 10);
             popup = new CreateAlarmPopup(this);
-            popup.createAlarmFromLineButton(information.getCard(partNum, line));
             popup.ShowDialog();
-            Debug.WriteLine(partNum);
-            Debug.WriteLine(line);
-
+            popup.createAlarmFromLineButton(information.getCard(partNum, line));
 
 /*            PartAlarm pa1 = new PartAlarm();
             int numAlarms = partAlarmsPanel.Controls.Count;
