@@ -54,7 +54,7 @@
             this.emailAddressTextBox.Name = "emailAddressTextBox";
             this.emailAddressTextBox.Size = new System.Drawing.Size(262, 22);
             this.emailAddressTextBox.TabIndex = 1;
-            this.emailAddressTextBox.Text = "someone@us.bosch.com";
+            this.emailAddressTextBox.Text = "bosch.changeover@gmail.com";
             // 
             // emailAddressLabel
             // 
