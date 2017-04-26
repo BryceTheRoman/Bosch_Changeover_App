@@ -164,14 +164,16 @@ namespace Bosch_Changeover_App
                     this.line3CardList.Add(card);
 
                 }
+
             }
 
         }
 
 
-        public Card randomCardGenerator(int timeCrank)
+        public Card randomCardGenerator(int 10, List<Card> line)
         {
-            
+            Card finishedCard = new Card();
+            return finishedCard;
         }
 
 
