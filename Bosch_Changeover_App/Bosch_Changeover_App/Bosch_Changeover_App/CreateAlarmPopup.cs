@@ -16,7 +16,7 @@ namespace Bosch_Changeover_App
     public partial class CreateAlarmPopup : Form
     {
         Form1 parentForm;
-        
+
         Boolean editing = false;
         string selectedTime;
         string selectedMessage;
@@ -43,8 +43,9 @@ namespace Bosch_Changeover_App
         {
 
             partTypeTextBox.Text = partType.getPartType().ToString();
-            lineComboBox.SelectedIndex = lineComboBox.FindStringExact( partType.getLine().ToString() );
-            stationComboBox.SelectedIndex = stationComboBox.FindStringExact( partType.getStartStation().ToString() + "-" + partType.getEndStation().ToString() );
+            Debug.WriteLine(partType.getLine().ToString());
+            lineComboBox.SelectedIndex = lineComboBox.FindStringExact(partType.getLine().ToString());
+            //      stationComboBox.SelectedIndex = stationComboBox.FindStringExact( partType.getStartStation().ToString());
         }
 
 
@@ -52,8 +53,8 @@ namespace Bosch_Changeover_App
         {
             editing = true;
             partTypeTextBox.Text = partType;
-            lineComboBox.SelectedIndex = lineComboBox.FindStringExact( lineNum );
-            stationComboBox.SelectedIndex = stationComboBox.FindStringExact( station );
+            lineComboBox.SelectedIndex = lineComboBox.FindStringExact(lineNum);
+            stationComboBox.SelectedIndex = stationComboBox.FindStringExact(station);
             if (!alarmTimeComboBox.Items.Contains(alarmTime))
             {
                 alarmTimeComboBox.SelectedItem = "Custom";
@@ -65,7 +66,7 @@ namespace Bosch_Changeover_App
 
         private void CreateAlarmPopup_Load(object sender, EventArgs e)
         {
-          
+
         }
 
         public void update_currentTime()
@@ -97,8 +98,8 @@ namespace Bosch_Changeover_App
             int i;
             int s;
             int l = -1;
-           
-            
+
+
             if (!partTypeTextBox.Text.All(char.IsDigit) || partTypeTextBox.Text.Length != 10)
             {
                 MessageBox.Show("Part Type must be a 10 digit number.");
@@ -108,7 +109,7 @@ namespace Bosch_Changeover_App
             {
                 MessageBox.Show("Station must be an integer.");
             }
-            else if (!int.TryParse(lineComboBox.Text, out l) || !( l == 1 || l == 2 || l == 3))
+            else if (!int.TryParse(lineComboBox.Text, out l) || !(l == 1 || l == 2 || l == 3))
             {
                 MessageBox.Show("Line must be either 1, 2, or 3.");
             }
@@ -134,7 +135,7 @@ namespace Bosch_Changeover_App
                 this.Close();
             }
 
-       
+
         }
 
         public void Resume()
@@ -186,7 +187,7 @@ namespace Bosch_Changeover_App
 
         private void SaveEditing(object sender, FormClosedEventArgs e)
         {
-            
+
             if (editing)
             {
                 parentForm.saveButtonClicked();
@@ -196,10 +197,10 @@ namespace Bosch_Changeover_App
 
         public void timer1_Tick(object sender, EventArgs e)
         {
-            
+
             if (alarmSet)
             {
-                if(currentTimeLabel.Text == selectedTime)
+                if (currentTimeLabel.Text == selectedTime)
                 {
                     alarmSet = false;
 
