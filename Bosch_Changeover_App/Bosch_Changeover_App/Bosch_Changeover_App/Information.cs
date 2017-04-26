@@ -74,7 +74,7 @@ namespace Bosch_Changeover_App
 
             // string directoryPath = "@blah blah blah Bosch Directory Location";
 
-            offLine1CardList.Add(new Card(597, 324, -1, -1, 1234567899, false, 50, 3, 1));
+            offLine1CardList.Add(new Card(597, 74, -1, -1, 1234567899, false, 50, 3, 1));
             line1CardList.Add(new Card(74000, 320, 02, 18, 1234567890, true, 50, 3, 1));
             offLine1CardList.Add(new Card(595, 324, -1, -1, 1234567889, false, 50, 3, 1));
             line1CardList.Add(new Card(74001, 320, 02, 18, 1234567880, true, 50, 3, 1));
