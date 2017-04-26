@@ -24,7 +24,7 @@ namespace Bosch_Changeover_App
             lluc = new LinesLayoutUserControl(mainPanel);
             mainPanel.Controls.Add(SettingsUserControl.Instance);
             SettingsUserControl.Instance.Dock = DockStyle.Fill;
-            information= new Information(this);
+            information = new Information(this);
 
 
             mainPanel.Controls.Add(lluc);
@@ -47,7 +47,8 @@ namespace Bosch_Changeover_App
 
         public void update_partAlarms()
         {
-            foreach (PartAlarm pa in partAlarmsPanel.Controls){
+            foreach (PartAlarm pa in partAlarmsPanel.Controls)
+            {
                 pa.update_alarm();
             }
         }
@@ -68,7 +69,7 @@ namespace Bosch_Changeover_App
         {
             lluc.updateAll(line1List, offline1List, line2List, offline2List, line3List, offline3List);
         }
- 
+
 
         private void selectionLabel_Click(object sender, EventArgs e)
         {
@@ -81,7 +82,7 @@ namespace Bosch_Changeover_App
             SettingsUserControl.Instance.BringToFront();
         }
 
-        public void editAlarm(String partType, String lineNum, String station, String alarmTime, Boolean desktopNotification, Boolean emailNotification)
+        public void editAlarm(string partType, string lineNum, string station, string alarmTime, bool desktopNotification, bool emailNotification)
         {
             popup = new CreateAlarmPopup(this);
             popup.editAlarm(partType, lineNum, station, alarmTime, desktopNotification, emailNotification);
@@ -91,17 +92,17 @@ namespace Bosch_Changeover_App
         public void linebtn_Click(object sender, EventArgs e, int line)
         {
             Button Lbtn = sender as Button;
-            String partNum = Lbtn.Text.Substring(0, 10);
+            string partNum = Lbtn.Text.Substring(0, 10);
             popup = new CreateAlarmPopup(this);
             popup.createAlarmFromLineButton(information.getCard(partNum, line));
             popup.ShowDialog();
 
 
-/*            PartAlarm pa1 = new PartAlarm();
-            int numAlarms = partAlarmsPanel.Controls.Count;
-            int locY = numAlarms * pa1.Height + 10 * numAlarms;
-            pa1.Location = new Point(partAlarmsPanel.Location.X + partAlarmsPanel.Width / 2 - pa1.Width / 2, locY);
-            partAlarmsPanel.Controls.Add(pa1);*/
+            /*            PartAlarm pa1 = new PartAlarm();
+                        int numAlarms = partAlarmsPanel.Controls.Count;
+                        int locY = numAlarms * pa1.Height + 10 * numAlarms;
+                        pa1.Location = new Point(partAlarmsPanel.Location.X + partAlarmsPanel.Width / 2 - pa1.Width / 2, locY);
+                        partAlarmsPanel.Controls.Add(pa1);*/
 
 
         }
@@ -120,17 +121,17 @@ namespace Bosch_Changeover_App
 
         public void saveButtonClicked()
         {
-            String partType = popup.getPartType();
-            String lineNum = popup.getLine();
-            String station = popup.getStation();
-            String alarmTime = popup.getAlarmTime();
-            Boolean desktopNotification = popup.getDesktopNotification();
-            Boolean emailNotification = popup.getEmailNotification();
+            string partType = popup.getPartType();
+            string lineNum = popup.getLine();
+            string station = popup.getStation();
+            string alarmTime = popup.getAlarmTime();
+            bool desktopNotification = popup.getDesktopNotification();
+            bool emailNotification = popup.getEmailNotification();
             int n = popup.getN();
             addAlarmtoPanel(partType, lineNum, station, alarmTime, desktopNotification, emailNotification, n, null);
         }
 
-        public void addAlarmtoPanel(String partType, String lineNum, String station, String alarmTime, Boolean desktopNotification, Boolean emailNotification, int n, Timer timer1)
+        public void addAlarmtoPanel(string partType, string lineNum, string station, string alarmTime, bool desktopNotification, bool emailNotification, int n, Timer timer1)
         {
 
             Card c = information.getCard(partType, Int32.Parse(lineNum));
@@ -140,6 +141,8 @@ namespace Bosch_Changeover_App
             pa1.Location = new Point(partAlarmsPanel.Location.X + partAlarmsPanel.Width / 2 - pa1.Width / 2, locY);
             partAlarmsPanel.Controls.Add(pa1);
             information.addAlarm(pa1);
+            pa1.update_alarm(); //gotta set the timer
+            pa1.startTimer(); //gotta start the timer
         }
 
         public void removeAlarm(PartAlarm pa)
@@ -159,3 +162,4 @@ namespace Bosch_Changeover_App
 
     }
 }
+

@@ -136,9 +136,9 @@ namespace Bosch_Changeover_App
         void timerEvent(Object sender, EventArgs e)
         {
             form.update_currentTime();
-            for (int i = 0; i < this.alarms.Count; i++)
+            for (int i = 0; i < alarms.Count; i++)
             {
-
+                alarms[i].countDown();
             }
             //read information from files
             updateCardLists();
@@ -184,7 +184,7 @@ namespace Bosch_Changeover_App
         }
 
 
-        public void initializeAllStations(String directoryPath)
+        public void initializeAllStations(string directoryPath)
         {
 
             string[] files = System.IO.Directory.GetFiles(directoryPath, "*ProfileHandler.cs", System.IO.SearchOption.TopDirectoryOnly);
@@ -211,7 +211,7 @@ namespace Bosch_Changeover_App
         }
 
 
-        public void updateAllStations(String directoryPath)   //each timer tick update all stations and see what parts are now held within
+        public void updateAllStations(string directoryPath)   //each timer tick update all stations and see what parts are now held within
         {
             string[] files = System.IO.Directory.GetFiles(directoryPath, "*ProfileHandler.cs", System.IO.SearchOption.TopDirectoryOnly);
             foreach (string file in files)
@@ -289,7 +289,7 @@ namespace Bosch_Changeover_App
             }
             return requiredStation;
         }
-        public Station addStation(String filename)
+        public Station addStation(string filename)
         {
 
             int counter = 0;
@@ -396,7 +396,7 @@ namespace Bosch_Changeover_App
                 }
 
 
-               // card.setStations();
+                // card.setStations();
                 foreach (Station station in line)
                 {
                     int[] tempPoss = possibleStations[lineNumbForPart - 1];
@@ -411,7 +411,7 @@ namespace Bosch_Changeover_App
                 //card.setEndStation();
 
 
-                tempCard.Add(card);
+                //tempCard.Add(card);
 
 
 
@@ -422,7 +422,7 @@ namespace Bosch_Changeover_App
         /*        public Card fillAllCards(List<Station> line)
                 {
                     int distinctCards = 0;
-                    List<String> disCards;
+                    List<string> disCards;
                     for (int i = 0; i < line.Capacity; i++)
                     {
                         if (disCards.Contains(Int32.Parse(line[i].getCurrentPart())))
@@ -446,7 +446,7 @@ namespace Bosch_Changeover_App
             return createdCard;
         }
 
-        public Card getCard(String partType, int line)
+        public Card getCard(string partType, int line)
         {
             if (line == 1)
             {
@@ -526,7 +526,7 @@ namespace Bosch_Changeover_App
         }
 
 
-        public static void main(String[] args)
+        public static void main(string[] args)
         {
 
         }

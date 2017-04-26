@@ -36,10 +36,10 @@
             this.partAlarmsPanel = new System.Windows.Forms.Panel();
             this.partAlarmsLabel = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.currentTimeLabel = new System.Windows.Forms.Label();
             this.pictureBoxSettings = new System.Windows.Forms.PictureBox();
             this.selectionLabel = new System.Windows.Forms.Label();
             this.mainPanel = new System.Windows.Forms.Panel();
-            this.currentTimeLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBosch)).BeginInit();
             this.panel2.SuspendLayout();
@@ -79,7 +79,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(261, 812);
+            this.panel2.Size = new System.Drawing.Size(261, 741);
             this.panel2.TabIndex = 4;
             // 
             // plusButton
@@ -123,8 +123,20 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(261, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1471, 72);
+            this.panel3.Size = new System.Drawing.Size(1095, 72);
             this.panel3.TabIndex = 5;
+            // 
+            // currentTimeLabel
+            // 
+            this.currentTimeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.currentTimeLabel.AutoSize = true;
+            this.currentTimeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.currentTimeLabel.ForeColor = System.Drawing.Color.White;
+            this.currentTimeLabel.Location = new System.Drawing.Point(831, 13);
+            this.currentTimeLabel.Name = "currentTimeLabel";
+            this.currentTimeLabel.Size = new System.Drawing.Size(178, 42);
+            this.currentTimeLabel.TabIndex = 2;
+            this.currentTimeLabel.Text = "00:00 PM";
             // 
             // pictureBoxSettings
             // 
@@ -132,7 +144,7 @@
             this.pictureBoxSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBoxSettings.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxSettings.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxSettings.Image")));
-            this.pictureBoxSettings.Location = new System.Drawing.Point(1417, 22);
+            this.pictureBoxSettings.Location = new System.Drawing.Point(1041, 22);
             this.pictureBoxSettings.Name = "pictureBoxSettings";
             this.pictureBoxSettings.Size = new System.Drawing.Size(27, 27);
             this.pictureBoxSettings.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -159,27 +171,15 @@
             this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainPanel.Location = new System.Drawing.Point(261, 72);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(1471, 740);
+            this.mainPanel.Size = new System.Drawing.Size(1095, 669);
             this.mainPanel.TabIndex = 6;
-            // 
-            // currentTimeLabel
-            // 
-            this.currentTimeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.currentTimeLabel.AutoSize = true;
-            this.currentTimeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.currentTimeLabel.ForeColor = System.Drawing.Color.White;
-            this.currentTimeLabel.Location = new System.Drawing.Point(1207, 13);
-            this.currentTimeLabel.Name = "currentTimeLabel";
-            this.currentTimeLabel.Size = new System.Drawing.Size(178, 42);
-            this.currentTimeLabel.TabIndex = 2;
-            this.currentTimeLabel.Text = "00:00 PM";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.ClientSize = new System.Drawing.Size(1732, 812);
+            this.ClientSize = new System.Drawing.Size(1356, 741);
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);

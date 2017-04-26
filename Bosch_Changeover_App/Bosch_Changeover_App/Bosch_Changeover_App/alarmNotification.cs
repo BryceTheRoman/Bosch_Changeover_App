@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,27 +15,31 @@ namespace Bosch_Changeover_App
     {
         static CreateAlarmPopup form;
         string _message;
-        public alarmNotification(CreateAlarmPopup f)
+        SoundPlayer player;
+
+        public alarmNotification(SoundPlayer player)
         {
             InitializeComponent();
 
-            form = f;
+            //form = f;
+            this.player = player;
         }
 
         public void Message(string message)
         {
-           _message = message;
+            _message = message;
         }
 
         private void ringingForm_Shown(object sender, EventArgs e)
         {
-           messageLabel.Text = _message;
+            messageLabel.Text = _message;
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
+            player.Stop();
             this.Close();
-            form.Resume();
+            //form.Resume();
         }
 
         private void alarmNotification_Load(object sender, EventArgs e)
