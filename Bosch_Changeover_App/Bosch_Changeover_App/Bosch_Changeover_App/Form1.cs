@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -132,7 +133,7 @@ namespace Bosch_Changeover_App
 
         public void addAlarmtoPanel(String partType, String lineNum, String station, String alarmTime, Boolean desktopNotification, Boolean emailNotification, int n, Timer timer1)
         {
-
+            partAlarmsPanel.AutoScrollPosition = new Point(0, 0);
             Card c = information.getCard(partType, Int32.Parse(lineNum));
             PartAlarm pa1 = new PartAlarm(partType, lineNum, station, alarmTime, desktopNotification, emailNotification, n, c);
             int numAlarms = partAlarmsPanel.Controls.Count;
@@ -146,8 +147,32 @@ namespace Bosch_Changeover_App
         {
             partAlarmsPanel.Controls.Remove(pa);
             information.removeAlarm(pa);
+
+            List<PartAlarm> paList = new List<PartAlarm>();
+
+            foreach(PartAlarm p in partAlarmsPanel.Controls)
+            {
+                paList.Add(p);
+            }
+
+            foreach (PartAlarm p in paList)
+            {
+                partAlarmsPanel.Controls.Remove(p);
+            }
+
+            foreach (PartAlarm p in paList)
+            {
+                slideUpAlarm(p);
+            }
         }
 
+        private void slideUpAlarm(PartAlarm pa1)
+        {
+            int numAlarms = partAlarmsPanel.Controls.Count;
+            int locY = numAlarms * pa1.Height + 10 * numAlarms;
+            pa1.Location = new Point(partAlarmsPanel.Location.X + partAlarmsPanel.Width / 2 - pa1.Width / 2, locY);
+            partAlarmsPanel.Controls.Add(pa1);
+        }
 
 
         private void Form1_Resize(object sender, EventArgs e)

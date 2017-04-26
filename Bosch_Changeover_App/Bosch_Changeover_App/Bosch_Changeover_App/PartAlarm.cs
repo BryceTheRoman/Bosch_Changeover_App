@@ -59,7 +59,9 @@ namespace Bosch_Changeover_App
             timer.Interval = 1000;
             timer.Elapsed += Timer_Elapsed;
             this.part = part;
-
+            partTypeLabel.Text = partT;
+            lineNum.Text = ln;
+            emailNotification.Checked = emailNotificationInput;
         }
 
         public void startTimer()
@@ -120,8 +122,8 @@ namespace Bosch_Changeover_App
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            timer1 = partAlarmTimer;
-            partAlarmTimer.Start();
+    //        timer1 = partAlarmTimer;
+    //        partAlarmTimer.Start();
         }
 
 

@@ -276,6 +276,7 @@
             this.currentTimeLabel.Size = new System.Drawing.Size(178, 42);
             this.currentTimeLabel.TabIndex = 3;
             this.currentTimeLabel.Text = "00:00 PM";
+            this.currentTimeLabel.Visible = false;
             // 
             // selectionLabel
             // 
