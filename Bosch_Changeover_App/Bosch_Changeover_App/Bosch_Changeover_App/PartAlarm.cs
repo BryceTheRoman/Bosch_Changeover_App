@@ -37,6 +37,8 @@ namespace Bosch_Changeover_App
         {
             InitializeComponent();
 
+            
+
             if(c == null)
             {
                 partType = partT;
@@ -49,6 +51,8 @@ namespace Bosch_Changeover_App
 
                 partTypeLabel.Text = partT;
                 timeRemaining.Text = "Not in Queue";
+                timeRemaining.Font = new Font(timeRemaining.Font.FontFamily, 18);
+                numberOfParts.Text = "NA";
 
                 lineNum.Text = lineNumber;
                 emailNotification.Checked = emailNotificationInput;
@@ -63,6 +67,8 @@ namespace Bosch_Changeover_App
                 desktopNot = desktopNotificationInput;
                 emailNot = emailNotificationInput;
                 countDownSecs = N; //not sure what this is used for
+
+                numberOfParts.Text = c.getPartsRemaining().ToString();
 
                 partTypeLabel.Text = partT;
                 timeRemaining.Text = "00:00:00";

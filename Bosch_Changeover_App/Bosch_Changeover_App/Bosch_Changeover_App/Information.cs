@@ -169,10 +169,10 @@ namespace Bosch_Changeover_App
         }
 
 
-        public Card randomCardGenerator(int timeCrank)
-        {
+  //      public Card randomCardGenerator(int timeCrank)
+   //     {
             
-        }
+     //   }
 
 
         //timer that controls all updates for the program!
