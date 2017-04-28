@@ -140,7 +140,7 @@ namespace Bosch_Changeover_App
         {
             partAlarmsPanel.AutoScrollPosition = new Point(0, 0);
             Card c = information.getCard(partType, Int32.Parse(lineNum));
-            PartAlarm pa1 = new PartAlarm(partType, lineNum, station, alarmTime, desktopNotification, emailNotification, n, c);
+            PartAlarm pa1 = new PartAlarm(partType, lineNum, station, alarmTime, desktopNotification, emailNotification, n, c, this);
             int numAlarms = partAlarmsPanel.Controls.Count;
             int locY = numAlarms * pa1.Height + 10 * numAlarms;
             pa1.Location = new Point(partAlarmsPanel.Location.X + partAlarmsPanel.Width / 2 - pa1.Width / 2, locY);
@@ -192,7 +192,16 @@ namespace Bosch_Changeover_App
             partAlarmsPanel.Height = mainPanel.Height - 190;
         }
 
+        public string getUserEmail()
+        {
+            return this.information.getUserEmail();
+        }
 
+        public void saveSettingsInfo(bool sendDefault, string email)
+        {
+            information.setUserEmail(email);
+            information.setSendDefault(sendDefault);
+        }
     }
 }
 

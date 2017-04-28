@@ -28,6 +28,7 @@ namespace Bosch_Changeover_App
         public void Message(string message)
         {
             _message = message;
+            messageLabel.Text = message;
         }
 
         private void ringingForm_Shown(object sender, EventArgs e)

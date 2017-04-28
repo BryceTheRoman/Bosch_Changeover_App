@@ -32,12 +32,13 @@ namespace Bosch_Changeover_App
         private TimeSpan currentTime;
         private TimeSpan userTimer;
         private Card part;
+        private Form1 parentForm;
 
-        public PartAlarm(string partT, string ln, string stat, string alarmTime, bool desktopNotificationInput, bool emailNotificationInput, int N, Card c)
+        public PartAlarm(string partT, string ln, string stat, string alarmTime, bool desktopNotificationInput, bool emailNotificationInput, int N, Card c, Form1 pForm)
         {
             InitializeComponent();
 
-            
+            this.parentForm = pForm;
 
             if(c == null)
             {
@@ -48,6 +49,7 @@ namespace Bosch_Changeover_App
                 desktopNot = desktopNotificationInput;
                 emailNot = emailNotificationInput;
                 countDownSecs = N; //not sure what this is used for
+                this.part = c;
 
                 partTypeLabel.Text = partT;
                 timeRemaining.Text = "Not in Queue";
@@ -126,7 +128,7 @@ namespace Bosch_Changeover_App
             //if (userTimer.Equals(currentTime))
             if (userTimer.Equals(new TimeSpan(0, 0, 0)))
             {
-                Form1 parentForm = (Form1)this.FindForm();
+                //Form1 parentForm = (Form1)this.FindForm();
                 parentForm.removeAlarm(this);
 
                 //timer.Stop();
@@ -136,6 +138,7 @@ namespace Bosch_Changeover_App
                     player.SoundLocation = @"C:\WINDOWS\MEDIA\Alarm01.wav";
                     player.PlayLooping();
                     alarmNotification notifier = new alarmNotification(player);
+                    notifier.Message("Part "+this.partType+" will enter Line "+this.lineNumber+" in "+this.alarmT+" minutes.");
                     notifier.Show();
                 }
                 catch (Exception ex)
@@ -167,7 +170,7 @@ namespace Bosch_Changeover_App
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            Form1 parentForm = (Form1)this.FindForm();
+        //    Form1 parentForm = (Form1)this.FindForm();
             parentForm.removeAlarm(this);
             //((Panel)this.Parent).Controls.Remove(this);
         }
@@ -179,7 +182,7 @@ namespace Bosch_Changeover_App
 
         private void editButton_Click(object sender, EventArgs e)
         {
-            Form1 parentForm = (Form1)this.FindForm();
+        //    Form1 parentForm = (Form1)this.FindForm();
             // ((Panel)this.Parent).Controls.Remove(this);
             parentForm.removeAlarm(this);
             parentForm.editAlarm(partType, lineNumber, station, alarmT, desktopNot, emailNot);
@@ -199,7 +202,12 @@ namespace Bosch_Changeover_App
             NetworkCredential login;
             SmtpClient client;
             MailMessage msg;
-            string emailRecipient = "bosch.changeover@gmail.com";
+       //     Form1 parentForm = (Form1)this.FindForm();
+            if(parentForm == null)
+            {
+                Debug.WriteLine("null");
+            }
+            string emailRecipient = parentForm.getUserEmail(); //"bosch.changeover@gmail.com";
             login = new NetworkCredential("bosch.changeover", "boschcharleston");
             client = new SmtpClient("smtp.gmail.com");
             client.Port = 587;
@@ -207,7 +215,7 @@ namespace Bosch_Changeover_App
             client.Timeout = 10000;
             client.DeliveryMethod = SmtpDeliveryMethod.Network;
             client.Credentials = login;
-            msg = new MailMessage("bosch.changeover@gmail.com", emailRecipient, "Part " + this.partType + " is Entering Line " + this.lineNumber, "Part " + this.partType + " is Entering Line " + this.lineNumber);
+            msg = new MailMessage("bosch.changeover@gmail.com", emailRecipient, "Part " + this.partType + " is entering line " + this.lineNumber+" in "+this.alarmT+" minutes", "Part " + this.partType + " is entering line " + this.lineNumber + " in " + this.alarmT + " minutes");
             msg.BodyEncoding = UTF8Encoding.UTF8;
             msg.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
 

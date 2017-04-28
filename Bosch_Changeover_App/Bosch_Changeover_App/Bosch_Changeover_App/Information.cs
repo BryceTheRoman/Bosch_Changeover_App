@@ -46,6 +46,9 @@ namespace Bosch_Changeover_App
         string lineNumber;
         string stationNumber;
 
+        string userEmail = "bosch.changeover@gmail.com";
+        bool sendDefault = true;
+
 
 
         public Information(Form1 form)
@@ -632,6 +635,22 @@ namespace Bosch_Changeover_App
         public int calcTimeToFinish(Card part)
         {
             return 0;
+        }
+
+
+        public string getUserEmail()
+        {
+            return userEmail;
+        }
+
+        public void setUserEmail(string email)
+        {
+            userEmail = email;
+        }
+
+        public void setSendDefault(bool byDefault)
+        {
+            this.sendDefault = byDefault;
         }
 
 
