@@ -177,8 +177,6 @@ namespace Bosch_Changeover_App
 
 
                 b.Location = new Point(p.Controls[numButtons-1].Location.X, p.Controls[numButtons-1].Location.Y+b.Height + 5);
-                Debug.WriteLine(p.Controls[numButtons - 1].Location.Y + b.Height + 5);
-                Debug.WriteLine(partType);
             }
             else
             {

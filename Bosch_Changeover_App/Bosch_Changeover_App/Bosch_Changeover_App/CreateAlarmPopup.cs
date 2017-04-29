@@ -31,6 +31,7 @@ namespace Bosch_Changeover_App
         private string line;
         private string alarmTime;
         private string station;
+        private Card lineButton;
 
 
         public CreateAlarmPopup(Form1 pf)
@@ -46,6 +47,7 @@ namespace Bosch_Changeover_App
             line = "";
             alarmTime = "";
             station = "";
+            lineButton = null;
         }
 
         public void createAlarmFromLineButton(Card partType)
@@ -54,6 +56,7 @@ namespace Bosch_Changeover_App
             partTypeTextBox.Text = partType.getPartType().ToString();
             Debug.WriteLine(partType.getLine().ToString());
             lineComboBox.SelectedIndex = lineComboBox.FindStringExact(partType.getLine().ToString());
+            lineButton = partType;
             //      stationComboBox.SelectedIndex = stationComboBox.FindstringExact( partType.getStartStation().ToString());
         }
 
@@ -117,6 +120,9 @@ namespace Bosch_Changeover_App
             int s;
             int l = -1;
 
+            int partTimeRemaining = -1;
+
+
 
             if (!partTypeTextBox.Text.All(char.IsDigit) || partTypeTextBox.Text.Length != 10)
             {
@@ -135,28 +141,46 @@ namespace Bosch_Changeover_App
             {
                 MessageBox.Show("Alarm Time must be an integer.");
             }
+            else if (partTimeRemaining != -1 && i > partTimeRemaining)
+            {
+                MessageBox.Show("Alarm Time must be less than time remaining.");
+            }
             else
             {
+                Card lineButton = parentForm.getCard(partTypeTextBox.Text, l);
 
-                int N = i;//Int32.Parse(this.alarmTimeComboBox.SelectedItem.ToString());
-                selectedTime = currentTimeLabel + alarmTimeLabel.Text;
-                selectedMessage = "Alarm";
+                if (lineButton != null)
+                {
+                    partTimeRemaining = lineButton.getTimeRemaining() / 60;
+                    Debug.WriteLine("card time " + partTimeRemaining);
+                }
+                if (partTimeRemaining != -1 && i > partTimeRemaining)
+                {
+                    MessageBox.Show("Alarm Time must be less than time remaining.");
+                }
+                else
+                {
+                    Debug.WriteLine("alarm time " + i);
+                    int N = i;//Int32.Parse(this.alarmTimeComboBox.SelectedItem.ToString());
+                    selectedTime = currentTimeLabel + alarmTimeLabel.Text;
+                    selectedMessage = "Alarm";
 
-                //gotta set the variables that get sent back to the parent form
-                partType = partTypeTextBox.Text;
-                line = lineComboBox.Text;
-                alarmTime = alarmTimeComboBox.Text;
-                station = stationComboBox.Text;
+                    //gotta set the variables that get sent back to the parent form
+                    partType = partTypeTextBox.Text;
+                    line = lineComboBox.Text;
+                    alarmTime = alarmTimeComboBox.Text;
+                    station = stationComboBox.Text;
 
-                soundPlayer.SoundLocation = wavPath;
+                    soundPlayer.SoundLocation = wavPath;
 
-                //alarmNotification.Message(selectedMessage);
-                alarmSet = true;
+                    //alarmNotification.Message(selectedMessage);
+                    alarmSet = true;
 
 
-                parentForm.saveButtonClicked();
-                editing = false;
-                this.Close();
+                    parentForm.saveButtonClicked();
+                    editing = false;
+                    this.Close();
+                }
             }
 
 

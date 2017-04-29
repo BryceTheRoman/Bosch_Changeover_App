@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -144,12 +145,18 @@ namespace Bosch_Changeover_App
             int numAlarms = partAlarmsPanel.Controls.Count;
             int locY = numAlarms * pa1.Height + 10 * numAlarms;
             pa1.Location = new Point(partAlarmsPanel.Location.X + partAlarmsPanel.Width / 2 - pa1.Width / 2, locY);
-            partAlarmsPanel.Controls.Add(pa1);
-            if (c != null)
+            Debug.WriteLine("time remaining: " + c.getTimeRemaining() / 60);
+            Debug.WriteLine("alarm time: " + Int32.Parse(alarmTime));
+            if (c.getTimeRemaining()/60 >= Int32.Parse(alarmTime))
             {
-                information.addAlarm(pa1);
-                pa1.update_alarm(); //gotta set the timer
-                pa1.startTimer(); //gotta start the timer
+                partAlarmsPanel.Controls.Add(pa1);
+                if (c != null)
+                {
+
+                    information.addAlarm(pa1);
+                    pa1.update_alarm(); //gotta set the timer
+                    pa1.startTimer(); //gotta start the timer
+                }
             }
         }
 
@@ -184,7 +191,10 @@ namespace Bosch_Changeover_App
             partAlarmsPanel.Controls.Add(pa1);
         }
 
-
+        public Card getCard(string partType, int line)
+        {
+            return information.getCard(partType, line);
+        }
 
         private void Form1_Resize(object sender, EventArgs e)
         {

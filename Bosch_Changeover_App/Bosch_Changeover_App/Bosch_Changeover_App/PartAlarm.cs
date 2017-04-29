@@ -203,10 +203,6 @@ namespace Bosch_Changeover_App
             SmtpClient client;
             MailMessage msg;
        //     Form1 parentForm = (Form1)this.FindForm();
-            if(parentForm == null)
-            {
-                Debug.WriteLine("null");
-            }
             string emailRecipient = parentForm.getUserEmail(); //"bosch.changeover@gmail.com";
             login = new NetworkCredential("bosch.changeover", "boschcharleston");
             client = new SmtpClient("smtp.gmail.com");
