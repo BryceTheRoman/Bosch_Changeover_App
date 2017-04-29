@@ -60,6 +60,11 @@ namespace Bosch_Changeover_App
 
         public void editAlarm(string partType, string lineNum, string station, string alarmTime, bool desktopNotification, bool emailNotification)
         {
+
+            this.partType = partType;
+            this.line = lineNum;
+            this.alarmTime = alarmTime;
+            this.station = station;
             editing = true;
             partTypeTextBox.Text = partType;
             lineComboBox.SelectedIndex = lineComboBox.FindStringExact(lineNum);
