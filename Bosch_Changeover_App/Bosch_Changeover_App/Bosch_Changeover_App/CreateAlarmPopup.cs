@@ -73,6 +73,10 @@ namespace Bosch_Changeover_App
             {
                 alarmTimeComboBox.SelectedItem = "Custom";
             }
+            else
+            {
+                alarmTimeComboBox.SelectedItem = alarmTime;
+            }
             desktopCheckBox.Checked = desktopNotification;
             emailCheckBox.Checked = emailNotification;
         }
