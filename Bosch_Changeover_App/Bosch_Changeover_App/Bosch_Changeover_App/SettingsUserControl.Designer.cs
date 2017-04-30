@@ -33,11 +33,14 @@
             this.emailAddressLabel = new System.Windows.Forms.Label();
             this.saveButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
+            this.desktopAlarmCheckbox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // sendDefaultEmail
             // 
             this.sendDefaultEmail.AutoSize = true;
+            this.sendDefaultEmail.Checked = true;
+            this.sendDefaultEmail.CheckState = System.Windows.Forms.CheckState.Checked;
             this.sendDefaultEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sendDefaultEmail.Location = new System.Drawing.Point(39, 107);
             this.sendDefaultEmail.Name = "sendDefaultEmail";
@@ -45,14 +48,14 @@
             this.sendDefaultEmail.TabIndex = 0;
             this.sendDefaultEmail.Text = "Send Alarm Email by Default";
             this.sendDefaultEmail.UseVisualStyleBackColor = true;
-            this.sendDefaultEmail.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.sendDefaultEmail.CheckedChanged += new System.EventHandler(this.settingsCheckBox_CheckedChanged);
             // 
             // emailAddressTextBox
             // 
             this.emailAddressTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.emailAddressTextBox.Location = new System.Drawing.Point(266, 52);
+            this.emailAddressTextBox.Location = new System.Drawing.Point(237, 52);
             this.emailAddressTextBox.Name = "emailAddressTextBox";
-            this.emailAddressTextBox.Size = new System.Drawing.Size(262, 22);
+            this.emailAddressTextBox.Size = new System.Drawing.Size(250, 22);
             this.emailAddressTextBox.TabIndex = 1;
             this.emailAddressTextBox.Text = "bosch.changeover@gmail.com";
             // 
@@ -98,11 +101,26 @@
             this.cancelButton.UseVisualStyleBackColor = false;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
+            // desktopAlarmCheckbox
+            // 
+            this.desktopAlarmCheckbox.AutoSize = true;
+            this.desktopAlarmCheckbox.Checked = true;
+            this.desktopAlarmCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.desktopAlarmCheckbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.desktopAlarmCheckbox.Location = new System.Drawing.Point(39, 143);
+            this.desktopAlarmCheckbox.Name = "desktopAlarmCheckbox";
+            this.desktopAlarmCheckbox.Size = new System.Drawing.Size(221, 20);
+            this.desktopAlarmCheckbox.TabIndex = 9;
+            this.desktopAlarmCheckbox.Text = "Sound Desktop Alarm by Default";
+            this.desktopAlarmCheckbox.UseVisualStyleBackColor = true;
+            this.desktopAlarmCheckbox.CheckedChanged += new System.EventHandler(this.desktopAlarmCheckbox_CheckedChanged);
+            // 
             // SettingsUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
+            this.Controls.Add(this.desktopAlarmCheckbox);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.emailAddressLabel);
@@ -122,6 +140,7 @@
         private System.Windows.Forms.Label emailAddressLabel;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.CheckBox desktopAlarmCheckbox;
     }
 }
 

@@ -48,6 +48,7 @@ namespace Bosch_Changeover_App
 
         string userEmail = "bosch.changeover@gmail.com";
         bool sendDefault = true;
+        bool desktopAlarmDefault = true;
 
 
 
@@ -77,8 +78,8 @@ namespace Bosch_Changeover_App
 
             // string directoryPath = "@blah blah blah Bosch Directory Location";
             
-            offLine1CardList.Add(new Card(597, 10, -1, -1, 1234567899, false, 20, 3, 1));
-            line1CardList.Add(new Card(74000, 320, 02, 18, 1234567890, true, 32, 3, 1));
+            offLine1CardList.Add(new Card(597, 10, -1, -1, 11178990, false, 20, 3, 1));
+            line1CardList.Add(new Card(4, 320, 02, 18, 1234567890, true, 32, 3, 1));
             offLine1CardList.Add(new Card(595, 324, -1, -1, 1234567889, false, 26, 3, 1));
             line1CardList.Add(new Card(74001, 320, Math.Abs(LINE1_STATIONS[2]), Math.Abs(LINE1_STATIONS[3]) , 1234567880, true, 16, 3, 1));
             offLine1CardList.Add(new Card(595, 324, -1, -1, 1836567889, false, 101, 3, 1));
@@ -88,8 +89,8 @@ namespace Bosch_Changeover_App
             offLine1CardList.Add(new Card(595, 389, -1, -1, 1234567172, false, 16, 3, 1));
             offLine1CardList.Add(new Card(595, 405, -1, -1, 1234538289, false, 34, 3, 1));
 
-            offLine2CardList.Add(new Card(5937, 4, -1, -1, 1111111111, false, 10, 3, 2));
-            line2CardList.Add(new Card(12, 74, 02, 18, 1234567880, true, 23, 3, 2));
+            offLine2CardList.Add(new Card(5937, 4, -1, -1, 9933333333, false, 10, 3, 2));
+            line2CardList.Add(new Card(74050, 74, 02, 18, 1234567880, true, 23, 3, 2));
             offLine2CardList.Add(new Card(999, 329, -1, -1, 1222222222, false, 12, 3, 2));
             line2CardList.Add(new Card(74009, 326, 17, 16, 1234567890, true, 14, 3, 2));
             offLine2CardList.Add(new Card(896, 330, -1, -1, 1333333333, false, 13, 3, 2));
@@ -159,7 +160,7 @@ namespace Bosch_Changeover_App
             {
                 this.line2CardList[i].updateCard(TIMER_INTERVAL / 1000);
                 int timeOff = this.line2CardList[i].getTimeToFinish();
-                if (timeOff <= 1)
+                if (timeOff <= 0)
                 {
                     this.line2CardList.RemoveAt(i);
                 }
@@ -516,6 +517,7 @@ namespace Bosch_Changeover_App
                     //if (tempPoss.Contains(look))
                     int setStartStation;
                     int setEndStation;
+                    long.Parse("125548797954555");
                 }
 
 
@@ -565,7 +567,7 @@ namespace Bosch_Changeover_App
                 //look through line lists to get the part type card
                 for (int i = 0; i < offLine1CardList.Count; i++)
                 {
-                    if (offLine1CardList[i].getPartType().ToString() == partType)
+                    if (offLine1CardList[i].getPartType().ToString("0000000000") == partType)
                     {
                         return offLine1CardList[i];
                     }
@@ -576,7 +578,7 @@ namespace Bosch_Changeover_App
             {
                 for (int i = 0; i < offLine2CardList.Count; i++)
                 {
-                    if (offLine2CardList[i].getPartType().ToString() == partType)
+                    if (offLine2CardList[i].getPartType().ToString("0000000000") == partType)
                     {
                         return offLine2CardList[i];
                     }
@@ -586,7 +588,7 @@ namespace Bosch_Changeover_App
             {
                 for (int i = 0; i < offLine3CardList.Count; i++)
                 {
-                    if (offLine3CardList[i].getPartType().ToString() == partType)
+                    if (offLine3CardList[i].getPartType().ToString("0000000000") == partType)
                     {
                         return offLine3CardList[i];
                     }
@@ -653,6 +655,20 @@ namespace Bosch_Changeover_App
             this.sendDefault = byDefault;
         }
 
+        public bool getSendDefault()
+        {
+            return this.sendDefault;
+        }
+
+        public void setDesktopAlarmDefault(bool byDefault)
+        {
+            this.desktopAlarmDefault = byDefault;
+        }
+
+        public bool getDesktopAlarmDefault()
+        {
+            return this.desktopAlarmDefault;
+        }
 
         public static void main(string[] args)
         {

@@ -10,14 +10,14 @@ namespace Bosch_Changeover_App
         int timeRemaining;
         int startStation;
         int endStation;
-        int partType;
+        long partType;
         Boolean isOnline;
         int partsRemaining;
         int cycleTime;
         int line;
 
 
-        public Card(int timeToFinish, int timeRemaining, int startStation, int endStation, int partType, Boolean isOnline, int partsRemaining, int cycleTime, int line)
+        public Card(int timeToFinish, int timeRemaining, int startStation, int endStation, long partType, Boolean isOnline, int partsRemaining, int cycleTime, int line)
         {
             this.timeToFinish = timeToFinish;
             this.timeRemaining = timeRemaining;
@@ -62,7 +62,7 @@ namespace Bosch_Changeover_App
         {
             this.endStation = setter;
         }
-        public int getPartType()
+        public long getPartType()
         {
             return this.partType;
         }
