@@ -23,6 +23,8 @@ namespace Bosch_Changeover_App
 
             //form = f;
             this.player = player;
+            this.BringToFront();
+            this.Closing += alarmNotification_FormClosing;
         }
 
         public void Message(string message)
@@ -38,9 +40,12 @@ namespace Bosch_Changeover_App
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
-            player.Stop();
             this.Close();
-            //form.Resume();
+        }
+
+        private void alarmNotification_FormClosing(object sender, EventArgs e)
+        {
+            player.Stop();
         }
 
         private void alarmNotification_Load(object sender, EventArgs e)

@@ -35,7 +35,7 @@ namespace Bosch_Changeover_App
             InitializeComponent();
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        private void settingsCheckBox_CheckedChanged(object sender, EventArgs e)
         {
 
         }
@@ -43,7 +43,7 @@ namespace Bosch_Changeover_App
         private void saveButton_Click(object sender, EventArgs e)
         {
             Form1 parent = (Form1)this.FindForm();
-            parent.saveSettingsInfo(sendDefaultEmail.Checked, emailAddressTextBox.Text);
+            parent.saveSettingsInfo(sendDefaultEmail.Checked, desktopAlarmCheckbox.Checked, emailAddressTextBox.Text);
             parent.goToLines();
         }
 
@@ -51,6 +51,11 @@ namespace Bosch_Changeover_App
         {
             Form1 parent = (Form1)this.FindForm();
             parent.goToLines();
+        }
+
+        private void desktopAlarmCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

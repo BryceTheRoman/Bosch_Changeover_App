@@ -123,7 +123,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(261, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1386, 72);
+            this.panel3.Size = new System.Drawing.Size(1424, 72);
             this.panel3.TabIndex = 5;
             // 
             // currentTimeLabel
@@ -132,7 +132,7 @@
             this.currentTimeLabel.AutoSize = true;
             this.currentTimeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.currentTimeLabel.ForeColor = System.Drawing.Color.White;
-            this.currentTimeLabel.Location = new System.Drawing.Point(1122, 13);
+            this.currentTimeLabel.Location = new System.Drawing.Point(1160, 13);
             this.currentTimeLabel.Name = "currentTimeLabel";
             this.currentTimeLabel.Size = new System.Drawing.Size(178, 42);
             this.currentTimeLabel.TabIndex = 2;
@@ -144,7 +144,7 @@
             this.pictureBoxSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBoxSettings.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxSettings.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxSettings.Image")));
-            this.pictureBoxSettings.Location = new System.Drawing.Point(1332, 22);
+            this.pictureBoxSettings.Location = new System.Drawing.Point(1370, 22);
             this.pictureBoxSettings.Name = "pictureBoxSettings";
             this.pictureBoxSettings.Size = new System.Drawing.Size(27, 27);
             this.pictureBoxSettings.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -171,7 +171,7 @@
             this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainPanel.Location = new System.Drawing.Point(261, 72);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(1386, 751);
+            this.mainPanel.Size = new System.Drawing.Size(1424, 751);
             this.mainPanel.TabIndex = 6;
             // 
             // Form1
@@ -179,7 +179,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.ClientSize = new System.Drawing.Size(1647, 823);
+            this.ClientSize = new System.Drawing.Size(1685, 823);
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
