@@ -89,7 +89,7 @@ namespace Bosch_Changeover_App
             offLine1CardList.Add(new Card(595, 405, -1, -1, 1234538289, false, 34, 3, 1));
 
             offLine2CardList.Add(new Card(5937, 4, -1, -1, 1111111111, false, 10, 3, 2));
-            line2CardList.Add(new Card(74050, 74, 02, 18, 1234567880, true, 23, 3, 2));
+            line2CardList.Add(new Card(12, 74, 02, 18, 1234567880, true, 23, 3, 2));
             offLine2CardList.Add(new Card(999, 329, -1, -1, 1222222222, false, 12, 3, 2));
             line2CardList.Add(new Card(74009, 326, 17, 16, 1234567890, true, 14, 3, 2));
             offLine2CardList.Add(new Card(896, 330, -1, -1, 1333333333, false, 13, 3, 2));
@@ -159,7 +159,7 @@ namespace Bosch_Changeover_App
             {
                 this.line2CardList[i].updateCard(TIMER_INTERVAL / 1000);
                 int timeOff = this.line2CardList[i].getTimeToFinish();
-                if (timeOff <= 0)
+                if (timeOff <= 1)
                 {
                     this.line2CardList.RemoveAt(i);
                 }
