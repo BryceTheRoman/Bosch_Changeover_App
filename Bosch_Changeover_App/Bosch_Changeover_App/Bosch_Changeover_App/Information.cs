@@ -517,7 +517,6 @@ namespace Bosch_Changeover_App
                     //if (tempPoss.Contains(look))
                     int setStartStation;
                     int setEndStation;
-                    long.Parse("125548797954555");
                 }
 
 
