@@ -515,7 +515,10 @@ namespace Bosch_Changeover_App
                     int lookingPart = station.getCurrentPart();
                     //if (tempPoss.Contains(look))
                     int setStartStation;
-                    int setEndStation;
+                    int currentEndStation;
+
+
+
                 }
 
 
