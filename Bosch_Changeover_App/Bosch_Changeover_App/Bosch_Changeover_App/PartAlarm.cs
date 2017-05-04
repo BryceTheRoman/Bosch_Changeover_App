@@ -134,19 +134,26 @@ namespace Bosch_Changeover_App
                 //timer.Stop();
                 try
                 {
-                    SoundPlayer player = new SoundPlayer();
-                    player.SoundLocation = @"C:\WINDOWS\MEDIA\Alarm01.wav";
-                    player.PlayLooping();
-                    alarmNotification notifier = new alarmNotification(player);
-                    notifier.Message("Part "+this.partType+" will enter Line "+this.lineNumber+" in "+this.alarmT+" minutes.");
-                    notifier.Show();
+                    if (desktopNot)
+                    {
+                        SoundPlayer player = new SoundPlayer();
+                        player.SoundLocation = @"C:\WINDOWS\MEDIA\Alarm01.wav";
+                        player.PlayLooping();
+                        alarmNotification notifier = new alarmNotification(player);
+                        notifier.Message("Part " + this.partType + " will enter Line " + this.lineNumber + " in " + this.alarmT + " minutes.");
+                        notifier.Show();
+                    }
+
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 }
-                sendEmail();
+                if (emailNot)
+                {
+                    sendEmail();
+                }
             }
         }
 
@@ -218,6 +225,10 @@ namespace Bosch_Changeover_App
             client.Send(msg);
         }
 
+        private void emailNotification_CheckedChanged(object sender, EventArgs e)
+        {
+            emailNot = emailNotification.Checked;
+        }
     }
 }
 

@@ -90,7 +90,7 @@ namespace Bosch_Changeover_App
 
         public void editAlarm(string partType, string lineNum, string station, string alarmTime, bool desktopNotification, bool emailNotification)
         {
-            popup = new CreateAlarmPopup(this);
+            popup = new CreateAlarmPopup(this, information.getSendDefault(), information.getDesktopAlarmDefault());
             popup.editAlarm(partType, lineNum, station, alarmTime, desktopNotification, emailNotification);
             popup.ShowDialog();
         }
@@ -99,7 +99,8 @@ namespace Bosch_Changeover_App
         {
             Button Lbtn = sender as Button;
             string partNum = Lbtn.Text.Substring(0, 10);
-            popup = new CreateAlarmPopup(this);
+            Debug.WriteLine(partNum);
+            popup = new CreateAlarmPopup(this, information.getSendDefault(), information.getDesktopAlarmDefault());
             popup.createAlarmFromLineButton(information.getCard(partNum, line));
             popup.ShowDialog();
 
@@ -115,7 +116,7 @@ namespace Bosch_Changeover_App
 
         private void plusButton_Click(object sender, EventArgs e)
         {
-            popup = new CreateAlarmPopup(this);
+            popup = new CreateAlarmPopup(this, information.getSendDefault(), information.getDesktopAlarmDefault());
             popup.ShowDialog();
 
             /*  PartAlarm pa1 = new PartAlarm();
@@ -145,17 +146,15 @@ namespace Bosch_Changeover_App
             int numAlarms = partAlarmsPanel.Controls.Count;
             int locY = numAlarms * pa1.Height + 10 * numAlarms;
             pa1.Location = new Point(partAlarmsPanel.Location.X + partAlarmsPanel.Width / 2 - pa1.Width / 2, locY);
-            Debug.WriteLine("time remaining: " + c.getTimeRemaining() / 60);
-            Debug.WriteLine("alarm time: " + Int32.Parse(alarmTime));
-            if (c.getTimeRemaining()/60 >= Int32.Parse(alarmTime))
+            partAlarmsPanel.Controls.Add(pa1);
+            if (c != null)
             {
-                partAlarmsPanel.Controls.Add(pa1);
-                if (c != null)
+                if (c.getTimeRemaining() / 60 >= Int32.Parse(alarmTime))
                 {
-
                     information.addAlarm(pa1);
                     pa1.update_alarm(); //gotta set the timer
                     pa1.startTimer(); //gotta start the timer
+                    
                 }
             }
         }
@@ -207,10 +206,11 @@ namespace Bosch_Changeover_App
             return this.information.getUserEmail();
         }
 
-        public void saveSettingsInfo(bool sendDefault, string email)
+        public void saveSettingsInfo(bool sendDefault, bool desktopAlarmDefault, string email)
         {
             information.setUserEmail(email);
             information.setSendDefault(sendDefault);
+            information.setDesktopAlarmDefault(desktopAlarmDefault);
         }
     }
 }

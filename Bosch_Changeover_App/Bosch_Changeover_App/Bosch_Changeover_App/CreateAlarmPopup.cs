@@ -32,17 +32,22 @@ namespace Bosch_Changeover_App
         private string alarmTime;
         private string station;
         private Card lineButton;
+        private bool emailNot;
+        private bool desktopNot;
 
 
-        public CreateAlarmPopup(Form1 pf)
+        public CreateAlarmPopup(Form1 pf, bool emailChecked, bool desktopChecked)
         {
             InitializeComponent();
             this.FormClosed += SaveEditing;
             parentForm = pf;
             update_currentTime();
             soundPlayer = new SoundPlayer();
+            desktopCheckBox.Checked = desktopChecked;
+            emailCheckBox.Checked = emailChecked;
             //alarmNotification = new alarmNotification(this);
-
+            emailNot = emailChecked;
+            desktopNot = desktopChecked;
             partType = "";
             line = "";
             alarmTime = "";
@@ -53,7 +58,7 @@ namespace Bosch_Changeover_App
         public void createAlarmFromLineButton(Card partType)
         {
 
-            partTypeTextBox.Text = partType.getPartType().ToString();
+            partTypeTextBox.Text = partType.getPartType().ToString("0000000000");
             Debug.WriteLine(partType.getLine().ToString());
             lineComboBox.SelectedIndex = lineComboBox.FindStringExact(partType.getLine().ToString());
             lineButton = partType;
@@ -68,6 +73,8 @@ namespace Bosch_Changeover_App
             this.line = lineNum;
             this.alarmTime = alarmTime;
             this.station = station;
+            this.emailNot = emailNotification;
+            this.desktopNot = desktopNotification;
             editing = true;
             partTypeTextBox.Text = partType;
             lineComboBox.SelectedIndex = lineComboBox.FindStringExact(lineNum);
@@ -143,7 +150,7 @@ namespace Bosch_Changeover_App
             }
             else if (partTimeRemaining != -1 && i > partTimeRemaining)
             {
-                MessageBox.Show("Alarm Time must be less than time remaining.");
+                MessageBox.Show("Alarm Time must be less than time to start.");
             }
             else
             {
@@ -176,7 +183,8 @@ namespace Bosch_Changeover_App
                     //alarmNotification.Message(selectedMessage);
                     alarmSet = true;
 
-
+                    desktopNot = desktopCheckBox.Checked;
+                    emailNot = emailCheckBox.Checked;
                     parentForm.saveButtonClicked();
                     editing = false;
                     this.Close();
@@ -213,12 +221,12 @@ namespace Bosch_Changeover_App
 
         public bool getDesktopNotification()
         {
-            return desktopCheckBox.Checked;
+            return desktopNot;
         }
 
         public bool getEmailNotification()
         {
-            return emailCheckBox.Checked;
+            return emailNot;
         }
 
         public int getN()
@@ -265,6 +273,16 @@ namespace Bosch_Changeover_App
         }
 
         private void partTypeTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void desktopCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void emailCheckBox_CheckedChanged(object sender, EventArgs e)
         {
 
         }

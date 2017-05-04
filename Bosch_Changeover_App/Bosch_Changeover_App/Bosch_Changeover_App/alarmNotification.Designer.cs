@@ -100,6 +100,7 @@
             this.MinimizeBox = false;
             this.Name = "alarmNotification";
             this.Text = "Changeover Alarm Notification";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.alarmNotification_Load);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();

@@ -54,7 +54,7 @@
             // 
             this.partTypeLabel.AutoSize = true;
             this.partTypeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.partTypeLabel.Location = new System.Drawing.Point(84, 113);
+            this.partTypeLabel.Location = new System.Drawing.Point(84, 117);
             this.partTypeLabel.Name = "partTypeLabel";
             this.partTypeLabel.Size = new System.Drawing.Size(80, 20);
             this.partTypeLabel.TabIndex = 5;
@@ -63,7 +63,7 @@
             // partTypeTextBox
             // 
             this.partTypeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.partTypeTextBox.Location = new System.Drawing.Point(174, 110);
+            this.partTypeTextBox.Location = new System.Drawing.Point(174, 114);
             this.partTypeTextBox.MaxLength = 10;
             this.partTypeTextBox.Name = "partTypeTextBox";
             this.partTypeTextBox.Size = new System.Drawing.Size(120, 26);
@@ -75,7 +75,7 @@
             // 
             this.lineLabel.AutoSize = true;
             this.lineLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lineLabel.Location = new System.Drawing.Point(121, 158);
+            this.lineLabel.Location = new System.Drawing.Point(121, 186);
             this.lineLabel.Name = "lineLabel";
             this.lineLabel.Size = new System.Drawing.Size(43, 20);
             this.lineLabel.TabIndex = 8;
@@ -89,7 +89,7 @@
             "1",
             "2",
             "3"});
-            this.lineComboBox.Location = new System.Drawing.Point(174, 158);
+            this.lineComboBox.Location = new System.Drawing.Point(174, 186);
             this.lineComboBox.Name = "lineComboBox";
             this.lineComboBox.Size = new System.Drawing.Size(62, 24);
             this.lineComboBox.TabIndex = 2;
@@ -99,11 +99,12 @@
             // 
             this.stationLabel.AutoSize = true;
             this.stationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stationLabel.Location = new System.Drawing.Point(51, 207);
+            this.stationLabel.Location = new System.Drawing.Point(411, 186);
             this.stationLabel.Name = "stationLabel";
             this.stationLabel.Size = new System.Drawing.Size(113, 16);
             this.stationLabel.TabIndex = 11;
             this.stationLabel.Text = "(Optional) Station:";
+            this.stationLabel.Visible = false;
             // 
             // stationComboBox
             // 
@@ -150,17 +151,18 @@
             "71",
             "72",
             "74"});
-            this.stationComboBox.Location = new System.Drawing.Point(174, 204);
+            this.stationComboBox.Location = new System.Drawing.Point(534, 183);
             this.stationComboBox.Name = "stationComboBox";
             this.stationComboBox.Size = new System.Drawing.Size(62, 24);
             this.stationComboBox.TabIndex = 3;
             this.stationComboBox.Text = "02";
+            this.stationComboBox.Visible = false;
             // 
             // alarmTimeLabel
             // 
             this.alarmTimeLabel.AutoSize = true;
             this.alarmTimeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.alarmTimeLabel.Location = new System.Drawing.Point(74, 266);
+            this.alarmTimeLabel.Location = new System.Drawing.Point(74, 253);
             this.alarmTimeLabel.Name = "alarmTimeLabel";
             this.alarmTimeLabel.Size = new System.Drawing.Size(96, 20);
             this.alarmTimeLabel.TabIndex = 14;
@@ -177,7 +179,7 @@
             "45",
             "60",
             "Custom"});
-            this.alarmTimeComboBox.Location = new System.Drawing.Point(174, 263);
+            this.alarmTimeComboBox.Location = new System.Drawing.Point(174, 250);
             this.alarmTimeComboBox.Name = "alarmTimeComboBox";
             this.alarmTimeComboBox.Size = new System.Drawing.Size(90, 28);
             this.alarmTimeComboBox.TabIndex = 4;
@@ -188,7 +190,7 @@
             this.minutesLabel.AutoSize = true;
             this.minutesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.minutesLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(130)))), ((int)(((byte)(133)))));
-            this.minutesLabel.Location = new System.Drawing.Point(270, 266);
+            this.minutesLabel.Location = new System.Drawing.Point(270, 253);
             this.minutesLabel.Name = "minutesLabel";
             this.minutesLabel.Size = new System.Drawing.Size(290, 20);
             this.minutesLabel.TabIndex = 16;
@@ -207,6 +209,7 @@
             this.desktopCheckBox.TabIndex = 5;
             this.desktopCheckBox.Text = "Recieve Desktop Notification";
             this.desktopCheckBox.UseVisualStyleBackColor = true;
+            this.desktopCheckBox.CheckedChanged += new System.EventHandler(this.desktopCheckBox_CheckedChanged);
             // 
             // emailCheckBox
             // 
@@ -221,6 +224,7 @@
             this.emailCheckBox.TabIndex = 6;
             this.emailCheckBox.Text = "Recieve Email Notification";
             this.emailCheckBox.UseVisualStyleBackColor = true;
+            this.emailCheckBox.CheckedChanged += new System.EventHandler(this.emailCheckBox_CheckedChanged);
             // 
             // cancelButton
             // 
