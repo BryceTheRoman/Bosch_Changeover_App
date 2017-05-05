@@ -32,6 +32,7 @@ namespace Bosch_Changeover_App
         List<Station> line3StationList;
 
         List<PartAlarm> alarms;
+        List<PartAlarm> alarmsNotQueued;
 
         //Negative stations are ones that can be run in parallel with the adjacent negative station
         public static readonly int[] LINE1_STATIONS = { 02, -18, -16, 12, 14, 20, 24, 28, 29, 30, 32, 38, 22, 40, 42, 142, -44, -46, 34, 51, 52, 58, 60, -62, -64, 66, -84, -85, 86, 65, 68, 70, 71, 72, 74 };
@@ -49,7 +50,7 @@ namespace Bosch_Changeover_App
         string userEmail = "bosch.changeover@gmail.com";
         bool sendDefault = true;
         bool desktopAlarmDefault = true;
-
+        int test = 0;
 
 
         public Information(Form1 form)
@@ -71,6 +72,7 @@ namespace Bosch_Changeover_App
             this.offLine3CardList = new List<Card>();
 
             this.alarms = new List<PartAlarm>();
+            this.alarmsNotQueued = new List<PartAlarm>();
 
             this.line1StationList = new List<Station>();
             this.line2StationList = new List<Station>();
@@ -97,11 +99,11 @@ namespace Bosch_Changeover_App
             line2CardList.Add(new Card(74008, 320, 12, 14, 1234567780, true, 36, 3, 2));
             offLine2CardList.Add(new Card(320, 350, -1, -1, 1444444444, false, 24, 3, 2));
             offLine2CardList.Add(new Card(635, 376, -1, -1, 1555555555, false, 52, 3, 2));
-            offLine2CardList.Add(new Card(780, 492, -1, -1, 1666666666, false, 27, 3, 2));
+            offLine2CardList.Add(new Card(780, 2, -1, -1, 1666666666, false, 27, 3, 2));
             offLine2CardList.Add(new Card(952, 624, -1, -1, 1777777777, false, 32, 3, 2));
             offLine2CardList.Add(new Card(1003, 527, -1, -1, 1888888888, false, 44, 3, 2));
 
-            offLine3CardList.Add(new Card(590, 2, -1, -1, 1234567899, false, 12, 3, 3));
+            offLine3CardList.Add(new Card(590, 22, -1, -1, 1234567899, false, 12, 3, 3));
             line3CardList.Add(new Card(74002, 320, 02, 18, 1234567890, true, 50, 3, 3));
             offLine3CardList.Add(new Card(830, 10, -1, -1, 1234567869, false, 11, 3, 3));
             offLine3CardList.Add(new Card(860, 20, -1, -1, 1234564899, false, 8, 3, 3));
@@ -117,6 +119,36 @@ namespace Bosch_Changeover_App
             form.add_lines(line1CardList, offLine1CardList, line2CardList, offLine2CardList, line3CardList, offLine3CardList);
 
         }
+
+
+
+        //timer that controls all updates for the program!
+        void timerEvent(Object sender, EventArgs e)
+        {
+            form.update_currentTime();
+            for (int i = 0; i < alarms.Count; i++)
+            {
+                alarms[i].countDown();
+            }
+            //read information from files
+            updateCardLists();
+
+            if (test == 9)
+            {
+                offLine2CardList.Add(new Card(3000, 720, -1, -1, 1111111111, false, 162, 3, 2));
+            }
+
+
+            //update array lists
+            //send updated information to form1
+            form.update_lines(line1CardList, offLine1CardList, line2CardList, offLine2CardList, line3CardList, offLine3CardList);
+
+            updateAlarmsNotQueued();
+
+            test++;
+        }
+
+
 
         private void updateCardLists()
         {
@@ -245,21 +277,38 @@ namespace Bosch_Changeover_App
 
 
 
-        //timer that controls all updates for the program!
-        void timerEvent(Object sender, EventArgs e)
+
+        private void updateAlarmsNotQueued()
         {
-            form.update_currentTime();
-            for (int i = 0; i < alarms.Count; i++)
+            List<int> index = new List<int>();
+            List<Card> cards = new List<Card>();
+            foreach (PartAlarm pa in this.alarmsNotQueued)
             {
-                alarms[i].countDown();
+                Card inLine1 = getCard(pa.getPartType(), 1);
+                Card inLine2 = getCard(pa.getPartType(), 2);
+                Card inLine3 = getCard(pa.getPartType(), 3);
+
+                if(pa.doesCardMatch(inLine1))
+                {
+                    index.Add(this.alarmsNotQueued.IndexOf(pa));
+                    cards.Add(inLine1);
+                }
+                else if(pa.doesCardMatch(inLine2))
+                {
+                    index.Add(this.alarmsNotQueued.IndexOf(pa));
+                    cards.Add(inLine2);
+                }
+                else if(pa.doesCardMatch(inLine3))
+                {
+                    index.Add(this.alarmsNotQueued.IndexOf(pa));
+                    cards.Add(inLine3);
+                }
             }
-            //read information from files
-            updateCardLists();
 
-            //update array lists
-            //send updated information to form1
-            form.update_lines(line1CardList, offLine1CardList, line2CardList, offLine2CardList, line3CardList, offLine3CardList);
-
+            foreach(int i in index)
+            {
+                form.personalAlarmIsInQueue(alarmsNotQueued[i], cards[i]);
+            }
         }
 
         public void addAlarm(PartAlarm pa)
@@ -267,11 +316,25 @@ namespace Bosch_Changeover_App
             this.alarms.Add(pa);
         }
 
+        public void addAlarmNotQueued(PartAlarm pa)
+        {
+            this.alarmsNotQueued.Add(pa);
+        }
+
         public void removeAlarm(PartAlarm pa)
         {
             this.alarms.Remove(pa);
         }
 
+        public void removeUnqueuedAlarm(PartAlarm pa)
+        {
+            this.alarmsNotQueued.Remove(pa);
+        }
+
+        public bool isUnqueued(PartAlarm pa)
+        {
+            return this.alarmsNotQueued.Contains(pa);
+        }
 
         public void incorporateStationToCard(Card c, Station s)
         {

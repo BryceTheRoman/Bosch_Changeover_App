@@ -9,6 +9,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 
+
+
+/*
+ *  This class contains the code for taking in a list of cards and updating the parts shown on the lines.
+ */
+
+
 namespace Bosch_Changeover_App
 {
     public partial class LineUserControl : UserControl
@@ -66,45 +73,77 @@ namespace Bosch_Changeover_App
             }
         }
 
+        private void getButtonIndexFromPanel(List<Button> temp, Panel original)
+        {
+            foreach (Button b in original.Controls)
+            {
+                temp.Add(b);
+            }
+        }
+
         public void updateAll(List<Card> listCards, List<Card> offLineCards)
         {
-            int removed = 0;
+            List<int> removed = new List<int>();
 
-            List<long> keyList = new List<long>(this.buttons.Keys);
+            List<long> keyList = new List<long>(this.buttons.Keys); //remove the ones that show up in the cards lists, anything that's left needs to be removed
 
+            List<Button> tempOffLine = new List<Button>();
+            List<Button> tempOnLine = new List<Button>();
+            getButtonIndexFromPanel(tempOffLine, panelOffLine1);
+            getButtonIndexFromPanel(tempOnLine, panelOnLine1);
             foreach (Card card in listCards)
             {
-                Button b = buttons[card.getPartType()];
-
-
-                string text = card.getPartType().ToString("0000000000") + "          " + card.getPartsRemaining().ToString() + "                  " + card.getStartStation().ToString() + " - " + card.getEndStation().ToString() + "           " + convertStoString(card.getTimeToFinish());
-                if (panelOffLine1.Contains(b))
+                if (!buttons.ContainsKey(card.getPartType()))
                 {
-                    panelOffLine1.Controls.Remove(b);
-                    buttons.Remove(card.getPartType());
-                    addButtontoPanel(card.getPartType(),text, panelOnLine1);
-                    removed++;
+                    addButton(card);
                 }
                 else
                 {
-                    b.Text = text;
+                    Button b = buttons[card.getPartType()];
+
+
+                    string text = card.getPartType().ToString("0000000000") + "          " + card.getPartsRemaining().ToString() + "                  " + card.getStartStation().ToString() + " - " + card.getEndStation().ToString() + "           " + convertStoString(card.getTimeToFinish());
+                    if (panelOffLine1.Contains(b))
+                    {
+                        removed.Add(tempOffLine.IndexOf(b));
+                        panelOffLine1.Controls.Remove(b);
+                        buttons.Remove(card.getPartType());
+                        addButtontoPanel(card.getPartType(), text, panelOnLine1);
+                    }
+                    else
+                    {
+                        b.Text = text;
+                    }
+                    keyList.Remove(card.getPartType());
                 }
-                keyList.Remove(card.getPartType());
             }
+
             foreach (Card card in offLineCards)
             {
-                Button b = buttons[card.getPartType()];
-                
-                if (removed != 0)
+                if (!buttons.ContainsKey(card.getPartType()))
                 {
-                    b.Location = new Point(b.Location.X, b.Location.Y - removed * (b.Height + 5));
+                    addButton(card);
                 }
-                b.Text = card.getPartType().ToString("0000000000") + "          " + card.getPartsRemaining().ToString() + "                " + convertStoString(card.getTimeRemaining()) + "        " + convertStoString(card.getTimeToFinish());
-                keyList.Remove(card.getPartType());
+                else
+                {
+                    Button b = buttons[card.getPartType()];
+
+                    int numberAbove = 0;    //number of buttons above the current one that have been removed, need to know how much to move it up
+                    foreach (int index in removed)
+                    {
+                        if (index < tempOffLine.IndexOf(b))
+                        {
+                            numberAbove++;
+                        }
+                    }
+                    b.Location = new Point(b.Location.X, b.Location.Y - numberAbove * (b.Height + 5));
+                    b.Text = card.getPartType().ToString("0000000000") + "          " + card.getPartsRemaining().ToString() + "                " + convertStoString(card.getTimeRemaining()) + "        " + convertStoString(card.getTimeToFinish());
+                    keyList.Remove(card.getPartType());
+                }
             }
 
             int removed_onLineButtons = 0;
-            foreach (long buttonKey in buttons.Keys)
+            foreach (long buttonKey in buttons.Keys)   //remove any keys left in keylist since they never show up in the cards list, they have been deleted
             {
                 if (panelOnLine1.Controls.Contains(buttons[buttonKey]))
                 {
@@ -116,7 +155,7 @@ namespace Bosch_Changeover_App
                 }
             }
 
-            foreach (Button b in panelOnLine1.Controls)
+            foreach (Button b in panelOnLine1.Controls)    //move up the buttons if a key has been deleted
             {
                 b.Location = new Point(b.Location.X, b.Location.Y - removed_onLineButtons * (b.Height + 5));
             }
@@ -185,10 +224,17 @@ namespace Bosch_Changeover_App
                 b.Location = new Point(0, 0);
             }
             p.Controls.Add(b);
+
+            //add the new button to the buttons list
             buttons.Add(partType, b);
             
 
         }
+
+       // private List<Button> checkForDuplicates(long partType)
+     //   {
+ //           List<Button>
+   //     }
 
         private void addOneButtonToPanel(Button b, Panel p)
         {

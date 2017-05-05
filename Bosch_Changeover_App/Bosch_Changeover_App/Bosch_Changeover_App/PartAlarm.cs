@@ -229,6 +229,61 @@ namespace Bosch_Changeover_App
         {
             emailNot = emailNotification.Checked;
         }
+
+        public bool doesCardMatch(Card c)
+        {
+            if(c == null)
+            {
+                return false;
+            }
+            if (c.getPartType() == long.Parse(this.partType) && c.getLine() == Int32.Parse(this.lineNumber)){
+                return true;
+            }
+            else
+            {
+                Debug.WriteLine(c.getPartType());
+                Debug.WriteLine(long.Parse(this.partType));
+                Debug.WriteLine(c.getLine());
+                Debug.WriteLine(Int32.Parse(this.lineNumber));
+                Debug.WriteLine("not equal to null but still not right");
+                return false;
+            }
+        }
+
+        public string getPartType()
+        {
+            return this.partType;
+        }
+
+        public string getLine()
+        {
+            return this.lineNumber;
+        }
+
+        public string getStation()
+        {
+            return this.station;
+        }
+
+        public string getAlarmTime()
+        {
+            return this.alarmT;
+        }
+
+        public int getN()
+        {
+            return this.countDownSecs;
+        }
+
+        public bool getDeskNot()
+        {
+            return this.desktopNot;
+        }
+
+        public bool getEmailNot()
+        {
+            return this.emailNot;
+        }
     }
 }
 

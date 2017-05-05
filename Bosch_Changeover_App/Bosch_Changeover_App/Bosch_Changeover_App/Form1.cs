@@ -157,12 +157,52 @@ namespace Bosch_Changeover_App
                     
                 }
             }
+            else
+            {
+                information.addAlarmNotQueued(pa1);
+            }
         }
+
+        public void personalAlarmIsInQueue(PartAlarm pa, Card c)
+        {
+            removeAlarm(pa);
+            String alarmTime = pa.getAlarmTime();
+            partAlarmsPanel.AutoScrollPosition = new Point(0, 0);
+            PartAlarm pa1 = new PartAlarm(pa.getPartType(), pa.getLine(), pa.getStation(), alarmTime, pa.getDeskNot(), pa.getEmailNot(), pa.getN(), c, this);
+            int numAlarms = partAlarmsPanel.Controls.Count;
+            int locY = numAlarms * pa1.Height + 10 * numAlarms;
+            pa1.Location = new Point(partAlarmsPanel.Location.X + partAlarmsPanel.Width / 2 - pa1.Width / 2, locY);
+            partAlarmsPanel.Controls.Add(pa1);
+            if (c != null)
+            {
+                if (c.getTimeRemaining() / 60 >= Int32.Parse(alarmTime))
+                {
+                    information.addAlarm(pa1);
+                    pa1.update_alarm(); //gotta set the timer
+                    pa1.startTimer(); //gotta start the timer
+
+                }
+            }
+            else
+            {
+                Debug.WriteLine("card is still null");
+                information.addAlarmNotQueued(pa1);
+            }
+        }
+
 
         public void removeAlarm(PartAlarm pa)
         {
             partAlarmsPanel.Controls.Remove(pa);
-            information.removeAlarm(pa);
+
+            if (information.isUnqueued(pa))
+            {
+                information.removeUnqueuedAlarm(pa);
+            }
+            else
+            {
+                information.removeAlarm(pa);
+            }
 
             List<PartAlarm> paList = new List<PartAlarm>();
 
