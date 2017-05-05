@@ -60,9 +60,37 @@ namespace Bosch_Changeover_App
             panelLine3.Controls.Add(line3);
      //       line3.Dock = DockStyle.Fill;
      //       line3.BringToFront();
+
+        }
+
+
+        public void addPartLine1(Card c)
+        {
+            line1.addButtonToPanel(c);
+        }
+
+        public void updatePartLine1(Card c)
+        {
             
+        }
 
+        public void addPartLine2(Card c)
+        {
+            line2.addButtonToPanel(c);
+        }
 
+        public void updatePartLine2(Card c)
+        {
+
+        }
+
+        public void addPartLine3(Card c)
+        {
+            line3.addButtonToPanel(c);
+        }
+
+        public void updatePartLine3(Card c)
+        {
 
         }
 
@@ -113,19 +141,30 @@ namespace Bosch_Changeover_App
         {
             if(totalSize == 2)
             {
+   //             panelLine2.Controls.Remove(line2);
                 panelLine3.Controls.Remove(line3);
-                panelLine2.Controls.Remove(line2);
-                panelLine2.Controls.Add(line3);
-                panelLine1.Controls.Add(line2);
-                line2.Location = new Point(line2.Location.X, line1.Location.Y + line1.Height);
+ //               panelLine3.Controls.Add(line2);
+                panelLine1.Controls.Add(line3);
+                line3.Location = new Point(line3.Location.X, line1.Location.Y + line1.Height);
                 totalSize = 1;
+     //           panelLine3.Controls.Remove(line3);
+      //          panelLine2.Controls.Remove(line2);
+       //         panelLine2.Controls.Add(line3);
+        //        panelLine1.Controls.Add(line2);
+         //       line2.Location = new Point(line2.Location.X, line1.Location.Y + line1.Height);
+          //      totalSize = 1;
 
             }
             else if(totalSize == 1)
             {
-                panelLine2.Controls.Remove(line3);
-                panelLine1.Controls.Add(line3);
-                line3.Location = new Point(line3.Location.X, line2.Location.Y + line1.Height);
+          //      panelLine2.Controls.Remove(line3);
+        //        panelLine1.Controls.Add(line3);
+      //          line3.Location = new Point(line3.Location.X, line2.Location.Y + line1.Height);
+    //            totalSize = 0;
+                panelLine2.Controls.Remove(line2);
+                panelLine1.Controls.Add(line2);
+                line2.Location = new Point(line2.Location.X, line3.Location.Y);
+                line3.Location = new Point(line2.Location.X, line2.Location.Y + line1.Height);
                 totalSize = 0;
             }
         }
@@ -134,18 +173,29 @@ namespace Bosch_Changeover_App
         {
             if (totalSize == 0)
             {
-                panelLine1.Controls.Remove(line3);
-                panelLine2.Controls.Add(line3);
-                line3.Location = new Point(line3.Location.X, 0);
+                //                panelLine1.Controls.Remove(line3);
+                //               panelLine2.Controls.Add(line3);
+                //              line3.Location = new Point(line3.Location.X, 0);
+                //             totalSize = 1;
+                panelLine1.Controls.Remove(line2);
+                panelLine2.Controls.Add(line2);
+                line3.Location = new Point(line3.Location.X, line1.Location.Y + line1.Height);
+                line2.Location = new Point(line2.Location.X, 0);
                 totalSize = 1;
             }
             else if (totalSize == 1)
             {
-                panelLine1.Controls.Remove(line2);
-                panelLine2.Controls.Remove(line3);
-                panelLine2.Controls.Add(line2);
+                //               panelLine1.Controls.Remove(line2);
+                //              panelLine2.Controls.Remove(line3);
+                //             panelLine2.Controls.Add(line2);
+                //            panelLine3.Controls.Add(line3);
+                //           line2.Location = new Point(line2.Location.X, 0);
+                //          totalSize = 2;
+                panelLine1.Controls.Remove(line3);
+            //    panelLine3.Controls.Remove(line2);
                 panelLine3.Controls.Add(line3);
-                line2.Location = new Point(line2.Location.X, 0);
+                panelLine2.Controls.Add(line2);
+                line3.Location = new Point(line3.Location.X, 0);
                 totalSize = 2;
             }
         }

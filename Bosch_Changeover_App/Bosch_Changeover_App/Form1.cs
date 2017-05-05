@@ -33,6 +33,7 @@ namespace Bosch_Changeover_App
             lluc.BringToFront();
             update_currentTime();
             alarms = new List<PartAlarm>();
+            //update_lines();
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -59,6 +60,38 @@ namespace Bosch_Changeover_App
             lluc.BringToFront();
         }
 
+        public void addCard(Card c)
+        {
+
+        }
+
+        public void removeCard(Card c)
+        {
+
+        }
+
+        public void updateCard(Card c)
+        {
+
+        }
+
+        public void update_lines(List<Card> line1CardList,   List<Card> line2CardList, List<Card> line3CardList)
+        {
+            foreach(Card c1 in line1CardList)
+            {
+                
+            }
+            foreach(Card c2 in line2CardList)
+            {
+
+            }
+            foreach(Card c3 in line3CardList)
+            {
+
+            }
+            lluc.addPartLine1(new Card(59, 12, -1, -1, 1234567890, false, 50, 3, 1));
+            lluc.addPartLine1(new Card(59, 12, 02, 18, 1234567890, true, 50, 3, 1));
+        }
  
 
         private void selectionLabel_Click(object sender, EventArgs e)
@@ -116,24 +149,28 @@ namespace Bosch_Changeover_App
             String alarmTime = popup.getAlarmTime();
             Boolean desktopNotification = popup.getDesktopNotification();
             Boolean emailNotification = popup.getEmailNotification();
-            addAlarmtoPanel(partType, lineNum, station, alarmTime, desktopNotification, emailNotification);
+            int n = popup.getN();
+            Timer timer1 = popup.getTimer();
+            addAlarmtoPanel(partType, lineNum, station, alarmTime, desktopNotification, emailNotification, n, timer1);
         }
 
-        public void addAlarmtoPanel(String partType, String lineNum, String station, String alarmTime, Boolean desktopNotification, Boolean emailNotification)
+        public void addAlarmtoPanel(String partType, String lineNum, String station, String alarmTime, Boolean desktopNotification, Boolean emailNotification, int n, Timer timer1)
         {
 
-            PartAlarm pa1 = new PartAlarm(partType, lineNum, station, alarmTime, desktopNotification, emailNotification);
+            PartAlarm pa1 = new PartAlarm(partType, lineNum, station, alarmTime, desktopNotification, emailNotification, n, timer1);
             int numAlarms = partAlarmsPanel.Controls.Count;
             int locY = numAlarms * pa1.Height + 10 * numAlarms;
             pa1.Location = new Point(partAlarmsPanel.Location.X + partAlarmsPanel.Width / 2 - pa1.Width / 2, locY);
             partAlarmsPanel.Controls.Add(pa1);
             alarms.Add(pa1);
+            information.addAlarm(pa1);
         }
 
         public void removeAlarm(PartAlarm pa)
         {
             alarms.Remove(pa);
             partAlarmsPanel.Controls.Remove(pa);
+            information.removeAlarm(pa);
         }
 
 
