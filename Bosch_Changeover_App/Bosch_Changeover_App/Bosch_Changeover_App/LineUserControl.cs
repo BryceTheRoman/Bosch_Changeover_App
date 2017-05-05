@@ -49,7 +49,7 @@ namespace Bosch_Changeover_App
             long ms = s * 1000;
             TimeSpan t = TimeSpan.FromMilliseconds(ms);
             string answer = string.Format("{0:D2}:{1:D2}:{2:D2}",
-                                    t.Hours,
+                                    t.Hours + t.Days*24,
                                     t.Minutes,
                                     t.Seconds);
             return answer;
