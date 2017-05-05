@@ -78,8 +78,8 @@ namespace Bosch_Changeover_App
             this.line1StationList = new List<Station>();
             this.line2StationList = new List<Station>();
             this.line3StationList = new List<Station>();
+            
 
-            boschTestMethod(@"//bh5ne01m/production/MC_Data/ABS9ChP-3");
             // string directoryPath = "@blah blah blah Bosch Directory Location";
             
             offLine1CardList.Add(new Card(597, 10, -1, -1, 11178990, false, 20, 3, 1));
@@ -132,6 +132,7 @@ namespace Bosch_Changeover_App
             {
                 alarms[i].countDown();
             }
+            boschTestMethod(@"\\bh5ne01\production\MC_Data\ABS9ChP-3\MCD_2.DAT");
             //read information from files
             updateCardLists();
 
@@ -478,29 +479,32 @@ namespace Bosch_Changeover_App
 
             int counter = 0;
             string line;
+         
 
 
-
+            /*
             int lastIndex = filename.IndexOf(".dat") - 1;
             int firstIndex = filename.LastIndexOf("MCD_") + 1;
             string stationNumber = filename.Substring(firstIndex, lastIndex);
-
+            */
+            string stationNumber = "2";
 
 
             string[] keywords = { "LineNr:", "PartNrVar:", "TotalCounter:", "CycleTime" };
             // Read the file and display it line by line.  
+            Debug.WriteLine(filename);
             System.IO.StreamReader file =
                 new System.IO.StreamReader(File.OpenRead(filename));
             while ((line = file.ReadLine()) != null)
             {
-
+                Debug.WriteLine(line);
                 if (line.Contains(keywords[0]))
                 {
                     line.Replace(" ", string.Empty);
                     int startPos = line.LastIndexOf(keywords[0]) + 1;
                     int length = line.Length;
-                    string tempLineNumber = line.Substring(startPos, length);
-                    lineNumber = tempLineNumber;
+                    string tempLineNumber = line.Substring(startPos, length-1);
+                    string lineNumber = tempLineNumber;
                 }
                 if (line.Contains(keywords[1]))
                 {
@@ -508,7 +512,7 @@ namespace Bosch_Changeover_App
                     int startPos = line.LastIndexOf(keywords[0]) + 1;
                     int length = line.Length;
                     string tempPartNumber = line.Substring(startPos, length);
-                    partNumber = tempPartNumber;
+                    string partNumber = tempPartNumber;
                 }
                 if (line.Contains(keywords[2]))
                 {
@@ -516,7 +520,7 @@ namespace Bosch_Changeover_App
                     int startPos = line.LastIndexOf(keywords[0]) + 1;
                     int length = line.Length;
                     string temp = line.Substring(startPos, length);
-                    totalCounter = temp;
+                    string totalCounter = temp;
                 }
                 if (line.Contains(keywords[3]))
                 {
@@ -524,7 +528,7 @@ namespace Bosch_Changeover_App
                     int startPos = line.LastIndexOf(keywords[0]) + 1;
                     int length = line.Length;
                     string tempCycleTime = line.Substring(startPos, length);
-                    cycleTime = tempCycleTime;
+                    string cycleTime = tempCycleTime;
                 }
 
                 counter++;
@@ -534,8 +538,8 @@ namespace Bosch_Changeover_App
 
             file.Close();
 
-            Station station = new Station(Int32.Parse(stationNumber), Int32.Parse(lineNumber), Int32.Parse(totalCounter), Int32.Parse(cycleTime), Int32.Parse(partNumber));
-
+            //           Station station = new Station(Int32.Parse(stationNumber), Int32.Parse(lineNumber), Int32.Parse(totalCounter), Int32.Parse(cycleTime), Int32.Parse(partNumber));
+            Station station = new Station(0, 0, 0, 0, 0);
             return station;
 
         }
