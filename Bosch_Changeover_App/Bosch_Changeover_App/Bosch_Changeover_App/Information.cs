@@ -78,6 +78,7 @@ namespace Bosch_Changeover_App
             this.line2StationList = new List<Station>();
             this.line3StationList = new List<Station>();
 
+            boschTestMethod(@"//bh5ne01m/production/MC_Data/ABS9ChP-3");
             // string directoryPath = "@blah blah blah Bosch Directory Location";
             
             offLine1CardList.Add(new Card(597, 10, -1, -1, 11178990, false, 20, 3, 1));
@@ -465,6 +466,12 @@ namespace Bosch_Changeover_App
             }
             return requiredStation;
         }
+
+        public void boschTestMethod(string directory)
+        {
+            Station testStation = addStation(directory);
+            Debug.WriteLine(testStation.getCurrentPart());
+        }
         public Station addStation(string filename)
         {
 
@@ -735,10 +742,7 @@ namespace Bosch_Changeover_App
             return this.desktopAlarmDefault;
         }
 
-        public static void main(string[] args)
-        {
 
-        }
     }
 
 }
