@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 
 
@@ -489,7 +490,7 @@ namespace Bosch_Changeover_App
             string[] keywords = { "LineNr:", "PartNrVar:", "TotalCounter:", "CycleTime" };
             // Read the file and display it line by line.  
             System.IO.StreamReader file =
-                new System.IO.StreamReader(filename);
+                new System.IO.StreamReader(File.OpenRead(filename));
             while ((line = file.ReadLine()) != null)
             {
 
