@@ -13,6 +13,7 @@ using System.IO;
 
 
 
+
 namespace Bosch_Changeover_App
 {
 
@@ -132,7 +133,8 @@ namespace Bosch_Changeover_App
             {
                 alarms[i].countDown();
             }
-            boschTestMethod(@"\\bh5ne01\production\MC_Data\ABS9ChP-3\MCD_2.DAT");
+            boschTestMethod(@"C:\Users\THABEAST\Documents\cofc 2017\CSCI 462\CSCI462_CO\MCD_94.txt.DAT");
+           // \\bh5ne01\production\MC_Data\ABS9ChP - 3\MCD_2.DAT
             //read information from files
             updateCardLists();
 
@@ -146,7 +148,7 @@ namespace Bosch_Changeover_App
             //send updated information to form1
             form.update_lines(line1CardList, offLine1CardList, line2CardList, offLine2CardList, line3CardList, offLine3CardList);
 
-            updateAlarmsNotQueued();
+            //updateAlarmsNotQueued();
 
             test++;
         }
@@ -280,7 +282,7 @@ namespace Bosch_Changeover_App
 
 
 
-
+        /*
         private void updateAlarmsNotQueued()
         {
             List<int> index = new List<int>();
@@ -313,7 +315,8 @@ namespace Bosch_Changeover_App
                 form.personalAlarmIsInQueue(alarmsNotQueued[i], cards[i]);
             }
         }
-
+        */
+        
         public void addAlarm(PartAlarm pa)
         {
             this.alarms.Add(pa);
@@ -392,6 +395,7 @@ namespace Bosch_Changeover_App
 
         public void updateAllStations(string directoryPath)   //each timer tick update all stations and see what parts are now held within
         {
+
             string[] files = System.IO.Directory.GetFiles(directoryPath, "*ProfileHandler.cs", System.IO.SearchOption.TopDirectoryOnly);
             foreach (string file in files)
             {
@@ -477,27 +481,89 @@ namespace Bosch_Changeover_App
         public Station addStation(string filename)
         {
 
-            int counter = 0;
-            string line;
-         
-
-
             /*
-            int lastIndex = filename.IndexOf(".dat") - 1;
-            int firstIndex = filename.LastIndexOf("MCD_") + 1;
-            string stationNumber = filename.Substring(firstIndex, lastIndex);
+            string[] nameArray = filename.Split('/');
+            int endIndex = filename.LastIndexOf(".d");
+            int beginningIndex = filename.LastIndexOf("MCD_") + 4;
+            string stationNumber = filename.Substring(beginningIndex, 2);
+            string stationNumber2 = filename.Substring(endIndex, 2);
+            Debug.WriteLine(stationNumber);
+            Debug.WriteLine(stationNumber2);
             */
-            string stationNumber = "2";
+          
 
+            //string stationNumber = filename.Substring(beginningIndex, endIndex - beginningIndex);
 
-            string[] keywords = { "LineNr:", "PartNrVar:", "TotalCounter:", "CycleTime" };
+            //Debug.WriteLine(stationNumber);
+
+            string[] fullTextArray = System.IO.File.ReadAllLines(filename);
+            string[] keywords = { "LineNr:", "PartNrVar:", "TotalCounter:", "CycleTime:" };
+            string[] triggers = { "Mean", "Min", "Max" };
+
+            Debug.WriteLine("Station Number:");
+            string stationNumberRaw = fullTextArray[3];
+            string stationNumberEx = stationNumberRaw.Substring(stationNumberRaw.Length - 2, 2);
+            string stationNumber = stationNumberEx.Replace(" ", "");
+            Debug.WriteLine(stationNumber);
+
             // Read the file and display it line by line.  
+            Debug.WriteLine("File Name:");
             Debug.WriteLine(filename);
-            System.IO.StreamReader file =
-                new System.IO.StreamReader(File.OpenRead(filename));
-            while ((line = file.ReadLine()) != null)
+            string lineNumberRaw = fullTextArray[2];
+            int startPos = lineNumberRaw.LastIndexOf(keywords[0]) + 1;
+            int length = lineNumberRaw.Length;
+            string lineNumber = lineNumberRaw.Substring(lineNumberRaw.Length - 1);
+            string partNumberRaw = fullTextArray[9];
+            string partNumberEx = partNumberRaw.Substring(lineNumberRaw.Length - 13,lineNumberRaw.Length-2);
+            string partNumber = partNumberEx.Replace(" ", "");
+            Debug.WriteLine("Line Number of Station:");
+            Debug.WriteLine(lineNumber);
+            Debug.WriteLine("Part Number currently on Station:");
+            Debug.WriteLine(partNumber);
+
+            int totalCounterIndex = 0;
+            for(int i = 0; i < fullTextArray.Length; i++)
             {
+                if (fullTextArray[i].Contains(keywords[2])){
+                    break;
+                }
+                totalCounterIndex++;
+            }
+            string totalCounterLine = fullTextArray[totalCounterIndex];
+            string totalCounterLineFree = totalCounterLine.Replace(" ", string.Empty);
+            int totalCountStart = totalCounterLineFree.LastIndexOf(':') + 1;
+            string totalCounter = totalCounterLineFree.Substring(totalCountStart,((totalCounterLineFree.Length) - totalCountStart));
+            Debug.WriteLine(totalCounter);
+            string cycleTimeRaw = fullTextArray[34];
+            int cycleTimeIndex = 0;
+            for (int i = 0; i < fullTextArray.Length; i++)
+            {
+                if (fullTextArray[i].Contains(keywords[3]) && 
+                    !fullTextArray[i].Contains(triggers[0]) &&
+                    !fullTextArray[i].Contains(triggers[1]) &&
+                    !fullTextArray[i].Contains(triggers[2]))
+                {
+                    break;
+                }
+                cycleTimeIndex++;
+            }
+
+            string cycleTimeLine = fullTextArray[cycleTimeIndex];
+            string cycleTimeLineFree = cycleTimeLine.Replace(" ", string.Empty);
+            int cycleTimeStart = cycleTimeLineFree.LastIndexOf(':') + 1;
+            string cycleTime = cycleTimeLineFree.Substring(cycleTimeStart, ((cycleTimeLineFree.Length) - cycleTimeStart));
+            Debug.WriteLine(cycleTime);
+            string[] splittingCycleTime = cycleTime.Split('.');
+
+            //System.IO.StreamReader file =
+            //new System.IO.StreamReader(File.OpenRead(filename));
+            /*
+            while ((!file.EndOfStream))
+            {
+                string line = file.ReadLine();
+
                 Debug.WriteLine(line);
+                
                 if (line.Contains(keywords[0]))
                 {
                     line.Replace(" ", string.Empty);
@@ -537,11 +603,15 @@ namespace Bosch_Changeover_App
 
 
             file.Close();
-
-            //           Station station = new Station(Int32.Parse(stationNumber), Int32.Parse(lineNumber), Int32.Parse(totalCounter), Int32.Parse(cycleTime), Int32.Parse(partNumber));
-            Station station = new Station(0, 0, 0, 0, 0);
+            */
+            int newStationNumber = Int32.Parse(stationNumber);
+            int newLineNumber = Int32.Parse(lineNumber);
+            int newTotalCounter = Int32.Parse(totalCounter);
+            int newCycleTime = Int32.Parse(splittingCycleTime[0]);
+            int newCurrentPart = Int32.Parse(partNumber);
+            Station station = new Station(newStationNumber, newLineNumber, newTotalCounter, newCycleTime, newCurrentPart);
             return station;
-
+            
         }
 
         public int lineCycleTime(List<Station> line)
