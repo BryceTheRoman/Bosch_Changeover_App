@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+
 
 
 
@@ -32,6 +34,7 @@ namespace Bosch_Changeover_App
         List<Station> line3StationList;
 
         List<PartAlarm> alarms;
+        List<PartAlarm> alarmsNotQueued;
 
         //Negative stations are ones that can be run in parallel with the adjacent negative station
         public static readonly int[] LINE1_STATIONS = { 02, -18, -16, 12, 14, 20, 24, 28, 29, 30, 32, 38, 22, 40, 42, 142, -44, -46, 34, 51, 52, 58, 60, -62, -64, 66, -84, -85, 86, 65, 68, 70, 71, 72, 74 };
@@ -49,7 +52,7 @@ namespace Bosch_Changeover_App
         string userEmail = "bosch.changeover@gmail.com";
         bool sendDefault = true;
         bool desktopAlarmDefault = true;
-
+        int test = 0;
 
 
         public Information(Form1 form)
@@ -71,10 +74,12 @@ namespace Bosch_Changeover_App
             this.offLine3CardList = new List<Card>();
 
             this.alarms = new List<PartAlarm>();
+            this.alarmsNotQueued = new List<PartAlarm>();
 
             this.line1StationList = new List<Station>();
             this.line2StationList = new List<Station>();
             this.line3StationList = new List<Station>();
+            
 
             // string directoryPath = "@blah blah blah Bosch Directory Location";
             
@@ -90,18 +95,18 @@ namespace Bosch_Changeover_App
             offLine1CardList.Add(new Card(595, 405, -1, -1, 1234538289, false, 34, 3, 1));
 
             offLine2CardList.Add(new Card(5937, 4, -1, -1, 9933333333, false, 10, 3, 2));
-            line2CardList.Add(new Card(74050, 74, 02, 18, 1234567880, true, 23, 3, 2));
+            line2CardList.Add(new Card(740050, 74, 02, 18, 1234567880, true, 23, 3, 2));
             offLine2CardList.Add(new Card(999, 329, -1, -1, 1222222222, false, 12, 3, 2));
             line2CardList.Add(new Card(74009, 326, 17, 16, 1234567890, true, 14, 3, 2));
             offLine2CardList.Add(new Card(896, 330, -1, -1, 1333333333, false, 13, 3, 2));
             line2CardList.Add(new Card(74008, 320, 12, 14, 1234567780, true, 36, 3, 2));
             offLine2CardList.Add(new Card(320, 350, -1, -1, 1444444444, false, 24, 3, 2));
             offLine2CardList.Add(new Card(635, 376, -1, -1, 1555555555, false, 52, 3, 2));
-            offLine2CardList.Add(new Card(780, 492, -1, -1, 1666666666, false, 27, 3, 2));
+            offLine2CardList.Add(new Card(780, 2, -1, -1, 1666666666, false, 27, 3, 2));
             offLine2CardList.Add(new Card(952, 624, -1, -1, 1777777777, false, 32, 3, 2));
             offLine2CardList.Add(new Card(1003, 527, -1, -1, 1888888888, false, 44, 3, 2));
 
-            offLine3CardList.Add(new Card(590, 2, -1, -1, 1234567899, false, 12, 3, 3));
+            offLine3CardList.Add(new Card(590, 22, -1, -1, 1234567899, false, 12, 3, 3));
             line3CardList.Add(new Card(74002, 320, 02, 18, 1234567890, true, 50, 3, 3));
             offLine3CardList.Add(new Card(830, 10, -1, -1, 1234567869, false, 11, 3, 3));
             offLine3CardList.Add(new Card(860, 20, -1, -1, 1234564899, false, 8, 3, 3));
@@ -117,6 +122,38 @@ namespace Bosch_Changeover_App
             form.add_lines(line1CardList, offLine1CardList, line2CardList, offLine2CardList, line3CardList, offLine3CardList);
 
         }
+
+
+
+        //timer that controls all updates for the program!
+        void timerEvent(Object sender, EventArgs e)
+        {
+            form.update_currentTime();
+            for (int i = 0; i < alarms.Count; i++)
+            {
+                alarms[i].countDown();
+            }
+            boschTestMethod(@"C:\Users\THABEAST\Documents\cofc 2017\CSCI 462\CSCI462_CO\MCD_94.txt.DAT");
+           // \\bh5ne01\production\MC_Data\ABS9ChP - 3\MCD_2.DAT
+            //read information from files
+            updateCardLists();
+
+            if (test == 9)
+            {
+                offLine2CardList.Add(new Card(3000, 720, -1, -1, 1111111111, false, 162, 3, 2));
+            }
+
+
+            //update array lists
+            //send updated information to form1
+            form.update_lines(line1CardList, offLine1CardList, line2CardList, offLine2CardList, line3CardList, offLine3CardList);
+
+            //updateAlarmsNotQueued();
+
+            test++;
+        }
+
+
 
         private void updateCardLists()
         {
@@ -245,26 +282,49 @@ namespace Bosch_Changeover_App
 
 
 
-        //timer that controls all updates for the program!
-        void timerEvent(Object sender, EventArgs e)
+        /*
+        private void updateAlarmsNotQueued()
         {
-            form.update_currentTime();
-            for (int i = 0; i < alarms.Count; i++)
+            List<int> index = new List<int>();
+            List<Card> cards = new List<Card>();
+            foreach (PartAlarm pa in this.alarmsNotQueued)
             {
-                alarms[i].countDown();
+                Card inLine1 = getCard(pa.getPartType(), 1);
+                Card inLine2 = getCard(pa.getPartType(), 2);
+                Card inLine3 = getCard(pa.getPartType(), 3);
+
+                if(pa.doesCardMatch(inLine1))
+                {
+                    index.Add(this.alarmsNotQueued.IndexOf(pa));
+                    cards.Add(inLine1);
+                }
+                else if(pa.doesCardMatch(inLine2))
+                {
+                    index.Add(this.alarmsNotQueued.IndexOf(pa));
+                    cards.Add(inLine2);
+                }
+                else if(pa.doesCardMatch(inLine3))
+                {
+                    index.Add(this.alarmsNotQueued.IndexOf(pa));
+                    cards.Add(inLine3);
+                }
             }
-            //read information from files
-            updateCardLists();
 
-            //update array lists
-            //send updated information to form1
-            form.update_lines(line1CardList, offLine1CardList, line2CardList, offLine2CardList, line3CardList, offLine3CardList);
-
+            foreach(int i in index)
+            {
+                form.personalAlarmIsInQueue(alarmsNotQueued[i], cards[i]);
+            }
         }
-
+        */
+        
         public void addAlarm(PartAlarm pa)
         {
             this.alarms.Add(pa);
+        }
+
+        public void addAlarmNotQueued(PartAlarm pa)
+        {
+            this.alarmsNotQueued.Add(pa);
         }
 
         public void removeAlarm(PartAlarm pa)
@@ -272,6 +332,15 @@ namespace Bosch_Changeover_App
             this.alarms.Remove(pa);
         }
 
+        public void removeUnqueuedAlarm(PartAlarm pa)
+        {
+            this.alarmsNotQueued.Remove(pa);
+        }
+
+        public bool isUnqueued(PartAlarm pa)
+        {
+            return this.alarmsNotQueued.Contains(pa);
+        }
 
         public void incorporateStationToCard(Card c, Station s)
         {
@@ -326,6 +395,7 @@ namespace Bosch_Changeover_App
 
         public void updateAllStations(string directoryPath)   //each timer tick update all stations and see what parts are now held within
         {
+
             string[] files = System.IO.Directory.GetFiles(directoryPath, "*ProfileHandler.cs", System.IO.SearchOption.TopDirectoryOnly);
             foreach (string file in files)
             {
@@ -402,34 +472,105 @@ namespace Bosch_Changeover_App
             }
             return requiredStation;
         }
+
+        public void boschTestMethod(string directory)
+        {
+            Station testStation = addStation(directory);
+            Debug.WriteLine(testStation.getCurrentPart());
+        }
         public Station addStation(string filename)
         {
 
-            int counter = 0;
-            string line;
+            /*
+            string[] nameArray = filename.Split('/');
+            int endIndex = filename.LastIndexOf(".d");
+            int beginningIndex = filename.LastIndexOf("MCD_") + 4;
+            string stationNumber = filename.Substring(beginningIndex, 2);
+            string stationNumber2 = filename.Substring(endIndex, 2);
+            Debug.WriteLine(stationNumber);
+            Debug.WriteLine(stationNumber2);
+            */
+          
 
+            //string stationNumber = filename.Substring(beginningIndex, endIndex - beginningIndex);
 
+            //Debug.WriteLine(stationNumber);
 
-            int lastIndex = filename.IndexOf(".dat") - 1;
-            int firstIndex = filename.LastIndexOf("MCD_") + 1;
-            string stationNumber = filename.Substring(firstIndex, lastIndex);
+            string[] fullTextArray = System.IO.File.ReadAllLines(filename);
+            string[] keywords = { "LineNr:", "PartNrVar:", "TotalCounter:", "CycleTime:" };
+            string[] triggers = { "Mean", "Min", "Max" };
 
+            Debug.WriteLine("Station Number:");
+            string stationNumberRaw = fullTextArray[3];
+            string stationNumberEx = stationNumberRaw.Substring(stationNumberRaw.Length - 2, 2);
+            string stationNumber = stationNumberEx.Replace(" ", "");
+            Debug.WriteLine(stationNumber);
 
-
-            string[] keywords = { "LineNr:", "PartNrVar:", "TotalCounter:", "CycleTime" };
             // Read the file and display it line by line.  
-            System.IO.StreamReader file =
-                new System.IO.StreamReader(filename);
-            while ((line = file.ReadLine()) != null)
-            {
+            Debug.WriteLine("File Name:");
+            Debug.WriteLine(filename);
+            string lineNumberRaw = fullTextArray[2];
+            int startPos = lineNumberRaw.LastIndexOf(keywords[0]) + 1;
+            int length = lineNumberRaw.Length;
+            string lineNumber = lineNumberRaw.Substring(lineNumberRaw.Length - 1);
+            string partNumberRaw = fullTextArray[9];
+            string partNumberEx = partNumberRaw.Substring(lineNumberRaw.Length - 13,lineNumberRaw.Length-2);
+            string partNumber = partNumberEx.Replace(" ", "");
+            Debug.WriteLine("Line Number of Station:");
+            Debug.WriteLine(lineNumber);
+            Debug.WriteLine("Part Number currently on Station:");
+            Debug.WriteLine(partNumber);
 
+            int totalCounterIndex = 0;
+            for(int i = 0; i < fullTextArray.Length; i++)
+            {
+                if (fullTextArray[i].Contains(keywords[2])){
+                    break;
+                }
+                totalCounterIndex++;
+            }
+            string totalCounterLine = fullTextArray[totalCounterIndex];
+            string totalCounterLineFree = totalCounterLine.Replace(" ", string.Empty);
+            int totalCountStart = totalCounterLineFree.LastIndexOf(':') + 1;
+            string totalCounter = totalCounterLineFree.Substring(totalCountStart,((totalCounterLineFree.Length) - totalCountStart));
+            Debug.WriteLine(totalCounter);
+            string cycleTimeRaw = fullTextArray[34];
+            int cycleTimeIndex = 0;
+            for (int i = 0; i < fullTextArray.Length; i++)
+            {
+                if (fullTextArray[i].Contains(keywords[3]) && 
+                    !fullTextArray[i].Contains(triggers[0]) &&
+                    !fullTextArray[i].Contains(triggers[1]) &&
+                    !fullTextArray[i].Contains(triggers[2]))
+                {
+                    break;
+                }
+                cycleTimeIndex++;
+            }
+
+            string cycleTimeLine = fullTextArray[cycleTimeIndex];
+            string cycleTimeLineFree = cycleTimeLine.Replace(" ", string.Empty);
+            int cycleTimeStart = cycleTimeLineFree.LastIndexOf(':') + 1;
+            string cycleTime = cycleTimeLineFree.Substring(cycleTimeStart, ((cycleTimeLineFree.Length) - cycleTimeStart));
+            Debug.WriteLine(cycleTime);
+            string[] splittingCycleTime = cycleTime.Split('.');
+
+            //System.IO.StreamReader file =
+            //new System.IO.StreamReader(File.OpenRead(filename));
+            /*
+            while ((!file.EndOfStream))
+            {
+                string line = file.ReadLine();
+
+                Debug.WriteLine(line);
+                
                 if (line.Contains(keywords[0]))
                 {
                     line.Replace(" ", string.Empty);
                     int startPos = line.LastIndexOf(keywords[0]) + 1;
                     int length = line.Length;
-                    string tempLineNumber = line.Substring(startPos, length);
-                    lineNumber = tempLineNumber;
+                    string tempLineNumber = line.Substring(startPos, length-1);
+                    string lineNumber = tempLineNumber;
                 }
                 if (line.Contains(keywords[1]))
                 {
@@ -437,7 +578,7 @@ namespace Bosch_Changeover_App
                     int startPos = line.LastIndexOf(keywords[0]) + 1;
                     int length = line.Length;
                     string tempPartNumber = line.Substring(startPos, length);
-                    partNumber = tempPartNumber;
+                    string partNumber = tempPartNumber;
                 }
                 if (line.Contains(keywords[2]))
                 {
@@ -445,7 +586,7 @@ namespace Bosch_Changeover_App
                     int startPos = line.LastIndexOf(keywords[0]) + 1;
                     int length = line.Length;
                     string temp = line.Substring(startPos, length);
-                    totalCounter = temp;
+                    string totalCounter = temp;
                 }
                 if (line.Contains(keywords[3]))
                 {
@@ -453,7 +594,7 @@ namespace Bosch_Changeover_App
                     int startPos = line.LastIndexOf(keywords[0]) + 1;
                     int length = line.Length;
                     string tempCycleTime = line.Substring(startPos, length);
-                    cycleTime = tempCycleTime;
+                    string cycleTime = tempCycleTime;
                 }
 
                 counter++;
@@ -462,11 +603,15 @@ namespace Bosch_Changeover_App
 
 
             file.Close();
-
-            Station station = new Station(Int32.Parse(stationNumber), Int32.Parse(lineNumber), Int32.Parse(totalCounter), Int32.Parse(cycleTime), Int32.Parse(partNumber));
-
+            */
+            int newStationNumber = Int32.Parse(stationNumber);
+            int newLineNumber = Int32.Parse(lineNumber);
+            int newTotalCounter = Int32.Parse(totalCounter);
+            int newCycleTime = Int32.Parse(splittingCycleTime[0]);
+            int newCurrentPart = Int32.Parse(partNumber);
+            Station station = new Station(newStationNumber, newLineNumber, newTotalCounter, newCycleTime, newCurrentPart);
             return station;
-
+            
         }
 
         public int lineCycleTime(List<Station> line)
@@ -672,10 +817,7 @@ namespace Bosch_Changeover_App
             return this.desktopAlarmDefault;
         }
 
-        public static void main(string[] args)
-        {
 
-        }
     }
 
 }
